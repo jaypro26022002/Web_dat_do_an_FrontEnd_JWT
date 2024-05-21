@@ -1,0 +1,237 @@
+.color1 {
+    border: 1px solid #4F5902;
+}
+
+.color2 {
+    border: 1px solid #260101;
+}
+
+.color3 {
+    border: 1px solid #F28627;
+}
+
+.homepage-container {
+    .banner-top {
+        position: relative;
+        text-align: center;
+        color: white;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+
+            h2 {
+                margin: 0;
+                font-size: 2rem;
+                font-weight: 300;
+            }
+
+            h1 {
+                margin: 0.5rem 0;
+                font-size: 3rem;
+                font-weight: 700;
+            }
+
+            span {
+                font-size: 1.2rem;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .container {
+        margin-top: 2rem;
+
+        .row {
+            .center {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+
+                .center-top,
+                .center-bottom {
+                    padding: 1rem;
+                    flex: 1;
+                }
+
+                .center-top {
+                    background-color: #f8f8f8;
+                }
+
+                .center-bottom {
+                    background-color: #e0e0e0;
+                }
+            }
+
+        }
+    }
+
+    .meal {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .meal-1,
+        .meal-2,
+        .meal-3,
+        .meal-4 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid transparent;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            span {
+                margin-top: 10px;
+            }
+
+            &:hover {
+                border: 1px solid #000;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .brand-1,
+    .brand-2,
+    .brand-3,
+    .brand-4 {
+        display: flex;
+        align-items: center;
+        border: 1px solid transparent;
+        padding: 10px;
+        cursor: pointer;
+        position: relative;
+        text-align: center;
+
+        span {
+            margin-left: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+
+        }
+
+        &:hover {
+            border: 1px solid #000;
+        }
+    }
+
+    .feedback {
+        padding-top: 120px;
+        text-align: center;
+
+        .member-feedback {
+            display: flex;
+            width: auto;
+            margin-top: 30px;
+            justify-content: center;
+
+            .feed1 {
+                flex-basis: 50%;
+                text-align: left;
+                margin-left: 230px;
+            }
+
+            .feed2 {
+                flex-basis: 50%;
+                text-align: left;
+                margin-left: 100px;
+
+            }
+
+            .feed3 {
+                flex-basis: 50%;
+                text-align: left;
+                margin-left: 100px;
+                margin-right: 230px;
+            }
+        }
+    }
+
+    .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 50px 0;
+    }
+
+    .footer .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .menu_footer {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu_footer li {
+        margin-bottom: 10px;
+    }
+
+    .menu_footer a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+    }
+
+    .menu_footer .fa {
+        margin-right: 10px;
+    }
+
+    .footer {
+        background-color: #000;
+        padding: 20px 0px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ul.menu_footer a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .footer h3 {
+        color: white;
+    }
+
+    .col-3 {
+        margin-right: 50px;
+        /* Thay đổi khoảng cách giữa 2 cột */
+        margin-bottom: 20px;
+    }
+
+    ul.menu_footer a:hover {
+        color: red;
+    }
+
+    .row.footer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-left: -15px;
+    }
+
+}
+
+// trong hình có nội dung thẻ H1,H2,span

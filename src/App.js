@@ -1,44 +1,44 @@
 import './App.scss';
-// import Nav from './components/Navigation/Navi';
-import Login from './components/Login/Login';
+import Nav from './components/Navigation/Nav';
+import NavWeb from './components/Navigation/NavWeb';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-import Register from './components/Register/Register';
+
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect, useState } from 'react';
+import _ from "lodash";
+import AppRoutes from './routes/AppRoutes';
+
 
 function App() {
+  const [account, setAccount] = useState({});
+
+  useEffect(() => {
+    let session = sessionStorage.getItem('account');
+    if (session) {
+      setAccount(JSON.parse(session));
+    }
+  }, []);
+
   return (
-    <Router>
-      <div className='app-container'>
-        {/* <Nav /> */}
-        <Switch>
-          <Route path="/news">
-            News
-          </Route>
-          <Route path="/contact">
-            Contact
-          </Route>
-          <Route path="/about">
-            About
-          </Route>
-          <Route path="/" exact>
-            Home
-          </Route>
-          <Route path="/register" >
-            <Register />
-          </Route>
-          <Route path="/login" >
-            <Login />
-          </Route>
-          <Route path="*">
-            Not found 404
-          </Route>
-        </Switch>
-      </div>
+    <>
+      <Router>
+        <div>
+          <div className='app-header'>
+            <Nav /> <NavWeb />
+          </div>
+          <div className='app-container'>
+            <AppRoutes />
+          </div>
+        </div>
+      </Router>
+
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -51,8 +51,67 @@ function App() {
         pauseOnHover
         theme="light"
       />
-    </Router>
+    </>
   );
 }
 
 export default App;
+
+
+// import './App.scss';
+// import Nav from './components/Navigation/Navi';
+// import NavWeb from './components/Navigation/NavWeb';
+
+// import {
+//   BrowserRouter as Router,
+// } from "react-router-dom";
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// import { useEffect, useState } from 'react';
+// import _ from "lodash";
+// import AppRoutes from './routes/AppRoutes';
+// import WebRoutes from './routes/WebRoutes';
+
+// function App() {
+//   // const [account, setAccount] = useState({});
+
+//   // useEffect(() => {
+//   //   let session = sessionStorage.getItem('account');
+//   //   if (session) {
+//   //     setAccount(JSON.parse(session));
+//   //   }
+//   // }, []);
+
+//   return (
+//     <>
+//       <Router>
+//         <div className='app-header'>
+//           <Nav />
+//         </div>
+//         <div className='app-container'>
+//           <AppRoutes />
+//         </div>
+//       </Router>
+//       <Router>
+//         {/* <NavWeb /> */}
+//         <div className='web-container'>
+//           <WebRoutes />
+//         </div>
+//       </Router>
+//       <ToastContainer
+//         position="top-right"
+//         autoClose={5000}
+//         hideProgressBar={false}
+//         newestOnTop={false}
+//         closeOnClick
+//         rtl={false}
+//         pauseOnFocusLoss
+//         draggable
+//         pauseOnHover
+//         theme="light"
+//       />
+//     </>
+//   );
+// }
+
+// export default App;

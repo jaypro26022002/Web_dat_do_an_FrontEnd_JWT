@@ -2,19 +2,30 @@ import './Register.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+// toast hiệu ứng thông báo 
 import { toast } from 'react-toastify';
+import { registerNewUser } from '../../services/userService';
 
-
-//use reactrouter history(chuyen trang bang hook)
 const Register = (props) => {
+    // dữ liệu user nhập vào sử dụng state(tình trạng) để handle
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [confirpassword, setConfirPassword] = useState("")
+    const [confirpassword, setConfirmPassword] = useState("")
 
+    const defaultValidInput = {
+        // (kích hoạt hiển thị)hiện thị khung viền đỏ nếu false
+        isValiEmail: true,
+        isValiPhone: true,
+        isValiUsername: true,
+        isValiPassword: true,
+        isValiConfirmPassword: true
+    }
 
+    const [objCheckInput, setObjCheckInput] = useState(defaultValidInput)
 
+    //use reactrouter history(chuyen trang bang hook)
     let history = useHistory();
     const handlerLogin = () => {
         history.push('/login');
@@ -22,53 +33,80 @@ const Register = (props) => {
 
     // ham check API bo? link test vao
     useEffect(() => {
-        // axios.get('http://localhost:8081/api/test-api').then(data => {
+        // axios.get('http://localhost:8081/api/v1/test-api').then(data => {
         //     console.log('>>> check api << ', data);
         // })
     }, []);
 
-    const isValidate = () => {
+    const isValidateInput = () => {
+        setObjCheckInput(defaultValidInput)
 
         if (!email) {
             toast.error("email is empty ")
-            return false;
-        }
-        if (!phone) {
-            toast.error("phone is empty")
-            return false;
-        }
-        if (!username) {
-            toast.error("username is empty ")
-            return false;
-        }
-        if (!password) {
-            toast.error("password empty ")
-            return false;
-        }
-        if (password != confirpassword) {
-            toast.error("confirpassword is not same")
+            //check biến setObjCheckInput(copy dữ liệu từ biến defaultValidInput, isValiEmail thế dữ liệu vào defaultValidInput )
+            setObjCheckInput({ ...defaultValidInput, isValiEmail: false });
             return false;
         }
         // xác định ký tự email
         let emailRegex = /^[A-Z0-9_'%=+!`#~$*?^{}&|-]+([\.][A-Z0-9_'%=+!`#~$*?^{}&|-]+)*@[A-Z0-9-]+(\.[A-Z0-9-]+)+$/i;
         if (!emailRegex.test(email)) {
             toast.error('email is valid');
+            setObjCheckInput({ ...defaultValidInput, isValiEmail: false });
+            return false;
+        }
+        // xác định ký tự phone
+        if (!phone) {
+            toast.error("phone is empty")
+            setObjCheckInput({ ...defaultValidInput, isValiPhone: false });
+            return false;
+        }
+        // xác định ký tự usename
+        if (!username) {
+            toast.error("username is empty ")
+            setObjCheckInput({ ...defaultValidInput, isValiUsername: false });
+            return false;
+        }
+        // xác định ký tự password 
+        if (!password) {
+            toast.error("password empty ")
+            setObjCheckInput({ ...defaultValidInput, isValiPassword: false });
+            return false;
+        }
+        if (password != confirpassword) {
+            toast.error("confirpassword is not same")
+            setObjCheckInput({ ...defaultValidInput, isValiConfirmPassword: false });
             return false;
         }
 
         return true;
     }
-    const handleRegister = () => {
-        let check = isValidate()
+    const handleRegister = async () => {
+        // B1: validate input
+        let check = isValidateInput()
+        if (check == true) {
+            // B2: gọi server tạo mới user     
+            let response = await registerNewUser(email, phone, username, password);
+            console.log(">> check respone: ", response);
+            //B3: tạo biến serverData hứng dữ liệu user từ server để check response(phản hồi data )
+            let serverData = response.data;
+            if (+serverData.EC === 0) {
+                // hiện thông báo success và history.push('/login')ra trang login nếu +serverData.EC == 0
+                toast.success(serverData.EM);
+                history.push('/login');
+            } else {
+                toast.error(serverData.EM);
+            }
+        }
+
         // cach 1: rut gon
-        let userData = [email, phone, username, password]
+        // let userData = [email, phone, username, password]
         // cach2 : chi tiet
         // let userData = {
         // email trái : key nơi chứa - email phải giá trị từ nguồn khác 
         //     email: email,
         //     password: password,
         // }
-        console.log(">> check user<< ", userData);
+        // console.log(">> check user<< ", userData);
 
     }
 
@@ -90,33 +128,36 @@ const Register = (props) => {
                         </div>
                         <div className='form-group'>
                             <label>Email:</label>
-                            <input type='text' className='form-control' placeholder='User name or phone number'
+                            <input type='text'
+                                // className: tính năng bootstrap Validate input 
+                                className={objCheckInput.isValiEmail ? 'form-control' : 'form-control is-invalid'} placeholder='User name or phone number'
+                                // kiểm soát dữ liệu bằng biến React 'email' onChange:thay đổi ô input theo biến email
                                 value={email} onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
                         <div className='form-group'>
                             <label>Phone number:</label>
-                            <input type='text' className='form-control' placeholder='Phone number'
+                            <input type='text' className={objCheckInput.isValiPhone ? 'form-control' : 'form-control is-invalid'} placeholder='Phone number'
                                 value={phone} onChange={(event) => setPhone(event.target.value)}
 
                             />
                         </div>
                         <div className='form-group'>
                             <label> Username:</label>
-                            <input type='text' className='form-control' placeholder='Username'
+                            <input type='text' className={objCheckInput.isValiUsername ? 'form-control' : 'form-control is-invalid'} placeholder='Username'
                                 value={username} onChange={(event) => setUsername(event.target.value)}
                             />
                         </div>
                         <div className='form-group'>
                             <label>  Password:</label>
-                            <input type='password' className='form-control' placeholder='password'
+                            <input type='password' className={objCheckInput.isValiPassword ? 'form-control' : 'form-control is-invalid'} placeholder='password'
                                 value={password} onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
                         <div className='form-group'>
                             <label> Re-enter-password:</label>
-                            <input type='password' className='form-control' placeholder='password'
-                                value={confirpassword} onChange={(event) => setConfirPassword(event.target.value)}
+                            <input type='password' className={objCheckInput.isValiConfirmPassword ? 'form-control' : 'form-control is-invalid'} placeholder='password'
+                                value={confirpassword} onChange={(event) => setConfirmPassword(event.target.value)}
                             />
                         </div>
                         <button className='btn btn-primary' onClick={() => handleRegister()}>Register</button>
