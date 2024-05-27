@@ -5,3 +5,31 @@
         }
     }
 }
+
+.manager-user-container {
+    i {
+        padding-right: 5px;
+    }
+
+    .action {
+        .refesh {
+            margin-right: 10px;
+        }
+    }
+
+    span {
+        .edit {
+            padding: 5px;
+            border: 10px;
+            color: orange;
+            cursor: pointer;
+        }
+
+        .delete {
+            padding: 5px;
+            border: 10px;
+            color: rgb(223, 108, 108);
+            cursor: pointer;
+        }
+    }
+}

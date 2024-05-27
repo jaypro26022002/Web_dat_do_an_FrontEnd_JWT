@@ -41,7 +41,7 @@ const Login = (props) => {
 
         // response.data để khi axios trả data sẽ ko thừa(các data ngày,giờ,nơi)chỉ trả valueLogin,password
         // +response.data.EC dấu '+' để chuyển dữ liệu từ string sang int 
-        if (response && response.data && +response.data.EC === 0) {
+        if (response && +response.EC === 0) {
             // success
             let data = {
                 isAuthenticated: true,
@@ -53,9 +53,9 @@ const Login = (props) => {
             window.location.reload();
 
         }
-        if (response && response.data && +response.data.EC !== 0) {
+        if (response && +response.EC !== 0) {
             // error
-            toast.error(response.data.EM)
+            toast.error(response.EM)
         }
     }
 
