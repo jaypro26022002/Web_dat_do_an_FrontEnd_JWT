@@ -1,34 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import './Nav.scss';
+import './NavAdmin.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 
 
-const Nav = (props) => {
+const NavAdmin = (props) => {
     const [isShow, setIsShow] = useState(false);
     let location = useLocation();
 
     useEffect(() => {
         if (location.pathname === '/user') {
             setIsShow(true);
-        } else {
+        }
+        else {
             setIsShow(false);
         }
+        if (location.pathname === '/product') {
+            setIsShow(true);
+        }
+        if (location.pathname === '/type') {
+            setIsShow(true);
+        }
+
+        // if (location.pathname === '/feedback') {
+        //     setIsShow(true);
+        // }
+        // if (location.pathname === '/type') {
+        //     setIsShow(true);
+        // }
+        // if (location.pathname === '/order') {
+        //     setIsShow(true);
+        // }
+        // if (location.pathname === '/new') {
+        //     setIsShow(true);
+        // } 
+
     }, [location]);
 
     return (
         <>
             {isShow && (
                 <div className="topnav">
-                    <NavLink to="/user">User</NavLink>
-                    <NavLink to="/project">Project</NavLink>
-                    <NavLink to="/about">About</NavLink>
+                    <NavLink to="/user">Thành viên</NavLink>
+                    <NavLink to="/product">Sản phẩm</NavLink>
+                    <NavLink to="/feedback">Đánh giá</NavLink>
+                    <NavLink to="/type">Thể loại</NavLink>
+                    <NavLink to="/shop">Nhà hàng</NavLink>
+                    <NavLink to="/order">Đơn đặt hàng</NavLink>
+                    <NavLink to="/new">Tin tức</NavLink>
                 </div>
             )}
         </>
     );
 }
 
-export default Nav;
+export default NavAdmin;
 
 // import React, { useEffect, useState } from 'react';
 // import './Nav.scss';

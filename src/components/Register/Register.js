@@ -1,6 +1,5 @@
 import './Register.scss';
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 // toast hiệu ứng thông báo 
 import { toast } from 'react-toastify';
@@ -86,15 +85,14 @@ const Register = (props) => {
         if (check == true) {
             // B2: gọi server tạo mới user     
             let response = await registerNewUser(email, phone, username, password);
-            console.log(">> check respone: ", response);
+            console.log(">> check respone Register: ", response);
             //B3: tạo biến serverData hứng dữ liệu user từ server để check response(phản hồi data )
-            let serverData = response.data;
-            if (+serverData.EC === 0) {
+            if (response.EC === 0) {
                 // hiện thông báo success và history.push('/login')ra trang login nếu +serverData.EC == 0
-                toast.success(serverData.EM);
+                toast.success(response.EM);
                 history.push('/login');
             } else {
-                toast.error(serverData.EM);
+                toast.error(response.EM);
             }
         }
 

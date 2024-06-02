@@ -1,14 +1,16 @@
 import Login from '../components/Login/Login';
 import User from '../components/ManagerUser/user';
 import Register from '../components/Register/Register';
-import HomePage from '../components/website/HomePage';
-
+import HomePage from '../components/home/HomePage';
+import Contact from '../components/other/Contact';
+import Product from '../components/pagesAdmin/Product';
+import Type from '../components/pagesAdmin/typeFood';
 import {
     Switch,
     Route,
 } from "react-router-dom";
 import PrivateRoutes from './PrivateRoutes';
-
+import FileUpload from '../components/pagesAdmin/FileUpload'
 const AppRoutes = (props) => {
     return (
         <Switch>
@@ -24,6 +26,18 @@ const AppRoutes = (props) => {
             </Route>
             <Route path="/user" >
                 <User />
+            </Route>
+            <Route path='/contact'>
+                <Contact />
+            </Route>
+            <Route path='/product'>
+                <Product />
+            </Route>
+            <Route path='/type'>
+                <Type />
+            </Route>
+            <Route path='/upload'>
+                <FileUpload />
             </Route>
             <Route path="/" exact>
                 <HomePage />

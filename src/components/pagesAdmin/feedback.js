@@ -45,8 +45,6 @@ const User = (props) => {
         if (respone && respone.EC === 0) {
             setTottalPages(respone.DT.totalPages);
             setListUsers(respone.DT.users);
-            console.log(">> check user", respone.DT.users)
-
         }
     }
 

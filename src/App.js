@@ -1,5 +1,5 @@
 import './App.scss';
-import Nav from './components/Navigation/Nav';
+import NavAdmin from './components/Navigation/NavAdmin';
 import NavWeb from './components/Navigation/NavWeb';
 import {
   Switch,
@@ -31,7 +31,7 @@ function App() {
       <Router>
         <div>
           <div className='app-header'>
-            <Nav /> <NavWeb />
+            <NavAdmin /> <NavWeb />
           </div>
           <div className='app-container'>
             <AppRoutes />

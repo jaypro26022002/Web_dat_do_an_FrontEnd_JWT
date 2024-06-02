@@ -2,13 +2,22 @@
 
 import axios from '../setup/axios';
 
+const UploadFile = (formdata) => {
+    return axios.post('/api/v1//upload-image', formdata)
+}
+
+
+
+
 const registerNewUser = (email, phone, username, password) => {
     // axios tạo API để truyền dữ liệu qua Backend thông qua link kết nối server 
     return axios.post('/api/v1/register', {
         email, phone, username, password
     })
 }
-
+const contactNew = (contactData) => {
+    return axios.post('/api/v1/contact', { ...contactData })
+}
 const loginUser = (valueLogin, password) => {
     return axios.post('/api/v1/login', {
         valueLogin, password
@@ -34,6 +43,21 @@ const createNewUser = (userData) => {
 const fetchAllFood = (page, limit) => {
     return axios.get(`/api/v1/food/read?page=${page}&limit=${limit}`);//template string
 }
+
+// Product
+const fetchAllProduct = (page, limit) => {
+    return axios.get(`/api/v1/product/read?page=${page}&limit=${limit}`);//template string
+}
+const createNewProduct = (productData) => {
+    return axios.post("/api/v1/product/create", { ...productData, })
+}
+const updateCurrentProduct = (productData) => {
+    return axios.put("/api/v1/product/update", { ...productData })
+}
+const deleteProduct = (product) => {
+    return axios.delete('/api/v1/product/delete', { data: { id: product.id_product } });
+}
+
 const createNewFood = (foodData) => {
     return axios.post("/api/v1/food/create", {
         ...foodData,
@@ -46,8 +70,48 @@ const createNewFood = (foodData) => {
 const updateCurrentUser = (userData) => {
     return axios.put("/api/v1/user/update", { ...userData })
 }
+const updateCurrentFood = (foodData) => {
+    return axios.put("/api/v1/food/update", { ...foodData })
+}
+
+const fetchAllType = (page, limit) => {
+    return axios.get(`/api/v1/type/read?page=${page}&limit=${limit}`);//template string
+}
+const createNewType = (typeData) => {
+    return axios.post("/api/v1/type/create", { ...typeData, })
+}
+const updateCurrentType = (typeData) => {
+    return axios.put("/api/v1/type/update", { ...typeData })
+}
+const deleteType = (type) => {
+    return axios.delete('/api/v1/type/delete', { data: { id: type.id_type } });
+}
+
+// shop
+const fetchAllShop = (page, limit) => {
+    return axios.get(`/api/v1/shop/read?page=${page}&limit=${limit}`);//template string
+}
+const deleteShop = (shop) => {
+    return axios.delete('/api/v1/shop/delete', { data: { id: shop.id_shop } });
+}
+const fetchType = (shop) => {
+    return axios.get('/api/v1/type1/read');
+}
+const createNewShop = (shopData) => {
+    return axios.post("/api/v1/shop/create", { ...shopData })
+}
+const updateCurrentShop = (shopData) => {
+    return axios.put("/api/v1/shop/update", { ...shopData })
+}
+
+// const update
 
 export {
     registerNewUser, loginUser, fetchAllUser, deleteUser, fetchGroup, createNewUser,
-    fetchAllFood, createNewFood, updateCurrentUser
+    fetchAllFood, createNewFood, updateCurrentUser, updateCurrentFood,
+    fetchAllProduct, createNewProduct, updateCurrentProduct, deleteProduct,
+    fetchAllType, createNewType, updateCurrentType, deleteType,
+    fetchAllShop, deleteShop, fetchType, createNewShop, updateCurrentShop,
+    contactNew,
+    UploadFile
 };
