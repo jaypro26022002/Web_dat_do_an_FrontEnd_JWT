@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './NavAdmin.scss';
 import { NavLink, useLocation } from 'react-router-dom';
-
+import { UserContext } from '../../context/UserContext';
 
 const NavAdmin = (props) => {
+    const { user } = useContext(UserContext)
+    const location = useLocation();
+
     const [isShow, setIsShow] = useState(false);
-    let location = useLocation();
 
     useEffect(() => {
         if (location.pathname === '/user') {
@@ -20,37 +22,37 @@ const NavAdmin = (props) => {
         if (location.pathname === '/type') {
             setIsShow(true);
         }
-
-        // if (location.pathname === '/feedback') {
-        //     setIsShow(true);
-        // }
-        // if (location.pathname === '/type') {
-        //     setIsShow(true);
-        // }
-        // if (location.pathname === '/order') {
-        //     setIsShow(true);
-        // }
-        // if (location.pathname === '/new') {
-        //     setIsShow(true);
-        // } 
+        if (location.pathname === '/feedback') {
+            setIsShow(true);
+        }
+        if (location.pathname === '/type') {
+            setIsShow(true);
+        }
+        if (location.pathname === '/order') {
+            setIsShow(true);
+        }
 
     }, [location]);
 
-    return (
-        <>
-            {isShow && (
-                <div className="topnav">
-                    <NavLink to="/user">Thành viên</NavLink>
-                    <NavLink to="/product">Sản phẩm</NavLink>
-                    <NavLink to="/feedback">Đánh giá</NavLink>
-                    <NavLink to="/type">Thể loại</NavLink>
-                    <NavLink to="/shop">Nhà hàng</NavLink>
-                    <NavLink to="/order">Đơn đặt hàng</NavLink>
-                    <NavLink to="/new">Tin tức</NavLink>
-                </div>
-            )}
-        </>
-    );
+    if (user && user.isAuthenticated === true || location.pathname === '/user') {
+        return (
+            <>
+                {isShow && (
+                    <div className="topnav">
+                        <NavLink to="/user">Thành viên</NavLink>
+                        <NavLink to="/product">Sản phẩm</NavLink>
+                        <NavLink to="/feedback">Đánh giá</NavLink>
+                        <NavLink to="/type">Thể loại</NavLink>
+                        <NavLink to="/shop">Nhà hàng</NavLink>
+                        <NavLink to="/order">Đơn đặt hàng</NavLink>
+                    </div>
+                )}
+            </>
+        );
+    }
+    else {
+        return <></>
+    }
 }
 
 export default NavAdmin;

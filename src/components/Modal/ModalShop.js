@@ -3,65 +3,71 @@ import Modal from 'react-bootstrap/Modal';
 import './ModalType.scss';
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { createNewType, updateCurrentType } from '../../services/userService';
+import { createNewShop, updateCurrentShop } from '../../services/userService';
 import _ from "lodash";
-// import { CommonUtils } from ".utils";
 
 const ModalShop = (props) => {
-
     const { action, dataModalShop } = props;
     const defaultShopData = {
         nameShop: '',
+        file: '',
+        previewImgURL: '',
         address: '',
         type: '',
+        rating: '',
         timeWork: ''
     };
 
     const validInputsDefault = {
         nameShop: true,
         address: true,
-        type: true,
-        timeWork: true
-
+        timeWork: true,
+        rating: true
     };
 
     const [shopData, setShopData] = useState(defaultShopData);
     const [validInputs, setValidInputs] = useState(validInputsDefault);
+
+    const [file, setFile] = useState();
+
+    const handleFile = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+            const previewUrl = URL.createObjectURL(selectedFile);
+            setShopData(prevState => ({ ...prevState, previewImgURL: previewUrl }));
+        }
+    }
+
     const [shopTypes, setShopTypes] = useState([]);
 
-    // const [userGroups, setUserGroups] = useState([]);
-
     useEffect(() => {
-        getTypes();
-
+        // getTypes();
     }, []);
 
     useEffect(() => {
-        if (action === 'UPDATE') {
-            setShopData({ ...dataModalShop, type: dataModalShop.TypeProduct ? dataModalShop.TypeProduct.id_type_product : '' });
+        if (action === 'UPDATE' && dataModalShop) {
+            setShopData({ ...dataModalShop });
         }
     }, [dataModalShop]);
 
     useEffect(() => {
         if (action === 'CREATE') {
-            if (userTypes && userTypes.length > 0) {
-                setUserData({ ...shopData, type: shopTypes[0].id_type_product })
-            }
+            setShopData({ ...dataModalShop, })
         }
     }, [action]);
 
-    const getTypes = async () => {
-        let res = await fetchType();
-        if (res && res.EC === 0) {
-            setShopType(res.DT);
-            if (res.DT && res.DT.length > 0) {
-                let types = res.DT;
-                setShopData({ ...shopData, type: types[0].id_type_product });
-            }
-        } else {
-            toast.error(res.EM);
-        }
-    };
+    // const getTypes = async () => {
+    //     const res = await fetchType();
+    //     if (res && res.EC === 0) {
+    //         setShopTypes(res.DT);
+    //         if (res.DT && res.DT.length > 0) {
+    //             setShopData((prevData) => ({ ...prevData, type: res.DT[0].id_type_product }));
+    //         }
+    //     } else {
+    //         toast.error(res.EM);
+    //     }
+    // };
 
     const handleOnChangeInput = (value, name) => {
         let _shopData = _.cloneDeep(shopData);
@@ -71,32 +77,35 @@ const ModalShop = (props) => {
 
     const checkValidateInputs = () => {
         setValidInputs(validInputsDefault);
-        let arr = ['nameShop'];
-        let check = true;
-        for (let i = 0; i < arr.length; i++) {
-            if (!shopData[arr[i]]) {
-                let _validInputs = _.cloneDeep(validInputsDefault);
-                _validInputs[arr[i]] = false;
-                setValidInputs(_validInputs);
-                toast.error(`Empty input ${arr[i]}`);
-                check = false;
-                break;
+        const fieldsToValidate = ['nameShop', 'address', 'timeWork', 'rating'];
+        for (const field of fieldsToValidate) {
+            if (!shopData[field]) {
+                setValidInputs((prevInputs) => ({ ...prevInputs, [field]: false }));
+                toast.error(`Empty input ${field}`);
+                return false;
             }
         }
-        return check;
+        return true;
     };
 
-    const handleConfirmProduct = async () => {
+    const handleConfirmShop = async () => {
         let check = checkValidateInputs();
         if (check) {
+            const formdata = new FormData();
+            formdata.append('image', file);  // Ensure the key matches what the backend expects
+            formdata.append('nameShop', shopData.nameShop);
+            formdata.append('address', shopData.address);
+            formdata.append('rating', shopData.rating);
+            formdata.append('timeWork', shopData.timeWork);
+
             let res = action === 'CREATE' ?
-                await createNewShop({ ...shopData })
-                : await updateCurrentShop({ ...shopData });
+                await createNewShop(formdata) :
+                await updateCurrentShop(formdata);
 
             if (res && res.EC === 0) {
                 props.onHide();
                 setShopData(defaultShopData);
-                toast.success("Food created/updated successfully!");
+                toast.success("Shop created/updated successfully!");
             } else if (res && res.EC !== 0) {
                 toast.error(res.EM);
                 let _validInputs = _.cloneDeep(validInputsDefault);
@@ -110,51 +119,71 @@ const ModalShop = (props) => {
         props.onHide();
         setShopData(defaultShopData);
         setValidInputs(validInputsDefault);
-    }
+    };
 
     return (
-        <Modal size="lg" show={props.show} className='modal-type' onHide={handleCloseModalShop}>
+        <Modal size="lg" show={props.show} className='modal-shop' onHide={handleCloseModalShop}>
             <Modal.Header closeButton>
                 <Modal.Title>
-                    {action === 'CREATE' ? 'Create new shop' : 'Edit a shop'}
+                    <span>{props.action === 'CREATE' ? 'Create new shop' : 'Edit a shop'}</span>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className='content-body row'>
                     <form method='POST' action="/upload-profile-picRe" encType="multipart/form-data">
                         <div className='col-12 col-sm-6 form-group'>
-                            <label>Tên cửa hàng (<span className='red'>*</span>) :</label>
+                            <label>Add your image</label>
+                            <div className='preview-img-container'>
+                                <input id='previewImg' type="file" hidden
+                                    onChange={(event) => handleFile(event)} />
+
+                                <label className='label-upload' htmlFor='previewImg'>Upload Image</label>
+                                <div className='preview-image' style={{ backgroundImage: `url(${shopData.previewImgURL || ''})` }}></div>
+                            </div>
+                        </div>
+                        <div className='col-12 col-sm-6 form-group'>
+                            <label>Name shop (<span className='red'>*</span>) :</label>
                             <input className={validInputs.nameShop ? 'form-control' : 'form-control is-invalid'}
                                 type='text'
                                 value={shopData.nameShop}
-                                onChange={(e) => handleOnChangeInput(e.target.value, "nameShop")}
+                                onChange={(event) => handleOnChangeInput(event.target.value, "nameShop")}
                             />
                         </div>
                         <div className='col-12 col-sm-6 form-group'>
-                            <label>Type (<span className='red'>*</span>) :</label>
-                            <select
-                                className={validInputs.group ? 'form-select' : 'form-select is-invalid'}
-                                onChange={(event) => handleOnChangeInput(event.target.value, "type")}
-                                value={shopData.type}
-                            >
-                                {shopTypes.length > 0 && shopTypes.map((item, index) => {
-                                    return (
-                                        <option key={`type-${index}`} value={item.id}>{item.name}</option>
-                                    );
-                                })}
-                            </select>
+                            <label>Địa chỉ(<span className='red'>*</span>) :</label>
+                            <input className={validInputs.address ? 'form-control' : 'form-control is-invalid'}
+                                type='text'
+                                value={shopData.address}
+                                onChange={(e) => handleOnChangeInput(e.target.value, "address")}
+                            />
+                        </div>
+                        <div className='col-12 col-sm-6 form-group'>
+                            <label>Thời gian làm việc (<span className='red'>*</span>) :</label>
+                            <input className={validInputs.timeWork ? 'form-control' : 'form-control is-invalid'}
+                                type='text'
+                                value={shopData.timeWork}
+                                onChange={(e) => handleOnChangeInput(e.target.value, "timeWork")}
+                            />
+                        </div>
+                        <div className='col-12 col-sm-6 form-group'>
+                            <label>Đánh giá (<span className='red'>*</span>) :</label>
+                            <input className={validInputs.rating ? 'form-control' : 'form-control is-invalid'}
+                                type='text'
+                                value={shopData.rating}
+                                onChange={(e) => handleOnChangeInput(e.target.value, "rating")}
+                            />
                         </div>
                     </form>
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.onHide}>Close</Button>
-                <Button variant="primary" onClick={() => handleConfirmProduct()}>
-                    {action === 'CREATE' ? 'Save' : 'Update'}
+                <Button variant="secondary" onClick={handleCloseModalShop}>Close</Button>
+                <Button variant="primary" onClick={handleConfirmShop}>
+                    {action === 'CREATE' ? 'Lưu' : 'Thay đổi'}
                 </Button>
             </Modal.Footer>
         </Modal>
     );
-}
+};
 
 export default ModalShop;

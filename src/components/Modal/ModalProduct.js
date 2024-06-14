@@ -217,21 +217,20 @@
 import { useEffect, useState } from "react";
 import { Button, Modal } from 'react-bootstrap';
 import './ModalProduct.scss';
-import CommonUtils from "../../utils/CommonUtils";
 import { toast } from "react-toastify";
 import { createNewProduct, updateCurrentProduct } from '../../services/userService';
 import _ from "lodash";
 
 const ModalProduct = (props) => {
+
     const { action, dataModalProduct } = props;
     const defaultProductData = {
         nameProduct: '',
-        thumbnail: '',
+        file: '',
         price: '',
         pricedown: '',
         quantity: '',
         previewImgURL: '',
-        avatar: ''
     };
 
     const validInputsDefault = {
@@ -244,11 +243,28 @@ const ModalProduct = (props) => {
     const [productData, setProductData] = useState(defaultProductData);
     const [validInputs, setValidInputs] = useState(validInputsDefault);
 
+    const [file, setFile] = useState();
+
+    const handleFile = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+            const previewUrl = URL.createObjectURL(selectedFile);
+            setProductData(prevState => ({ ...prevState, previewImgURL: previewUrl }));
+        }
+    }
+
     useEffect(() => {
         if (action === 'UPDATE' && dataModalProduct) {
             setProductData({ ...dataModalProduct });
         }
-    }, [action, dataModalProduct]);
+    }, [dataModalProduct]);
+
+    useEffect(() => {
+        if (action === 'CREATE') {
+            setProductData({ ...productData, })
+        }
+    }, [action]);
 
     const checkValidateInputs = () => {
         setValidInputs(validInputsDefault);
@@ -273,13 +289,51 @@ const ModalProduct = (props) => {
         setProductData(_productData);
     };
 
+    // const handleConfirmProduct = async () => {
+    //     let check = checkValidateInputs();
+    //     if (check) {
+    //         const formdata = new FormData();
+    //         formdata.append('image', file);  // Ensure the key matches what the backend expects
+    //         formdata.append('nameProduct', productData.nameProduct);
+    //         formdata.append('price', productData.price);
+    //         formdata.append('pricedown', productData.pricedown);
+    //         formdata.append('quantity', productData.quantity);
+
+    //         let res = action === 'CREATE' ?
+    //             await createNewProduct(formdata) :
+    //             await updateCurrentProduct(formdata);
+
+    //         if (res && res.EC === 0) {
+    //             props.onHide();
+    //             setProductData(defaultProductData);
+    //             toast.success("Product created/updated successfully!");
+    //         } else if (res && res.EC !== 0) {
+    //             toast.error(res.EM);
+    //             let _validInputs = _.cloneDeep(validInputsDefault);
+    //             _validInputs[res.DT] = false;
+    //             setValidInputs(_validInputs);
+    //         }
+    //     }
+    // };
+
     const handleConfirmProduct = async () => {
         let check = checkValidateInputs();
         if (check) {
+            const formdata = new FormData();
+            formdata.append('image', file);
+            formdata.append('nameProduct', productData.nameProduct);
+            formdata.append('price', productData.price);
+            formdata.append('pricedown', productData.pricedown);
+            formdata.append('quantity', productData.quantity);
+    
+            if (action === 'UPDATE') {
+                formdata.append('id_product', productData.id_product);  // Ensure id_product is included
+            }
+    
             let res = action === 'CREATE' ?
-                await createNewProduct({ ...productData })
-                : await updateCurrentProduct({ ...productData });
-
+                await createNewProduct(formdata) :
+                await updateCurrentProduct(formdata);
+    
             if (res && res.EC === 0) {
                 props.onHide();
                 setProductData(defaultProductData);
@@ -292,20 +346,8 @@ const ModalProduct = (props) => {
             }
         }
     };
+    
 
-    const handleChangeImage = async (event) => {
-        let data = event.target.files;
-        let file = data[0];
-        if (file) {
-            let base64 = await CommonUtils.getBase64(file);
-            let objectUrl = URL.createObjectURL(file);
-            setProductData({
-                ...productData,
-                avatar: base64,
-                previewImgURL: objectUrl,
-            });
-        }
-    };
 
     const handleCloseModalProduct = () => {
         props.onHide();
@@ -326,7 +368,9 @@ const ModalProduct = (props) => {
                         <div className='col-12 col-sm-6 form-group'>
                             <label>Add your image</label>
                             <div className='preview-img-container'>
-                                <input id='previewImg' type="file" hidden onChange={(event) => handleChangeImage(event)} />
+                                <input id='previewImg' type="file" hidden
+                                    onChange={(event) => handleFile(event)} />
+
                                 <label className='label-upload' htmlFor='previewImg'>Upload Image</label>
                                 <div className='preview-image' style={{ backgroundImage: `url(${productData.previewImgURL || ''})` }}></div>
                             </div>
@@ -369,7 +413,7 @@ const ModalProduct = (props) => {
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.onHide}>Close</Button>
                 <Button variant="primary" onClick={handleConfirmProduct}>
-                    {action === 'CREATE' ? 'Save' : 'Update'}
+                    {action === 'CREATE' ? 'Lưu' : 'Thay đổi'}
                 </Button>
             </Modal.Footer>
         </Modal>

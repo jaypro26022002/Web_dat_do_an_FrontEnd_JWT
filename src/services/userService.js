@@ -1,12 +1,13 @@
 // import axios from "axios";
 
 import axios from '../setup/axios';
-
+// upload img
 const UploadFile = (formdata) => {
-    return axios.post('/api/v1//upload-image', formdata)
+    return axios.post('/api/v1/upload-image', formdata)
 }
-
-
+const fetchImg = (user) => {
+    return axios.get('/api/v1/getimg');
+}
 
 
 const registerNewUser = (email, phone, username, password) => {
@@ -40,40 +41,29 @@ const createNewUser = (userData) => {
     return axios.post("/api/v1/user/create", { ...userData })
 }
 
-const fetchAllFood = (page, limit) => {
-    return axios.get(`/api/v1/food/read?page=${page}&limit=${limit}`);//template string
-}
-
 // Product
 const fetchAllProduct = (page, limit) => {
     return axios.get(`/api/v1/product/read?page=${page}&limit=${limit}`);//template string
 }
+// const createNewProduct = (productData) => {
+//     return axios.post("/api/v1/product/create", { ...productData, })
+// }
 const createNewProduct = (productData) => {
-    return axios.post("/api/v1/product/create", { ...productData, })
+    return axios.post("/api/v1/product/create", productData)
 }
 const updateCurrentProduct = (productData) => {
-    return axios.put("/api/v1/product/update", { ...productData })
+    return axios.put("/api/v1/product/update", productData)
 }
 const deleteProduct = (product) => {
     return axios.delete('/api/v1/product/delete', { data: { id: product.id_product } });
 }
 
-const createNewFood = (foodData) => {
-    return axios.post("/api/v1/food/create", {
-        ...foodData,
-        // headers: {
-        //     'Content-Type': 'multipart/form-data'
-        // }
-    })
-}
 
 const updateCurrentUser = (userData) => {
     return axios.put("/api/v1/user/update", { ...userData })
 }
-const updateCurrentFood = (foodData) => {
-    return axios.put("/api/v1/food/update", { ...foodData })
-}
 
+//type
 const fetchAllType = (page, limit) => {
     return axios.get(`/api/v1/type/read?page=${page}&limit=${limit}`);//template string
 }
@@ -98,20 +88,29 @@ const fetchType = (shop) => {
     return axios.get('/api/v1/type1/read');
 }
 const createNewShop = (shopData) => {
-    return axios.post("/api/v1/shop/create", { ...shopData })
+    return axios.post("/api/v1/shop/create", shopData)
 }
 const updateCurrentShop = (shopData) => {
     return axios.put("/api/v1/shop/update", { ...shopData })
 }
 
-// const update
+// display image
+const fetchAllProduct1 = () => {
+    return axios.get(`/api/v1/product/read1`);//template string
+}
 
+const getUserAccount = () => {
+    return axios.get(`/api/v1/account`);
+}
 export {
-    registerNewUser, loginUser, fetchAllUser, deleteUser, fetchGroup, createNewUser,
-    fetchAllFood, createNewFood, updateCurrentUser, updateCurrentFood,
+    fetchAllUser, deleteUser, createNewUser, updateCurrentUser,
+    registerNewUser, loginUser,
+    fetchGroup,
     fetchAllProduct, createNewProduct, updateCurrentProduct, deleteProduct,
     fetchAllType, createNewType, updateCurrentType, deleteType,
     fetchAllShop, deleteShop, fetchType, createNewShop, updateCurrentShop,
     contactNew,
-    UploadFile
+    UploadFile, fetchImg,
+    fetchAllProduct1,
+    getUserAccount
 };

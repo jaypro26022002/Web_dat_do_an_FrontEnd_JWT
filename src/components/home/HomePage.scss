@@ -1,237 +1,267 @@
-.color1 {
-    border: 1px solid #4F5902;
-}
+.home-container {
+    width: 100%;
 
-.color2 {
-    border: 1px solid #260101;
-}
+    .header {
+        background-color: #f0f2f5;
+        min-height: 100vh;
 
-.color3 {
-    border: 1px solid #F28627;
-}
+        .header_banner {
+            background-color: #b31f1f;
+        }
+    }
 
-.homepage-container {
-    .banner-top {
-        position: relative;
+    .header_banner {
+        background-image: url("../home/img/bannner.webp");
+        background-size: cover;
+        width: 100%;
+        height: 600px;
+    }
+
+    .title_banner {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         text-align: center;
+    }
+
+    .title_banner h1 {
+        font-size: 40px;
         color: white;
-
-        img {
-            width: 100%;
-            height: auto;
-        }
-
-        .banner-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-
-            h2 {
-                margin: 0;
-                font-size: 2rem;
-                font-weight: 300;
-            }
-
-            h1 {
-                margin: 0.5rem 0;
-                font-size: 3rem;
-                font-weight: 700;
-            }
-
-            span {
-                font-size: 1.2rem;
-                font-weight: 300;
-            }
-        }
+        margin: 10px 0;
     }
 
-    .container {
-        margin-top: 2rem;
-
-        .row {
-            .center {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 20px;
-
-                .center-top,
-                .center-bottom {
-                    padding: 1rem;
-                    flex: 1;
-                }
-
-                .center-top {
-                    background-color: #f8f8f8;
-                }
-
-                .center-bottom {
-                    background-color: #e0e0e0;
-                }
-            }
-
-        }
+    .title_banner a {
+        color: white;
+        text-decoration: none;
     }
 
-    .meal {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .meal-1,
-        .meal-2,
-        .meal-3,
-        .meal-4 {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid transparent;
-            padding: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-
-            span {
-                margin-top: 10px;
-            }
-
-            &:hover {
-                border: 1px solid #000;
-                border-radius: 5px;
-            }
-        }
+    .title_banner a:hover {
+        color: brown;
+        transition: 0.4s;
     }
 
-    .brand-1,
-    .brand-2,
-    .brand-3,
-    .brand-4 {
-        display: flex;
-        align-items: center;
-        border: 1px solid transparent;
-        padding: 10px;
+    .button_banner {
         cursor: pointer;
-        position: relative;
-        text-align: center;
-
-        span {
-            margin-left: 10px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-
-        }
-
-        &:hover {
-            border: 1px solid #000;
-        }
-    }
-
-    .feedback {
-        padding-top: 120px;
-        text-align: center;
-
-        .member-feedback {
-            display: flex;
-            width: auto;
-            margin-top: 30px;
-            justify-content: center;
-
-            .feed1 {
-                flex-basis: 50%;
-                text-align: left;
-                margin-left: 230px;
-            }
-
-            .feed2 {
-                flex-basis: 50%;
-                text-align: left;
-                margin-left: 100px;
-
-            }
-
-            .feed3 {
-                flex-basis: 50%;
-                text-align: left;
-                margin-left: 100px;
-                margin-right: 230px;
-            }
-        }
-    }
-
-    .footer {
-        background-color: #333;
-        color: #fff;
-        padding: 50px 0;
-    }
-
-    .footer .container {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .footer h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-
-    .menu_footer {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .menu_footer li {
-        margin-bottom: 10px;
-    }
-
-    .menu_footer a {
-        color: #fff;
-        text-decoration: none;
-        display: block;
-    }
-
-    .menu_footer .fa {
-        margin-right: 10px;
-    }
-
-    .footer {
-        background-color: #000;
-        padding: 20px 0px 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    ul.menu_footer a {
-        text-decoration: none;
+        background-color: rgb(235, 79, 79);
+        height: 60px;
+        width: 200px;
+        border-radius: 15px;
+        border: none;
         color: white;
+        font-size: 18px;
+        margin-top: 20px;
     }
 
-    .footer h3 {
-        color: white;
-    }
-
-    .col-3 {
-        margin-right: 50px;
-        /* Thay đổi khoảng cách giữa 2 cột */
-        margin-bottom: 20px;
-    }
-
-    ul.menu_footer a:hover {
+    .button_banner:hover {
+        background-color: white;
         color: red;
+        transition: 0.5s;
     }
 
-    .row.footer {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-left: -15px;
-    }
+    @media (max-width: 709px) {
+        .title_banner h1 {
+            font-size: 30px;
+        }
 
+        .button_banner {
+            width: 150px;
+            height: 50px;
+            font-size: 16px;
+        }
+    }
 }
 
-// trong hình có nội dung thẻ H1,H2,span
+@media (max-width: 709px) {
+    .header_banner {
+        height: 750px;
+        width: 100%;
+    }
+
+    .title_banner {
+        top: 40%;
+    }
+
+    .title_banner h1 {
+        font-size: 24px;
+        margin: 5px 0;
+    }
+
+    .button_banner {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+.band {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    /* Center the sections horizontally */
+    margin-left: 300px;
+    /* Add 20px margin on the left side */
+    margin-right: 20px;
+    /* Add 20px margin on the right side */
+}
+
+.band1,
+.band2,
+.band3,
+.band4 {
+    flex: 1;
+    /* Make each section take equal space */
+    margin-left: 10px;
+    /* Adjust space between sections */
+    margin-right: 10px;
+    /* Adjust space between sections */
+}
+
+.band_icon {
+    display: flex;
+}
+
+.band_icon p {
+    padding-top: 15px;
+    padding-left: 5px
+}
+
+@media (max-width: 768px) {
+    .title_banner h1 {
+        font-size: 18px;
+    }
+
+    .band_icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .band_icon p {
+        font-size: 10px;
+    }
+}
+
+.section_main {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    /* Center the sections horizontally */
+    margin-left: 20px;
+    /* Add 20px margin on the left side */
+    margin-right: 20px;
+    /* Add 20px margin on the right side */
+}
+
+.section1,
+.section2,
+.section3 {
+    flex: 1;
+    /* Make each section take equal space */
+    margin-left: 10px;
+    /* Adjust space between sections */
+    margin-right: 10px;
+    /* Adjust space between sections */
+}
+
+.section1 {
+    border: solid 4px;
+    background-image: url(./img/section1.webp);
+    height: 400px;
+    opacity: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.section2 {
+    border: solid 4px;
+    background-image: url(./img/section2.png);
+    height: 400px;
+    opacity: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.section3 {
+    border: solid 4px;
+    background-image: url(./img/section3.webp);
+    height: 400px;
+    opacity: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.section1 a {
+    font-size: 50px;
+    transition: 0.6s;
+    margin-left: 30%;
+    color: white;
+    text-decoration: none;
+}
+
+.section2 a {
+    font-size: 50px;
+    transition: 0.6s;
+    margin-left: 30%;
+    text-decoration: none;
+    color: white;
+}
+
+.section3 a {
+    font-size: 50px;
+    margin-left: 30%;
+    text-decoration: none;
+    transition: 0.6s;
+    color: white;
+}
+
+.section1:hover {
+    transition: 0.6s;
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.section2:hover {
+    cursor: pointer;
+    transition: 0.6s;
+    opacity: 60%;
+}
+
+.section3:hover {
+    transition: 0.6s;
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.section1:hover>a {
+    color: #8B4513;
+    font-size: 65px;
+    opacity: 100%;
+    transition: 0.6s;
+}
+
+.section2:hover>a {
+    font-size: 65px;
+    opacity: 100%;
+    color: #8B4513;
+    transition: 0.6s;
+}
+
+.section3:hover>a {
+    opacity: 100%;
+    font-size: 65px;
+    color: #8B4513;
+    transition: 0.6s;
+}
+
+.home {
+    display: flex;
+    /* Use flexbox for layout */
+    justify-content: center;
+    /* Center content horizontally */
+}
+
+.productContainer {
+    /* Set margins on left and right sides */
+    margin-left: 20px;
+    margin-right: 20px;
+}

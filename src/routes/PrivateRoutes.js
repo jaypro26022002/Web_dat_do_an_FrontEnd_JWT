@@ -1,30 +1,25 @@
-import { useEffect, } from "react";
-import {
-    Route,
-} from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect, useContext } from "react";
+import { Route } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { UserContext } from "../context/UserContext";
+
 
 const PrivateRoutes = (props) => {
-    let history = useHistory();
+
+    const { user } = useContext(UserContext);
 
     // hàm kiểm tra nếu vào trang bất kì mà chưa có đăng nhập bên login sẽ bị đẩy ra login
-    useEffect(() => {
-        let session = sessionStorage.getItem('account');
-        if (!session) {
-            history.push("/login");
-            window.location.reload();
-        }
-        if (session) {
-            //check role
-        }
-    }, []);
+    if (user && user.isAuthenticated === true) {
 
-    return (
-        <>
-            {/* Khi người dùng truy cập đường dẫn "/user", thì components user sẽ được render. */}
-            <Route path={props.path} component={props.component}></Route>
-        </>
-    )
+        return (
+            <>
+                {/* Khi người dùng truy cập đường dẫn "/user", thì components user sẽ được render. */}
+                <Route path={props.path} component={props.component} />
+            </>
+        )
+    } else {
+        return <Redirect to='login'></Redirect>
+    }
 }
 
 

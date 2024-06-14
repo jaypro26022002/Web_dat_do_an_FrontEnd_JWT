@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import './user.scss';
 import { fetchAllShop, deleteShop } from "../../services/userService";
 import ReactPaginate from 'react-paginate';
 import { toast } from "react-toastify";
-import ModalDelete from "./ModalDelete";
+// import ModalDelete from "./ModalDelete";
 import ModalShop from "../Modal/ModalShop";
 
 const Shop = (props) => {
@@ -11,7 +10,7 @@ const Shop = (props) => {
 
     const [currentPage, setCurrentPage] = useState(2);
     // muốn thay đổi bao nhiêu kết quả trên 1 trang thì thay đổi n của currentLimit useState(n)
-    const [currentLimit, setCurrentLimit] = useState(3);
+    const [currentLimit, setCurrentLimit] = useState(2);
     const [totalPages, setTottalPages] = useState(0);
 
     //modal delete
@@ -23,8 +22,6 @@ const Shop = (props) => {
     const [actionModalShop, setActionModalShop] = useState("CREATE")
     const [dataModalShop, setDataModalShop] = useState({});
 
-    const [imgSrc, setImgSrc] = useState('')
-
     // hàm useEffect để gọi API
     useEffect(() => {
         fetchShop();
@@ -33,7 +30,6 @@ const Shop = (props) => {
     // tạo biến fetchUser hứng data từ backend bằng API
     const fetchShop = async () => {
         let respone = await fetchAllShop(currentPage, currentLimit);
-        // console.log(">> check respone fetchUser", respone)
         if (respone && respone.EC === 0) {
             setTottalPages(respone.DT.totalPages);
             setListShop(respone.DT.shop);
@@ -69,14 +65,17 @@ const Shop = (props) => {
         setDataModalShop({})
         await fetchShop();
     }
+
+    const handleRefesh = async () => {
+        await fetchShop();
+    }
+    
     const handleEditShop = (shop) => {
         setActionModalShop("UPDATE")
         setDataModalShop(shop);
         setIsShowModalShop(true);
     }
-    const handleRefesh = async () => {
-        await fetchShop();
-    }
+
 
     return (
         <>
@@ -94,8 +93,8 @@ const Shop = (props) => {
                         </button>
                         <button className="btn btn-primary"
                             onClick={() => {
-                                setIsShowModalUser(true)
-                                setActionModalUser("CREATE")
+                                setIsShowModalShop(true)
+                                setActionModalShop("CREATE")
                             }}>
                             <i className="fa fa-plus-circle"></i>Thêm mới cửa hàng
                         </button>
@@ -122,6 +121,7 @@ const Shop = (props) => {
                                                 {/* công thức NO tăng lên khi qua trang típ theo */}
                                                 <td>{(currentPage - 1) * currentLimit + index + 1}</td>
                                                 <td>{item.id_shop}</td>
+                                                <td>{item.nameShop}</td>
                                                 <td>{item.address}</td>
                                                 <td>{item.timeWork}</td>
                                                 <td>{item.TypeProduct ? item.TypeProduct.nameType : ''}</td>
@@ -174,12 +174,12 @@ const Shop = (props) => {
                 }
             </div>
 
-            <ModalDelete
+            {/* <ModalDelete
                 show={isShowModalDelete}
                 handleClose={handleClose}
                 ConfirmDeleteUser={ConfirmDeleteUser}
                 dataModal={dataModal}
-            />
+            /> */}
             <ModalShop
                 onHide={onHideModalShop}
                 show={isShowModalShop}

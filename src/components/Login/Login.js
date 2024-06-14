@@ -1,12 +1,14 @@
 import './Login.scss';
 import { useHistory } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { loginUser } from '../../services/userService';
-
+import { UserContext } from '../../context/UserContext';
 
 //use reactrouter useHistory(chuyen trang bang hook)
 const Login = (props) => {
+    const { loginContext } = useContext(UserContext);
+
     // dữ liệu user nhập vào sử dụng state(tình trạng) để handle
     const [valueLogin, setValueLogin] = useState("");
     const [password, setPassword] = useState("");
@@ -43,14 +45,19 @@ const Login = (props) => {
         // +response.data.EC dấu '+' để chuyển dữ liệu từ string sang int 
         if (response && +response.EC === 0) {
             // success
+            let groupWithRoles = response.DT.groupWithRoles;
+            let email = response.DT.email;
+            let username = response.DT.username;
+            let token = response.DT.access_token;
+
             let data = {
                 isAuthenticated: true,
-                token: 'fake token'
+                token,
+                account: { groupWithRoles, email, username }
             }
-            // sessionStorage là một đối tượng lưu trữ dữ liệu trên trình duyệt web, dữ liệu sẽ bị xóa khi người dùng đóng trình duyệt
-            sessionStorage.setItem('account', JSON.stringify(data));
+            loginContext(data);
             history.push('/user');
-            window.location.reload();
+            // window.location.reload();
 
         }
         if (response && +response.EC !== 0) {
@@ -65,14 +72,7 @@ const Login = (props) => {
             handlerLogin();
         }
     }
-
-    useEffect(() => {
-        let session = sessionStorage.getItem('account');
-        if (session) {
-            history.push("/");
-            window.location.reload();
-        }
-    }, [])
+    
     return (
         <div className='login-container'>
             <div className='container'>

@@ -64,8 +64,7 @@ const NavWeb = (props) => {
                     <div className='navlink'>
                         <NavLink to="/">Trang chủ</NavLink>
                         <NavLink to="/about">Giới thiệu</NavLink>
-                        <NavLink to="/menu">Danh mục</NavLink>
-                        <NavLink to="/service">Cửa hàng</NavLink>
+                        <NavLink to="/cart">Đặt hàng</NavLink>
                         <NavLink to="/contact">Tương tác</NavLink>
                         <NavLink to="/login">Đăng nhập</NavLink>
                     </div>

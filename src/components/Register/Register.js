@@ -87,7 +87,7 @@ const Register = (props) => {
             let response = await registerNewUser(email, phone, username, password);
             console.log(">> check respone Register: ", response);
             //B3: tạo biến serverData hứng dữ liệu user từ server để check response(phản hồi data )
-            if (response.EC === 0) {
+            if (+response.EC === 0) {
                 // hiện thông báo success và history.push('/login')ra trang login nếu +serverData.EC == 0
                 toast.success(response.EM);
                 history.push('/login');

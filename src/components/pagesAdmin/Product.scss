@@ -1,5 +1,35 @@
-.food-thumbnail {
-    max-width: 100px;
-    max-height: 100px;
-    object-fit: cover;
+.modal-product {
+    .content-body {
+        .red {
+            color: red;
+        }
+    }
+}
+
+.manage-food-container {
+    i {
+        padding-right: 5px;
+    }
+
+    .action {
+        .refesh {
+            margin-right: 10px;
+        }
+    }
+
+    span {
+        .edit {
+            padding: 5px;
+            border: 10px;
+            color: orange;
+            cursor: pointer;
+        }
+
+        .delete {
+            padding: 5px;
+            border: 10px;
+            color: rgb(223, 108, 108);
+            cursor: pointer;
+        }
+    }
 }

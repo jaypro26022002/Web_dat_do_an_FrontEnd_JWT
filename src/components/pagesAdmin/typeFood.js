@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import './user.scss';
 import { fetchAllType } from "../../services/userService";
 import ReactPaginate from 'react-paginate';
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 // import ModalDelete from "./ModalDelete";
 import ModalType from "../Modal/ModalType";
 
@@ -22,9 +22,7 @@ const Type = (props) => {
     const [isShowModalType, setIsShowModalType] = useState(false);
     const [actionModalType, setActionModalType] = useState("CREATE")
     const [dataModalType, setDataModalType] = useState({});
-
-    const [imgSrc, setImgSrc] = useState('')
-
+    
     // hàm useEffect để gọi API
     useEffect(() => {
         fetchType();
