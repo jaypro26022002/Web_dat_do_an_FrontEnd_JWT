@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './NavWeb.scss';
 import { NavLink, useLocation } from 'react-router-dom';
+import { Navbar } from 'react-bootstrap';
+import logo from '../home/img/icon.gif'
 
 import { FaFacebook } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
@@ -59,7 +61,15 @@ const NavWeb = (props) => {
                         </div>
                     </div>
                     <div className='title'>
-                        Uncle V
+                        <Navbar.Brand href="#home">
+                            <img
+                                src={logo}
+                                width='100'
+                                height='100'
+                                className='d-inline-block align-top'
+                            />
+                            <span href='/home' className='brand-name'>Uncle V</span>
+                        </Navbar.Brand>
                     </div>
                     <div className='navlink'>
                         <NavLink to="/">Trang chủ</NavLink>

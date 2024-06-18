@@ -33,7 +33,7 @@ instance.interceptors.response.use(function (response) {
         // authentication (token related issues)
         case 401: {
             toast.error('Unauthourized the user. Please login....');
-            return Promise.reject(error);
+            return error.response.data;
         }
         // forbidden (permission related issues)
         case 403: {

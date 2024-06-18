@@ -1,3 +1,7 @@
+.color {
+    background-color: rgba(164, 26, 26, 0.698);
+}
+
 .home-container {
     width: 100%;
 
@@ -11,7 +15,7 @@
     }
 
     .header_banner {
-        background-image: url("../home/img/bannner.webp");
+        background-image: url("./img/bannner.webp");
         background-size: cover;
         width: 100%;
         height: 600px;
@@ -95,14 +99,18 @@
 }
 
 .band {
-    margin-top: 10px;
     display: flex;
-    justify-content: center;
-    /* Center the sections horizontally */
-    margin-left: 300px;
-    /* Add 20px margin on the left side */
-    margin-right: 20px;
-    /* Add 20px margin on the right side */
+    justify-content: space-between;
+}
+
+.band_icon {
+    display: flex;
+    align-items: center;
+}
+
+.band_icon img {
+    margin-right: 10px;
+    /* Space between the icon and the text */
 }
 
 .band1,
@@ -110,36 +118,25 @@
 .band3,
 .band4 {
     flex: 1;
-    /* Make each section take equal space */
-    margin-left: 10px;
-    /* Adjust space between sections */
-    margin-right: 10px;
-    /* Adjust space between sections */
+    /* This will make the bands take equal space in the row */
+    padding: 10px;
+    /* Optional: padding around each band */
 }
 
-.band_icon {
+.band1,
+.band2,
+.band3,
+.band4 {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.band_icon p {
-    padding-top: 15px;
-    padding-left: 5px
+.band p {
+    margin: 0;
+    /* Remove default margin from paragraph */
 }
 
-@media (max-width: 768px) {
-    .title_banner h1 {
-        font-size: 18px;
-    }
-
-    .band_icon {
-        width: 50px;
-        height: 50px;
-    }
-
-    .band_icon p {
-        font-size: 10px;
-    }
-}
 
 .section_main {
     margin-top: 10px;
@@ -165,7 +162,7 @@
 
 .section1 {
     border: solid 4px;
-    background-image: url(./img/section1.webp);
+    background-image: url(./img/buasang.jpg);
     height: 400px;
     opacity: 100%;
     background-size: cover;
@@ -174,7 +171,7 @@
 
 .section2 {
     border: solid 4px;
-    background-image: url(./img/section2.png);
+    background-image: url(./img/buatrua.jpg);
     height: 400px;
     opacity: 100%;
     background-size: cover;
@@ -183,7 +180,7 @@
 
 .section3 {
     border: solid 4px;
-    background-image: url(./img/section3.webp);
+    background-image: url(./img/buatoi.jpg);
     height: 400px;
     opacity: 100%;
     background-size: cover;
@@ -233,7 +230,7 @@
 }
 
 .section1:hover>a {
-    color: #8B4513;
+    color: #ece111b4;
     font-size: 65px;
     opacity: 100%;
     transition: 0.6s;
@@ -242,14 +239,157 @@
 .section2:hover>a {
     font-size: 65px;
     opacity: 100%;
-    color: #8B4513;
+    color: #cf5e0d;
     transition: 0.6s;
 }
 
 .section3:hover>a {
     opacity: 100%;
     font-size: 65px;
+    color: #100903;
+    transition: 0.6s;
+}
+
+.section_shop {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    /* Center the sections horizontally */
+    margin-left: 20px;
+    /* Add 20px margin on the left side */
+    margin-right: 20px;
+    /* Add 20px margin on the right side */
+}
+
+.shop1,
+.shop2,
+.shop3,
+.shop4 {
+    flex: 1;
+    /* Make each section take equal space */
+    margin-left: 10px;
+    /* Adjust space between sections */
+    margin-right: 10px;
+    /* Adjust space between sections */
+}
+
+.shop1 {
+    border: solid 4px;
+    background-image: url(./img/com.jpg);
+    height: 400px;
+    opacity: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.shop2 {
+    border: solid 4px;
+    background-image: url(./img/kfc.jpg);
+    height: 400px;
+    opacity: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.shop3 {
+    border: solid 4px;
+    background-image: url(./img/sushi.jpg);
+    height: 400px;
+    opacity: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.shop4 {
+    border: solid 4px;
+    background-image: url(./img/bannerbun.jpg);
+    height: 400px;
+    opacity: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+.shop1 a {
+    font-size: 50px;
+    transition: 0.6s;
+    margin-left: 30%;
+    color: white;
+    text-decoration: none;
+}
+
+.shop2 a {
+    font-size: 50px;
+    transition: 0.6s;
+    margin-left: 30%;
+    text-decoration: none;
+    color: white;
+}
+
+.shop3 a {
+    font-size: 50px;
+    margin-left: 30%;
+    text-decoration: none;
+    transition: 0.6s;
+    color: white;
+}
+
+.shop4 a {
+    font-size: 50px;
+    margin-left: 30%;
+    text-decoration: none;
+    transition: 0.6s;
+    color: white;
+}
+
+.shop1:hover {
+    transition: 0.6s;
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.shop2:hover {
+    cursor: pointer;
+    transition: 0.6s;
+    opacity: 60%;
+}
+
+.shop3:hover {
+    transition: 0.6s;
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.shop3:hover {
+    transition: 0.6s;
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.shop1:hover>a {
+    color: #a0115a;
+    font-size: 65px;
+    opacity: 100%;
+    transition: 0.6s;
+}
+
+.shop2:hover>a {
+    font-size: 65px;
+    opacity: 100%;
     color: #8B4513;
+    transition: 0.6s;
+}
+
+.shop3:hover>a {
+    opacity: 100%;
+    font-size: 65px;
+    color: #8B4513;
+    transition: 0.6s;
+}
+
+.shop4:hover>a {
+    opacity: 100%;
+    font-size: 65px;
+    color: #3762b9;
     transition: 0.6s;
 }
 

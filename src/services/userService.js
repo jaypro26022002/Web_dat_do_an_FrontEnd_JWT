@@ -102,6 +102,10 @@ const fetchAllProduct1 = () => {
 const getUserAccount = () => {
     return axios.get(`/api/v1/account`);
 }
+
+const logoutUser = () => {
+    return axios.post("/api/v1/logout");
+}
 export {
     fetchAllUser, deleteUser, createNewUser, updateCurrentUser,
     registerNewUser, loginUser,
@@ -112,5 +116,6 @@ export {
     contactNew,
     UploadFile, fetchImg,
     fetchAllProduct1,
-    getUserAccount
+    getUserAccount,
+    logoutUser
 };

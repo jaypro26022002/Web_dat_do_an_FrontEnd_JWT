@@ -18,7 +18,7 @@ const PrivateRoutes = (props) => {
             </>
         )
     } else {
-        return <Redirect to='login'></Redirect>
+        return <Redirect to='/login'></Redirect>
     }
 }
 

@@ -50,14 +50,21 @@ const Login = (props) => {
             let username = response.DT.username;
             let token = response.DT.access_token;
 
+            let groupId = groupWithRoles.id;
+
             let data = {
                 isAuthenticated: true,
                 token,
                 account: { groupWithRoles, email, username }
             }
             loginContext(data);
-            history.push('/user');
-            // window.location.reload();
+            if (groupId === 4) {
+                history.push('/user');
+            } else if (groupId === 2) {
+                history.push('/home');
+            } else {
+                history.push('/');
+            }
 
         }
         if (response && +response.EC !== 0) {
@@ -72,7 +79,7 @@ const Login = (props) => {
             handlerLogin();
         }
     }
-    
+
     return (
         <div className='login-container'>
             <div className='container'>

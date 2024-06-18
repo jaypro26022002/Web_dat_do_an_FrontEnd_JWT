@@ -5,23 +5,21 @@ const UserContext = React.createContext(null);
 
 const UserProvider = ({ children }) => {
 
-    const [user, setUser] = useState(
-        {
-            isAuthenticated: false,
-            token: '',
-            account: {}
-        });
-
-    const loginContext = (userData) => {
-        setUser(userData)
+    const userDefault = {
+        isLoading: true,
+        isAuthenticated: false,
+        token: '',
+        account: {}
     };
 
-    const logout = () => {
-        setUser((user) => ({
-            name: '',
-            auth: false,
+    const [user, setUser] = useState(userDefault);
 
-        }));
+    const loginContext = (userData) => {
+        setUser({ ...userData, isLoading: false })
+    };
+
+    const logoutContext = () => {
+        setUser({ ...userDefault, isLoading: false })
     };
 
     const fetchUser = async () => {
@@ -35,55 +33,29 @@ const UserProvider = ({ children }) => {
             let data = {
                 isAuthenticated: true,
                 token,
-                account: { groupWithRoles, email, username }
+                account: { groupWithRoles, email, username },
+                isLoading: false
             }
             setUser(data);
+        } else {
+            setUser({ ...userDefault, isLoading: false })
         }
     }
 
     useEffect(() => {
-        fetchUser()
-    }, [])
+        if (window.location.pathname !== '/' && window.location.pathname !== '/login') {
+            fetchUser()
+        } else {
+            setUser({ ...user, isLoading: false })
+        }
+    }
+        , [])
 
     return (
-        <UserContext.Provider value={{ user, loginContext, logout }}>
+        <UserContext.Provider value={{ user, loginContext, logoutContext }}>
             {children}
         </UserContext.Provider>
     );
 }
 
 export { UserContext, UserProvider };
-
-// import React, { useState } from "react";
-
-// const UserContext = React.createContext({ name: 'vinh', auth: false });
-
-// const UserProvider = ({ children }) => {
-
-//     const [user, setUser] = useState({
-//         name: 'vinh', auth: true });
-
-//     const loginContext = (name) => {
-//         setUser((user) => ({
-//             name: name,
-//             auth: true,
-//         }));
-//     };
-
-//     const logout = () => {
-//         setUser((user) => ({
-//             name: '',
-//             auth: false,
-
-//         }));
-//     };
-
-//     return (
-//         <UserContext.Provider value={{ user, loginContext, logout }}>
-//             {Children}
-//         </UserContext.Provider>
-//     );
-// }
-
-// export { UserContext, UserProvider };
-
