@@ -28,7 +28,7 @@
             color: white !important;
 
             &:hover {
-                color: aqua !important;
+                color: rgb(216, 72, 28) !important;
             }
         }
     }
@@ -36,6 +36,12 @@
     .dropdown-menu {
         a {
             color: black !important;
+        }
+    }
+
+    .nav-link {
+        &.active {
+            color: rgb(216, 72, 28) !important;
         }
     }
 

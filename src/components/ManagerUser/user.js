@@ -90,7 +90,7 @@ const User = (props) => {
             <div className="manager-user-container pt-3 px-5">
                 <div className="user-header">
                     <div className="title">
-                        <h3>Table Users</h3>
+                        <h3>Bảng tài khoản người dùng</h3>
                     </div>
                     <div className="action pb-3">
                         <button className="btn btn-success refesh"
@@ -104,7 +104,7 @@ const User = (props) => {
                                 setIsShowModalUser(true)
                                 setActionModalUser("CREATE")
                             }}>
-                            <i className="fa fa-plus-circle"></i>Add new user
+                            <i className="fa fa-plus-circle"></i>Thêm người dùng
                         </button>
                     </div>
                 </div>

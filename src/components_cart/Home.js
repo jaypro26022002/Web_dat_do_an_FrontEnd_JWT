@@ -10,9 +10,9 @@ const Home = () => {
     productState: { sort, byStock, byFastDelivery, byRating, searchQuery },
   } = CartState();
 
-  useEffect(() => {
-    console.log("Initial products in Home component:", products);
-  }, [products]);
+  // useEffect(() => {
+  //   console.log("Initial products in Home component:", products);
+  // }, [products]);
 
   const transformProducts = () => {
     let sortedProducts = products;
@@ -39,7 +39,7 @@ const Home = () => {
 
     if (searchQuery) {
       sortedProducts = sortedProducts.filter((prod) =>
-        prod.name.toLowerCase().includes(searchQuery)
+        prod.nameProduct.toLowerCase().includes(searchQuery)
       );
     }
 

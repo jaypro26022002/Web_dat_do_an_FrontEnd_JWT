@@ -1,6 +1,7 @@
 import './App.scss';
 import NavAdmin from './components/Navigation/NavAdmin';
 import NavWeb from './components/Navigation/NavWeb';
+import NavWebLogin from './components/Navigation/NavWebLogin';
 import { BrowserRouter as Router, } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,7 +29,7 @@ function App() {
           :
           <>
             <div className='app-header'>
-              <NavAdmin /> <NavWeb />
+              <NavAdmin /> <NavWeb /> <NavWebLogin />
             </div>
             <div className='app-container'>
               <AppRoutes />

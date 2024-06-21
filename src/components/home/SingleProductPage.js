@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import { CartState } from '../../context_cart/Context';
 
-const SingleProduct = ({ prod }) => {
+const SingleProductPage = ({ prod }) => {
   const {
     state: { cart },
     dispatch,
@@ -27,7 +27,7 @@ const SingleProduct = ({ prod }) => {
   )
 }
 
-export default SingleProduct;
+export default SingleProductPage;
 
 // import { Card, Button } from "react-bootstrap";
 // import { CartState } from "../context_cart/Context";

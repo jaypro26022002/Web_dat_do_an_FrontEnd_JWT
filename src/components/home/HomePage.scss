@@ -137,6 +137,9 @@
     /* Remove default margin from paragraph */
 }
 
+.title-dishes {
+    text-align: center;
+}
 
 .section_main {
     margin-top: 10px;
@@ -250,6 +253,11 @@
     transition: 0.6s;
 }
 
+
+.title-shop {
+    text-align: center;
+}
+
 .section_shop {
     margin-top: 10px;
     display: flex;
@@ -271,6 +279,7 @@
     /* Adjust space between sections */
     margin-right: 10px;
     /* Adjust space between sections */
+
 }
 
 .shop1 {
@@ -309,99 +318,40 @@
     position: relative;
 }
 
-.shop1 a {
-    font-size: 50px;
-    transition: 0.6s;
-    margin-left: 30%;
-    color: white;
-    text-decoration: none;
+.shop1 span,
+.shop2 span,
+.shop3 span,
+.shop4 span {
+    display: none;
+    /* Ẩn văn bản ban đầu */
+    position: absolute;
+    /* Để căn giữa */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Màu nền */
+    padding: 5px 10px;
+    /* Đệm */
+    border: 1px solid #ccc;
+    /* Viền */
+    border-radius: 5px;
+    /* Bo góc */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Đổ bóng */
+    z-index: 1;
+    /* Chỉ số lớp */
+    text-align: center;
+    /* Căn giữa văn bản */
+    // pointer-events: all;
+    /* Không ảnh hưởng đến sự kiện click */
 }
 
-.shop2 a {
-    font-size: 50px;
-    transition: 0.6s;
-    margin-left: 30%;
-    text-decoration: none;
-    color: white;
+/* Hiển thị văn bản khi hover vào */
+.shop1:hover span,
+.shop2:hover span,
+.shop3:hover span,
+.shop4:hover span {
+    display: block;
 }
 
-.shop3 a {
-    font-size: 50px;
-    margin-left: 30%;
-    text-decoration: none;
-    transition: 0.6s;
-    color: white;
-}
-
-.shop4 a {
-    font-size: 50px;
-    margin-left: 30%;
-    text-decoration: none;
-    transition: 0.6s;
-    color: white;
-}
-
-.shop1:hover {
-    transition: 0.6s;
-    cursor: pointer;
-    opacity: 60%;
-}
-
-.shop2:hover {
-    cursor: pointer;
-    transition: 0.6s;
-    opacity: 60%;
-}
-
-.shop3:hover {
-    transition: 0.6s;
-    cursor: pointer;
-    opacity: 60%;
-}
-
-.shop3:hover {
-    transition: 0.6s;
-    cursor: pointer;
-    opacity: 60%;
-}
-
-.shop1:hover>a {
-    color: #a0115a;
-    font-size: 65px;
-    opacity: 100%;
-    transition: 0.6s;
-}
-
-.shop2:hover>a {
-    font-size: 65px;
-    opacity: 100%;
-    color: #8B4513;
-    transition: 0.6s;
-}
-
-.shop3:hover>a {
-    opacity: 100%;
-    font-size: 65px;
-    color: #8B4513;
-    transition: 0.6s;
-}
-
-.shop4:hover>a {
-    opacity: 100%;
-    font-size: 65px;
-    color: #3762b9;
-    transition: 0.6s;
-}
-
-.home {
-    display: flex;
-    /* Use flexbox for layout */
-    justify-content: center;
-    /* Center content horizontally */
-}
-
-.productContainer {
-    /* Set margins on left and right sides */
-    margin-left: 20px;
-    margin-right: 20px;
+.title-product {
+    text-align: center;
 }

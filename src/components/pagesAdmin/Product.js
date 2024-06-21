@@ -78,14 +78,14 @@ const Product = () => {
             <div className="manage-food-container mt-3">
                 <div className="food-header">
                     <div className="title">
-                        <h3>Table Product</h3>
+                        <h3>Bảng sản phẩm</h3>
                     </div>
                     <div className="action pb-3">
                         <button className="btn btn-success refresh" onClick={handleRefresh}>
                             <i className="fa fa-refresh"></i> Refresh
                         </button>
                         <button className="btn btn-primary" onClick={() => { setIsShowModalProduct(true); setActionModalProduct("CREATE"); }}>
-                            <i className="fa fa-plus-circle"></i> Add new Product
+                            <i className="fa fa-plus-circle"></i> Thêm sản phẩm
                         </button>
                     </div>
                 </div>
@@ -96,11 +96,15 @@ const Product = () => {
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">id</th>
-                                    <th scope="col">thumbnail</th>
-                                    <th scope="col">name</th>
-                                    <th scope="col">price</th>
-                                    <th scope="col">price down</th>
-                                    <th scope="col">quantity</th>
+                                    <th scope="col">Ảnh đại diện</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">giá</th>
+                                    <th scope="col">giá giảm</th>
+                                    <th scope="col">số lượng</th>
+                                    <th scope="col">Bữa ăn</th>
+                                    <th scope="col">Nhà hàng</th>
+                                    <th scope="col">Dịch vụ ưu tiên</th>
+                                    <th scope="col">Đánh giá</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -120,6 +124,10 @@ const Product = () => {
                                                     <td>{item.price}</td>
                                                     <td>{item.pricedown}</td>
                                                     <td>{item.quantity}</td>
+                                                    <td>{item.id_type_product}</td>
+                                                    <td>{item.collection}</td>
+                                                    <td>{item.fastDelivery ? "Yes" : "No"}</td>
+                                                    <td>{item.ratings}</td>
                                                     <td>
                                                         <span className="mx-3"
                                                             onClick={() => handleEditProduct(item)}>

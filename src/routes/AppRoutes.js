@@ -41,6 +41,7 @@ import {
     Route,
 } from "react-router-dom";
 import PrivateRoutes from './PrivateRoutes';
+import Order from '../components_cart/Order';
 
 const AppRoutes = (props) => {
     return (
@@ -98,6 +99,9 @@ const AppRoutes = (props) => {
                 <Header />
                 <Cart />
             </Route>
+            <Route path='/order'>
+                <Order />
+            </Route>
             <Route path='/log/com'>
                 <HeaderCom />
                 <HomeComLogin />
@@ -139,3 +143,4 @@ const AppRoutes = (props) => {
 }
 
 export default AppRoutes;
+

@@ -6,59 +6,101 @@ body {
 
 }
 
-.contact1 {
-    background-color: #000000;
-    padding: 10px;
-    color: #f2f2f2;
-    // display: flex;
-    // justify-content: center;
+// .top-nav {
+//     overflow: hidden;
+//     padding: 2px;
+//     text-align: center;
+//     margin: 0 auto;
+//     background-color: #0f0f0f;
 
-}
+//     .title {
+//         color: #f2f2f2;
+//         padding-top: 50px;
+//         padding-bottom: 20px;
+//         font-size: 30px;
 
-.contact2 {
-    padding: 10px;
-    color: #ddd;
-    background-color: #000000;
-    font-size: 20px;
-}
+//     }
 
-.topnav {
-    overflow: hidden;
-    padding: 40px;
-    text-align: center;
-    margin: 0 auto;
-    background-color: #0f0f0f;
+//     .nav-link {
+//         display: flex;
+//         justify-content: center;
+//         color: white !important;
+//     }
 
-    .title {
-        color: #f2f2f2;
-        padding-top: 50px;
-        padding-bottom: 20px;
-        font-size: 30px;
+//     a {
+//         float: left;
+//         color: #f2f2f2;
+//         text-align: center;
+//         padding: 14px 16px;
+//         text-decoration: none;
+//         font-size: 17px;
+//     }
 
+//     a:hover {
+//         background-color: #ddd;
+//         color: black;
+//     }
+
+//     a.active {
+//         background-color: #04AA6D;
+//         color: white;
+//     }
+// }
+
+.top-nav {
+    background-color: #393c3f;
+    z-index: 1; // Ensure the nav has a default z-index
+
+    .navbar {
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .nav-link {
+            margin-right: 1rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            color: white !important;
+        }
+
+        a {
+            float: left;
+            color: #44b92a;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
     }
 
-    .navlink {
-        display: flex;
-        justify-content: center;
+    .ms-auto {
+        margin-left: auto;
     }
 
-    a {
-        float: left;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-
+    .nav-item {
+        align-items: center;
     }
 
-    a:hover {
-        background-color: #ddd;
-        color: black;
-    }
+    .nav-dropdown {
+        position: relative;
 
-    a.active {
-        background-color: #04AA6D;
-        color: white;
+        .dropdown-menu {
+            z-index: 1050; // Higher than the header
+        }
     }
 }
