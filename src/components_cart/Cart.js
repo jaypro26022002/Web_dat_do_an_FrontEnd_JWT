@@ -199,7 +199,7 @@ const Cart = () => {
 
     useEffect(() => {
         setTotal(
-            cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
+            cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0).toFixed(3)
         );
     }, [cart]);
 

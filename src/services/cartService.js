@@ -26,9 +26,16 @@ const createOrder = (orderData) => {
     return axios.post('/api/v1/orders', orderData); // Adjust the endpoint as needed
 }
 
+// const createMoMoPayment = (orderData) => {
+//     return axios.post('/api/v1/momo/payment', orderData); // Adjust the endpoint as needed
+// }
+
+
 const createMoMoPayment = (orderData) => {
-    return axios.post('/api/v1/momo/payment', orderData); // Adjust the endpoint as needed
+    return axios.post('/api/v1/momo/payment', orderData) // Adjust the endpoint as needed
 }
+
+
 
 export {
     fetchAllProductCom, fetchAllProductKFC, fetchAllProductSushi, fetchAllProductBun,

@@ -110,7 +110,7 @@ export {
     fetchAllUser, deleteUser, createNewUser, updateCurrentUser,
     registerNewUser, loginUser,
     fetchGroup,
-    fetchAllProduct, createNewProduct, updateCurrentProduct, deleteProduct, 
+    fetchAllProduct, createNewProduct, updateCurrentProduct, deleteProduct,
     fetchAllType, createNewType, updateCurrentType, deleteType,
     fetchAllShop, deleteShop, fetchType, createNewShop, updateCurrentShop,
     contactNew,
