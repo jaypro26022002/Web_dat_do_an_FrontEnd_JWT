@@ -11,40 +11,48 @@ const SingleProduct = ({ prod }) => {
   console.log(cart)
   return (<div className="products">
     <Card>
-      <Card.Img variant="top" src={`http://localhost:8081/image/` + prod.thumbnail} alt={prod.nameProduct} style={{ width: '300px', height: '250px' }} />
+      <Card.Img variant="top" src={`http://localhost:8081/image/` + prod.thumbnail} style={{ width: '300px', height: '250px' }}
+        alt={prod.nameProduct}
+        className="product-image"
+      />
       <Card.Body>
         <Card.Title>{prod.nameProduct}</Card.Title>
         <Card.Subtitle style={{ paddingBottom: 10 }}>
-          <span>₹ {prod.price.split(".")[0]}</span>
+          <span>{prod.price}₫</span>
           {prod.fastDelivery ? (
-            <div>Fast Delivery</div>
+            <div>Giao hàng nhanh</div>
           ) : (
-            <div>4 days delivery</div>
+            <div>giao trong 30 phút</div>
           )}
           <Rating rating={prod.ratings} />
         </Card.Subtitle>
         {
-          cart.some(p => p.id_product === prod.id_product) ? (
+          cart.some((p) => p.id_product === prod.id_product) ? (
             <Button
-              onClick={() => {
+              variant="danger"
+              onClick={() =>
                 dispatch({
-                  type: "REMOVE_TO_CART",
+                  type: "REMOVE_FROM_CART",
                   payload: prod,
-                });
-              }}
-              variant="danger">Remove from cart</Button>
+                })
+              }
+            >
+              Xóa khỏi giỏ
+            </Button>
           ) : (
             <Button
-              onClick={() => {
+              onClick={() =>
                 dispatch({
                   type: "ADD_TO_CART",
                   payload: prod,
-                });
-              }}
-              disabled={!prod.quantity}  >
-              {!prod.quantity ? "Out of Stock" : "Add to Cart"}
+                })
+              }
+              disabled={!prod.quantity}
+            >
+              {!prod.quantity ? "hết hàng" : "Thêm vào giỏ"}
             </Button>
-          )}
+          )
+        }
 
       </Card.Body>
     </Card>

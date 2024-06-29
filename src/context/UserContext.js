@@ -28,12 +28,13 @@ const UserProvider = ({ children }) => {
             let groupWithRoles = response.DT.groupWithRoles;
             let email = response.DT.email;
             let username = response.DT.username;
+            let phone = response.DT.phone;
             let token = response.DT.access_token;
 
             let data = {
                 isAuthenticated: true,
                 token,
-                account: { groupWithRoles, email, username },
+                account: { groupWithRoles, email, username, phone },
                 isLoading: false
             }
             setUser(data);

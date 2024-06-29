@@ -23,7 +23,7 @@ const Header = () => {
     <Navbar bg="dark" variant="dark" style={{ height: 80 }}>
       <Container>
         <Navbar.Brand>
-          <Link to="/">Shopping Cart</Link>
+          <span to="/">Shopping Cart</span>
         </Navbar.Brand>
         <Navbar.Text className="search">
           <FormControl
@@ -45,7 +45,7 @@ const Header = () => {
               <Badge>{cart.length}</Badge>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu style={{ minWidth: 370 }}>
+            <Dropdown.Menu style={{ minWidth: 5 }}>
               {cart.length > 0 ? (
                 <>
                   {cart.map((prod) => (
@@ -75,11 +75,11 @@ const Header = () => {
                     onClick={handleGoToCart}
                     style={{ width: "95%", margin: "0 10px" }}
                   >
-                    Go To Cart
+                    Đi đến giỏ hàng
                   </Button>
                 </>
               ) : (
-                <span style={{ padding: 10 }}>Cart is Empty!</span>
+                <span style={{ padding: 10 }}>Giỏ hàng trống!</span>
               )}
             </Dropdown.Menu>
           </Dropdown>

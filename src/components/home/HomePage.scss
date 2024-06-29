@@ -146,10 +146,23 @@
     display: flex;
     justify-content: center;
     /* Center the sections horizontally */
-    margin-left: 20px;
-    /* Add 20px margin on the left side */
-    margin-right: 20px;
+    // margin-left: 20px;
+    // /* Add 20px margin on the left side */
+    // margin-right: 20px;
     /* Add 20px margin on the right side */
+}
+
+.fl {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.bx {
+    box-sizing: border-box;
+
 }
 
 .section1,
@@ -157,9 +170,9 @@
 .section3 {
     flex: 1;
     /* Make each section take equal space */
-    margin-left: 10px;
+    // margin-left: 10px;
     /* Adjust space between sections */
-    margin-right: 10px;
+    // margin-right: 10px;
     /* Adjust space between sections */
 }
 

@@ -14,14 +14,14 @@ const Headertrua = () => {
 
   const handleGoToCart = () => {
     console.log('Navigating to /carts'); // Debugging log
-    history.push('/carts');
+    history.push('/Comcarts');
   };
 
   return (
     <Navbar bg="dark" variant="dark" style={{ height: 80 }}>
       <Container>
         <Navbar.Brand>
-          <Link to="/">Shopping Cart</Link>
+          <span>Mua sắm</span>
         </Navbar.Brand>
         <Navbar.Text className="search">
           <FormControl
@@ -37,7 +37,7 @@ const Headertrua = () => {
               <Badge>{cart.length}</Badge>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu style={{ minWidth: 370 }}>
+            <Dropdown.Menu style={{ minWidth: 5 }}>
               {cart.length > 0 ? (
                 <>
                   {cart.map(prod => (
@@ -49,7 +49,7 @@ const Headertrua = () => {
                       />
                       <div className="cartItemDetail">
                         <span>{prod.nameProduct}</span>
-                        <span>₹ {prod.price.split(".")[0]}</span>
+                        <span>{prod.price}₫</span>
                       </div>
                       <AiFillDelete
                         fontSize="20px"
@@ -67,11 +67,11 @@ const Headertrua = () => {
                     onClick={handleGoToCart}
                     style={{ width: "95%", margin: "0 10px" }}
                   >
-                    Go To Cart
+                    Đi đến giỏ hàng
                   </Button>
                 </>
               ) : (
-                <span style={{ padding: 10 }}>Cart is Empty!</span>
+                <span style={{ padding: 10 }}>Giỏ hàng trống!</span>
               )}
             </Dropdown.Menu>
           </Dropdown>

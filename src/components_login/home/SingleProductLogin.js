@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap";
 import { CartState } from '../../context_cart/Context';
+import Rating from "../../components_cart/Rating";
 
 const SingleProduct = ({ prod }) => {
   const {
@@ -10,18 +11,21 @@ const SingleProduct = ({ prod }) => {
   console.log(cart)
   return (<div className="products">
     <Card>
-      <Card.Img variant="top" src={`http://localhost:8081/image/` + prod.thumbnail} alt={prod.nameProduct} style={{ width: '300px', height: '250px' }} />
+      <Card.Img variant="top" src={`http://localhost:8081/image/` + prod.thumbnail} style={{ width: '265px', height: '250px' }}
+        alt={prod.nameProduct}
+        className="product-image"
+      />
       <Card.Body>
         <Card.Title>{prod.nameProduct}</Card.Title>
         <Card.Subtitle style={{ paddingBottom: 10 }}>
-          <span>₹ {prod.price.split(".")[0]}</span>
+          <span>{prod.price}₫</span>
           {prod.fastDelivery ? (
-            <div>Fast Delivery</div>
+            <div>Giao hàng nhanh</div>
           ) : (
-            <div>4 days delivery</div>
+            <div>giao trong 30 phút</div>
           )}
+          <Rating rating={prod.ratings} />
         </Card.Subtitle>
-
       </Card.Body>
     </Card>
   </div >
@@ -29,61 +33,3 @@ const SingleProduct = ({ prod }) => {
 }
 
 export default SingleProduct;
-
-// import { Card, Button } from "react-bootstrap";
-// import { CartState } from "../context_cart/Context";
-// import Rating from "./Rating";
-
-// const SingleProduct = ({ prod }) => {
-//   const {
-//     state: { cart },
-//     dispatch,
-//   } = CartState();
-
-//   return (
-//     <div className="products">
-//       <Card>
-//         <Card.Img variant="top" src={prod.image} alt={prod.name} />
-//         <Card.Body>
-//           <Card.Title>{prod.name}</Card.Title>
-//           <Card.Subtitle style={{ paddingBottom: 10 }}>
-//             <span>₹ {prod.price.split(".")[0]}</span>
-//             {prod.fastDelivery ? (
-//               <div>Fast Delivery</div>
-//             ) : (
-//               <div>4 days delivery</div>
-//             )}
-//             <Rating rating={prod.ratings} />
-//           </Card.Subtitle>
-//           {cart.some((p) => p.id === prod.id) ? (
-//             <Button
-//               variant="danger"
-//               onClick={() =>
-//                 dispatch({
-//                   type: "REMOVE_FROM_CART",
-//                   payload: prod,
-//                 })
-//               }
-//             >
-//               Remove from Cart
-//             </Button>
-//           ) : (
-//             <Button
-//               onClick={() =>
-//                 dispatch({
-//                   type: "ADD_TO_CART",
-//                   payload: prod,
-//                 })
-//               }
-//               disabled={!prod.inStock}
-//             >
-//               {!prod.inStock ? "Out of Stock" : "Add to Cart"}
-//             </Button>
-//           )}
-//         </Card.Body>
-//       </Card>
-//     </div>
-//   );
-// };
-
-// export default SingleProduct;

@@ -70,11 +70,11 @@ const SingleProduct = ({ prod }) => {
       <Card.Body>
         <Card.Title>{prod.nameProduct}</Card.Title>
         <Card.Subtitle style={{ paddingBottom: 10 }}>
-          <span>₹ {prod.price}</span>
+          <span>{prod.price}₫</span>
           {prod.fastDelivery ? (
-            <div>Fast Delivery</div>
+            <div>giao hàng nhanh</div>
           ) : (
-            <div>4 days delivery</div>
+            <div>giao trong 30 phút</div>
           )}
           <Rating rating={prod.ratings} />
         </Card.Subtitle>
@@ -89,7 +89,7 @@ const SingleProduct = ({ prod }) => {
                 })
               }
             >
-              Remove from Cart
+              Xóa khỏi giỏ
             </Button>
           ) : (
             <Button
@@ -101,7 +101,7 @@ const SingleProduct = ({ prod }) => {
               }
               disabled={!prod.quantity}
             >
-              {!prod.quantity ? "Out of Stock" : "Add to Cart"}
+              {!prod.quantity ? "Hết hàng" : "Thêm vào giỏ"}
             </Button>
           )
         }

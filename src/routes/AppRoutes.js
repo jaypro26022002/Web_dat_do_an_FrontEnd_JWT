@@ -15,25 +15,39 @@ import HomeSang from '../components_guest/HomeBuaSang';
 import HomeTrua from '../components_guest/HomeBuaTRua';
 import HomeToi from '../components_guest/HomeBuaToi';
 import HomeLogin from '../components_login/home/HomeLogin';
+
 import CartSang from '../components_login/CartSang';
+import OrderSang from '../components_login/OrderSang';
 import HeaderSang from '../components_login/HeaderSang';
 import HomeSangLogin from '../components_login/HomeBuaSang';
+
 import CartTrua from '../components_login/CartTrua';
+import OrderTrua from '../components_login/OrderTrua';
 import HeaderTrua from '../components_login/HeaderTrua';
 import HomeTruaLogin from '../components_login/HomeBuaTRua';
+
 import CartToi from '../components_login/CartToi';
+import OrderToi from '../components_login/OrderToi';
 import HeaderToi from '../components_login/HeaderToi';
 import HomeToiLogin from '../components_login/HomeBuaToi';
+
 import CartCom from '../components_login/Cartcom';
+import OrderCom from '../components_login/OrderCom';
 import HeaderCom from '../components_login/Headercom';
 import HomeComLogin from '../components_login/HomeCom';
+
 import Cartkfc from '../components_login/Cartkfc';
+import Orderkfc from '../components_login/Orderkfc';
 import Headerkfc from '../components_login/Headerkfc'
 import HomekfcLogin from '../components_login/Homekfc';
+
 import CartSushi from '../components_login/Cartsushi';
+import OrderSushi from '../components_login/OrderSushi';
 import HeaderSushi from '../components_login/Headersushi';
 import HomeSushiLogin from '../components_login/homeSushi';
+
 import CartBun from '../components_login/Cartbun';
+import OrderBun from '../components_login/OrderBun';
 import HeaderBun from '../components_login/Headerbun';
 import HomeBunLogin from '../components_login/HomeBun';
 import {
@@ -106,29 +120,84 @@ const AppRoutes = (props) => {
                 <HeaderCom />
                 <HomeComLogin />
             </Route>
+            <Route path='/Comcarts'>
+                <HeaderCom />
+                <CartCom />
+            </Route>
+            <Route path='/Comorder'>
+                <OrderCom />
+            </Route>
+
             <Route path='/log/kfc'>
                 <Headerkfc />
                 <HomekfcLogin />
             </Route>
+            <Route path='/Kfccarts'>
+                <Headerkfc />
+                <Cartkfc />
+            </Route>
+            <Route path='/Kfcorder'>
+                <Orderkfc />
+            </Route>
+
             <Route path='/log/sushi'>
                 <HeaderSushi />
                 <HomeSushiLogin />
             </Route>
+            <Route path='/Sushicarts'>
+                <HeaderSushi />
+                <CartSushi />
+            </Route>
+            <Route path='/Sushiorder'>
+                <OrderSushi />
+            </Route>
+
             <Route path='/log/bun'>
                 <HeaderBun />
                 <HomeBunLogin />
             </Route>
+            <Route path='/Buncarts'>
+                <HeaderBun />
+                <CartBun />
+            </Route>
+            <Route path='/Bunorder'>
+                <OrderBun />
+            </Route>
+
             <Route path='/log/sang'>
                 <HeaderSang />
                 <HomeSangLogin />
             </Route>
+            <Route path='/Sangcarts'>
+                <HeaderSang />
+                <CartSang />
+            </Route>
+            <Route path='/Sangorder'>
+                <OrderSang />
+            </Route>
+
             <Route path='/log/trua'>
                 <HeaderTrua />
                 <HomeTruaLogin />
             </Route>
+            <Route path='/Truacarts'>
+                <HeaderTrua />
+                <CartTrua />
+            </Route>
+            <Route path='/Truaorder'>
+                <OrderTrua />
+            </Route>
+
             <Route path='/log/toi'>
                 <HeaderToi />
                 <HomeToiLogin />
+            </Route>
+            <Route path='/Toicarts'>
+                <HeaderToi />
+                <CartToi />
+            </Route>
+            <Route path='/Toiorder'>
+                <OrderToi />
             </Route>
 
 

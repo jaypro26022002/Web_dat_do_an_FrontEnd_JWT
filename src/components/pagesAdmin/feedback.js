@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './user.scss';
-import { fetchAllUser, deleteUser, fetchAllFood } from "../../services/userService";
+// import { fetchAllUser, deleteUser, fetchAllFood } from "../../services/userService";
+// import { fetchAllUser, deleteUser, fetchAllFood } from "../../services/userService";
 import ReactPaginate from 'react-paginate';
 import { toast } from "react-toastify";
 import ModalDelete from "./ModalDelete";

@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { CartState } from "../context_cart/Context";
-import Rating from "./Rating";
+import { CartState } from "../../context_home/Context Bun";
+import Rating from "../../components_cart/Rating";
 
 const Filters = () => {
   const {
@@ -12,7 +12,7 @@ const Filters = () => {
   console.log(byStock, byFastDelivery, sort, byRating)
   return (
     <div className="filters">
-      <span className="title">Filter Products</span>
+      <span className="title">Lọc sản phẩm</span>
       <span>
         <Form.Check
           inline

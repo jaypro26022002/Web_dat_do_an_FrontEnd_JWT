@@ -29,7 +29,9 @@ const NavWebLogin = (props) => {
     if ((user && user.isAuthenticated === true && (user.account.groupId === 2)) ||
         location.pathname === '/home' || location.pathname === '/cart' || location.pathname === '/carts' ||
         location.pathname === '/log/com' || location.pathname === '/log/kfc' || location.pathname === '/log/sushi' || location.pathname === '/log/bun' ||
-        location.pathname === '/log/sang' || location.pathname === '/log/trua' || location.pathname === '/log/toi') {
+        location.pathname === '/log/sang' || location.pathname === '/log/trua' || location.pathname === '/log/toi' ||
+        location.pathname === '/Sangcarts' || location.pathname === '/Sangorder'
+    ) {
         return (
             <div className="top-nav">
                 <Navbar expand="lg">
@@ -58,18 +60,18 @@ const NavWebLogin = (props) => {
                                 {user && user.isAuthenticated === true ? (
                                     <>
                                         <Nav.Item className='nav-link'>
-                                            Welcome {user.account.username} !
+                                            Xin chào {user.account.username} !
                                         </Nav.Item>
-                                        <NavDropdown title="Setting" id="basic-nav-dropdown" className="nav-dropdown">
-                                            <NavDropdown.Item href="#action/3.1">Change Password</NavDropdown.Item>
+                                        <NavDropdown title="Chức năng" id="basic-nav-dropdown" className="nav-dropdown">
+                                            <NavDropdown.Item href="#action/3.1">Thay đổi mật khẩu</NavDropdown.Item>
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item>
-                                                <span onClick={() => handleLogout()}>Log out</span>
+                                                <span onClick={() => handleLogout()}>Đăng xuất</span>
                                             </NavDropdown.Item>
                                         </NavDropdown>
                                     </>
                                 ) : (
-                                    <Link className='nav-link' to='/login'>Login</Link>
+                                    <Link className='nav-link' to='/login'>Đăng nhập</Link>
                                 )}
                             </Nav>
                         </Navbar.Collapse>

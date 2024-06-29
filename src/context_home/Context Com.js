@@ -1,6 +1,7 @@
 import React, { useContext, useReducer, useEffect, useState } from "react";
 import { fetchAllProductCom } from "../services/cartService";
 import { cartReduce } from "../context_cart/Reducers";
+import { productReducer } from "../context_cart/Reducers";
 
 const CartContext = React.createContext(null);
 
@@ -24,6 +25,16 @@ const Context1 = ({ children }) => {
     cart: []
   });
 
+  console.log("data product", products)
+
+
+  const [productState, productDispatch] = useReducer(productReducer, {
+    byStock: false,
+    byFastDelivery: false,
+    byRating: 0,
+    searchQuery: "",
+  });
+
   // Update the state with the fetched products
   useEffect(() => {
     dispatch({ type: 'UPDATE_PRODUCTS', products: products });
@@ -34,7 +45,7 @@ const Context1 = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ state, dispatch }}>
+    <CartContext.Provider value={{ state, dispatch, productState, productDispatch }}>
       {children}
     </CartContext.Provider>
   );

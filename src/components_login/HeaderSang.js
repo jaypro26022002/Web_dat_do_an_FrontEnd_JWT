@@ -3,6 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
 import { CartState } from "../context_home/Context Sang";
 import { AiFillDelete } from "react-icons/ai";
+import './style.scss';
 
 const HeaderSang = () => {
   const {
@@ -14,14 +15,14 @@ const HeaderSang = () => {
 
   const handleGoToCart = () => {
     console.log('Navigating to /carts'); // Debugging log
-    history.push('/carts');
+    history.push('/Sangcarts');
   };
 
   return (
     <Navbar bg="dark" variant="dark" style={{ height: 80 }}>
       <Container>
         <Navbar.Brand>
-          <Link to="/">Shopping Cart</Link>
+          <span>Mua sắm</span>
         </Navbar.Brand>
         <Navbar.Text className="search">
           <FormControl
@@ -37,7 +38,7 @@ const HeaderSang = () => {
               <Badge>{cart.length}</Badge>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu style={{ minWidth: 370 }}>
+            <Dropdown.Menu style={{ minWidth: 5 }}>
               {cart.length > 0 ? (
                 <>
                   {cart.map(prod => (
@@ -49,7 +50,7 @@ const HeaderSang = () => {
                       />
                       <div className="cartItemDetail">
                         <span>{prod.nameProduct}</span>
-                        <span>₹ {prod.price.split(".")[0]}</span>
+                        <span>{prod.price}₫</span>
                       </div>
                       <AiFillDelete
                         fontSize="20px"
@@ -67,11 +68,11 @@ const HeaderSang = () => {
                     onClick={handleGoToCart}
                     style={{ width: "95%", margin: "0 10px" }}
                   >
-                    Go To Cart
+                    Đi đến giỏ hàng
                   </Button>
                 </>
               ) : (
-                <span style={{ padding: 10 }}>Cart is Empty!</span>
+                <span style={{ padding: 10 }}>Giỏ hàng trống!</span>
               )}
             </Dropdown.Menu>
           </Dropdown>
