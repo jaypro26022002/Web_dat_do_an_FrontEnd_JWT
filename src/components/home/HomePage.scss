@@ -101,6 +101,7 @@
 .band {
     display: flex;
     justify-content: space-between;
+
 }
 
 .band_icon {
@@ -121,6 +122,9 @@
     /* This will make the bands take equal space in the row */
     padding: 10px;
     /* Optional: padding around each band */
+    margin-left: 70px;
+    // /* Add 20px margin on the left side */
+    margin-right: 70px;
 }
 
 .band1,

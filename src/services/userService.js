@@ -16,6 +16,10 @@ const registerNewUser = (email, phone, username, password) => {
         email, phone, username, password
     })
 }
+
+const fetchFeedback = () => {
+    return axios.get('/api/v1/feedback/readContact');//template string
+}
 const contactNew = (contactData) => {
     return axios.post('/api/v1/contact', { ...contactData })
 }
@@ -79,10 +83,10 @@ const deleteType = (type) => {
 
 // shop
 const fetchAllShop = (page, limit) => {
-    return axios.get(`/api/v1/shop/read?page=${page}&limit=${limit}`);//template string
+    return axios.get(`/api/v1/shop/read?page=${page}&limit=${limit}`);//template string 
 }
 const deleteShop = (shop) => {
-    return axios.delete('/api/v1/shop/delete', { data: { id: shop.id_shop } });
+    return axios.delete('/api/v1/shop/delete', { data: { id_shop: shop.id_shop } });
 }
 const fetchType = (shop) => {
     return axios.get('/api/v1/type1/read');
@@ -91,7 +95,7 @@ const createNewShop = (shopData) => {
     return axios.post("/api/v1/shop/create", shopData)
 }
 const updateCurrentShop = (shopData) => {
-    return axios.put("/api/v1/shop/update", { ...shopData })
+    return axios.put("/api/v1/shop/update", shopData)
 }
 
 // display image
@@ -117,5 +121,6 @@ export {
     UploadFile, fetchImg,
     fetchAllProduct1,
     getUserAccount,
-    logoutUser
+    logoutUser,
+    fetchFeedback
 };

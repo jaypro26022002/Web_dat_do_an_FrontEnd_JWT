@@ -1,3 +1,5 @@
+import { fetchShop2 } from "../services/cartService";
+import React, { useEffect, useState } from 'react';
 import { CartState } from "../context_home/Context KFC";
 import SingleProduct from './homeSingleProductKFC';
 import Filters from "../components_login/filter/FiltersKfc";
@@ -9,9 +11,15 @@ const HomekfcLogin = () => {
     productState: { sort, byStock, byFastDelivery, byRating, searchQuery },
   } = CartState();
 
-  // useEffect(() => {
-  //   console.log("Initial products in Home component:", products);
-  // }, [products]);
+  const [shop, setShop] = useState({});
+
+  useEffect(() => {
+    const fetchShopDetails = async () => {
+      const data = await fetchShop2();
+      setShop(data.DT[0]);  // Assuming data.DT is an array of shop details
+    };
+    fetchShopDetails();
+  }, []);
 
   const transformProducts = () => {
     let sortedProducts = products;
@@ -46,12 +54,30 @@ const HomekfcLogin = () => {
   };
 
   return (
-    <div className="home">
-      <Filters />
-      <div className="productContainer">
-        {transformProducts().map((prod) => (
-          <SingleProduct prod={prod} key={prod.id_product} />
-        ))}
+    <div className="home-main">
+      <div className='container'>
+        <div className="container_shop ">
+          <div className="image">
+            <img src={`http://localhost:8081/image/${shop.thumbnail}`} style={{ width: '350px', height: '250px' }} alt="Shop Thumbnail" />
+          </div>
+          <div className="details">
+            <h1>{shop.nameShop}</h1>
+            <div>{shop.address}</div>
+            <div className="rating">⭐⭐⭐ 100+ đánh giá trên Uncle V</div>
+            <div className="status">Mở cửa {shop.timeWork}</div>
+            <div className="price">Có giá: {shop.price}</div>
+            <div className="service-fee">PHÍ DỊCH VỤ 10.0%</div>
+            <div>DỊCH VỤ BỞI Uncle V</div>
+          </div>
+        </div>
+      </div>
+      <div className='home color'>
+        <Filters />
+        <div className="productContainer">
+          {transformProducts().map((prod) => (
+            <SingleProduct prod={prod} key={prod.id_product} />
+          ))}
+        </div>
       </div>
     </div>
   );

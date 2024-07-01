@@ -54,6 +54,7 @@ const NavWebLogin = (props) => {
                                     <NavLink exact to="/about" className="nav-link">Giới thiệu</NavLink>
                                     <NavLink exact to="/cart" className="nav-link">Đặt hàng</NavLink>
                                     <NavLink exact to="/contact" className="nav-link">Tương tác</NavLink>
+                                    <NavLink exact to="/checkbill" className="nav-link">checkbill</NavLink>
                                 </Nav>
                             </div>
                             <Nav className="ms-auto px-4" style={{ marginRight: '50px' }}>

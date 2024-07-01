@@ -11,7 +11,11 @@ const NavWeb = (props) => {
     const history = useHistory();
 
     // Check if the user is authenticated and has the correct groupId
-    if (location.pathname === '/' || location.pathname === 'new' || location.pathname === '/shop' || location.pathname === '/cart' || location.pathname === '/shop') {
+    if (location.pathname === '/' || location.pathname === 'new' || location.pathname === '/cart' ||
+        location.pathname === '/contact' || location.pathname === '/com' || location.pathname === '/kfc' ||
+        location.pathname === '/sang' || location.pathname === '/bun' || location.pathname === '/sushi' ||
+        location.pathname === '/trua' || location.pathname === '/toi' || location.pathname === '/login' ||
+        location.pathname === '/register') {
         return (
             <>
                 <div className="topnav">
@@ -29,9 +33,11 @@ const NavWeb = (props) => {
                     <div className='navlink'>
                         <NavLink exact to="/">Trang chủ</NavLink>
                         <NavLink exact to="/about">Giới thiệu</NavLink>
-                        <NavLink exact to="/cart">Đặt hàng</NavLink>
+                        {/* <NavLink exact to="/cart">Đặt hàng</NavLink> */}
                         <NavLink exact to="/contact">Tương tác</NavLink>
                         <NavLink exact to="/login">Đăng nhập</NavLink>
+                        {/* <NavLink exact to="/checkorder">checkorder</NavLink> */}
+                        {/* <NavLink exact to="/checkbill">checkbill</NavLink> */}
                     </div>
                 </div>
             </>

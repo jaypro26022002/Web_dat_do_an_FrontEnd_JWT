@@ -1,57 +1,153 @@
-.home {
+// .home {
+//     display: flex;
+// }
+
+// .productContainer {
+//     display: flex;
+//     width: 78%;
+//     padding: 20px;
+//     flex-wrap: wrap;
+//     justify-content: space-around;
+// }
+
+// .filters {
+//     background-color: #343a40;
+//     color: white;
+//     padding: 20px;
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     margin: 10px;
+//     height: 86vh;
+// }
+
+// .filters>span {
+//     padding-bottom: 20px;
+// }
+
+// .title {
+//     font-size: 30px;
+// }
+
+// .products {
+//     width: 21%;
+//     margin: 10px;
+// }
+
+// .cartitem {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin: 0 20px;
+//     margin-bottom: 20px;
+// }
+
+// .cartItemImg {
+//     border-radius: 50%;
+//     width: 50px;
+//     height: 50px;
+//     object-fit: cover;
+// }
+
+// .cartItemDetail {
+//     display: flex;
+//     flex: 1;
+//     padding: 0 20px;
+//     flex-direction: column;
+// }
+
+// .home-main {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 100%;
+// }
+
+// .home {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 100%;
+// }
+
+// .shop-container {
+//     display: flex;
+//     align-items: flex-start;
+//     width: 100%;
+//     justify-content: flex-start; // Aligns the items to the start of the container
+//     margin-bottom: 20px;
+// }
+
+// .filters-container {
+//     margin-right: 20px; // Ensures space between Filters and shop details
+//     flex-shrink: 0; // Prevents the filters from shrinking
+// }
+
+// .shop-details {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     flex-grow: 1; // Allows shop details to take up the remaining space
+// }
+
+// .productContainer {
+//     width: 100%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+// }
+
+// .shop-image {
+//     margin-bottom: 10px; // Ensures space between image and details
+// }
+
+// .form-control {
+//     margin-bottom: 10px;
+// }
+.color {
+    background-color: #f2f2f2;
+}
+
+.container_shop {
     display: flex;
+    margin: 20px;
 }
 
-.productContainer {
-    display: flex;
-    width: 78%;
-    padding: 20px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.filters {
-    background-color: #343a40;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    margin: 10px;
-    height: 86vh;
-}
-
-.filters>span {
-    padding-bottom: 20px;
-}
-
-.title {
-    font-size: 30px;
-}
-
-.products {
-    width: 21%;
-    margin: 10px;
-}
-
-.cartitem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 20px;
-    margin-bottom: 20px;
-}
-
-.cartItemImg {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-}
-
-.cartItemDetail {
-    display: flex;
+.image {
     flex: 1;
-    padding: 0 20px;
-    flex-direction: column;
+    padding-right: 20px;
+}
+
+.details {
+    flex: 2;
+}
+
+.details h1 {
+    margin: 0;
+}
+
+.rating {
+    color: gold;
+    font-weight: bold;
+}
+
+.status {
+    color: green;
+    font-weight: bold;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.service-fee {
+    color: orange;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 1px;
+    /* Độ dày của đường ngang */
+    background-color: black;
+    /* Màu sắc của đường ngang */
 }

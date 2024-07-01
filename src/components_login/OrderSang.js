@@ -40,7 +40,6 @@ const Order = () => {
             email: user.account.email, // Include the email
             phone: user.account.phone // Include the phone
         };
-
         try {
             let response = await createOrder(orderData);
             if (paymentMethod === "MoMo") {

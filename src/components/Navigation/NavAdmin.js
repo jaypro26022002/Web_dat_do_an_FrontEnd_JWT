@@ -28,8 +28,9 @@ const NavAdmin = (props) => {
     };
 
     // Check if the user is authenticated and has the correct groupId
-    if ((user && user.isAuthenticated === true && (user.account.groupId === 1 || user.account.groupId === 4)) || location.pathname === '/user'
-        || location.pathname === '/product' || location.pathname === '/shop') {
+    if ((user && user.isAuthenticated === true && (user.account.groupId === 1 || user.account.groupId === 4)) ||
+        location.pathname === '/user' || location.pathname === '/product' || location.pathname === '/shop' ||
+        location.pathname === '/feedback') {
         return (
             <>
                 <div className='nav-header'>
@@ -49,9 +50,10 @@ const NavAdmin = (props) => {
                                 <Nav className="me-auto">
                                     <NavLink to="/user" className="nav-link ">Thành viên</NavLink>
                                     <NavLink to="/product" className="nav-link">Sản phẩm</NavLink>
-                                    <NavLink to="/feedback" className="nav-link">Đánh giá</NavLink>
+                                    <NavLink to="/feedback" className="nav-link">Phản hồi</NavLink>
                                     <NavLink to="/shop" className="nav-link">Nhà hàng</NavLink>
                                     <NavLink to="/order" className="nav-link">Đơn đặt hàng</NavLink>
+                                    <NavLink to="/checkorder" className="nav-link">Kiểm tra đơn hàng</NavLink>
                                 </Nav>
                                 <Nav>
                                     {user && user.isAuthenticated === true

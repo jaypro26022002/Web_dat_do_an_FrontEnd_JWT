@@ -25,7 +25,7 @@ const Context3 = ({ children }) => {
     cart: []
   });
 
-  console.log("data product", products)
+  // console.log("data product", products)
 
 
   const [productState, productDispatch] = useReducer(productReducer, {

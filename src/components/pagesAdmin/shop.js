@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchAllShop, deleteShop } from "../../services/userService";
 import ReactPaginate from 'react-paginate';
 import { toast } from "react-toastify";
-// import ModalDelete from "./ModalDelete";
+import ModalDelete from "../Modal/ModalDeleteShop";
 import ModalShop from "../Modal/ModalShop";
 
 const Shop = (props) => {
@@ -69,7 +69,7 @@ const Shop = (props) => {
     const handleRefesh = async () => {
         await fetchShop();
     }
-    
+
     const handleEditShop = (shop) => {
         setActionModalShop("UPDATE")
         setDataModalShop(shop);
@@ -106,10 +106,11 @@ const Shop = (props) => {
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">id</th>
+                                <th scope="col">Ảnh nền của hàng</th>
                                 <th scope="col">Tên cửa hàng</th>
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col">Thời gian hoạt động</th>
-                                <th scope="col">Loại thức ăn</th>
+                                <th scope="col">Hạn tiền nhà hàng chi tiêu</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,10 +122,14 @@ const Shop = (props) => {
                                                 {/* công thức NO tăng lên khi qua trang típ theo */}
                                                 <td>{(currentPage - 1) * currentLimit + index + 1}</td>
                                                 <td>{item.id_shop}</td>
+                                                <td>
+                                                    <img src={`http://localhost:8081/image/` + item.thumbnail} alt="" style={{ width: '100px', hegiht: '100px' }} />
+
+                                                </td>
                                                 <td>{item.nameShop}</td>
                                                 <td>{item.address}</td>
                                                 <td>{item.timeWork}</td>
-                                                <td>{item.TypeProduct ? item.TypeProduct.nameType : ''}</td>
+                                                <td>{item.price}</td>
                                                 <td>
                                                     <span className="mx-3"
                                                         onClick={() => handleEditShop(item)}
@@ -153,7 +158,7 @@ const Shop = (props) => {
                         <ReactPaginate
                             nextLabel="next >"
                             onPageChange={handlePageClick}
-                            pageRangeDisplayed={3}
+                            pageRangeDisplayed={2}
                             marginPagesDisplayed={2}
                             pageCount={totalPages}
                             previousLabel="< previous"
@@ -174,12 +179,12 @@ const Shop = (props) => {
                 }
             </div>
 
-            {/* <ModalDelete
+            <ModalDelete
                 show={isShowModalDelete}
                 handleClose={handleClose}
-                ConfirmDeleteUser={ConfirmDeleteUser}
+                ConfirmDeleteUser={ConfirmDeleteShop}
                 dataModal={dataModal}
-            /> */}
+            />
             <ModalShop
                 onHide={onHideModalShop}
                 show={isShowModalShop}

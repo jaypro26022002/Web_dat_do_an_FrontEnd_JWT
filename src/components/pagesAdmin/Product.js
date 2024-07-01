@@ -81,10 +81,15 @@ const Product = () => {
                         <h3>Bảng sản phẩm</h3>
                     </div>
                     <div className="action pb-3">
-                        <button className="btn btn-success refresh" onClick={handleRefresh}>
+                        <button className="btn btn-success refresh"
+                            onClick={handleRefresh}>
                             <i className="fa fa-refresh"></i> Refresh
                         </button>
-                        <button className="btn btn-primary" onClick={() => { setIsShowModalProduct(true); setActionModalProduct("CREATE"); }}>
+                        <button className="btn btn-primary"
+                            onClick={() => {
+                                setIsShowModalProduct(true);
+                                setActionModalProduct("CREATE");
+                            }}>
                             <i className="fa fa-plus-circle"></i> Thêm sản phẩm
                         </button>
                     </div>

@@ -7,6 +7,8 @@ import Cart from '../components_cart/Cart';
 import Home from '../components_cart/Home';
 import Header from '../components_cart/Header';
 import Shop from '../components/pagesAdmin/shop';
+import Contact from '../components/other/Contact';
+
 import Homekfc from '../components_guest/Homekfc';
 import HomeCom from '../components_guest/HomeCom';
 import HomeSushi from '../components_guest/homeSushi';
@@ -57,9 +59,14 @@ import {
 import PrivateRoutes from './PrivateRoutes';
 import Order from '../components_cart/Order';
 
+import Checkorder from '../components/pagesAdmin/checkorder';
+import MyBill from '../components/other/MyBill';
+import Feedback from '../components/pagesAdmin/feedback';
+
 const AppRoutes = (props) => {
     return (
         <Switch>
+            {/* page Admin */}
             <PrivateRoutes path='/user' component={User} />
             <Route path="/login">
                 <Login />
@@ -76,8 +83,21 @@ const AppRoutes = (props) => {
             <Route path='/shop'>
                 <Shop />
             </Route>
+            <Route path='/contact'>
+                <Contact />
+            </Route>
+            <Route path='/feedback'>
+                <Feedback />
+            </Route>
 
-
+            <Route path='/checkorder'>
+                <Checkorder />
+            </Route>
+            <Route path='/checkbill'>
+                <MyBill />
+            </Route>
+            {/* ================================================ */}
+            {/* page main */}
             <Route path='/com'>
                 <HomeCom />
             </Route>
@@ -100,7 +120,8 @@ const AppRoutes = (props) => {
                 <HomeToi />
             </Route>
 
-            {/* /////////////////////////////////////// */}
+            {/* ============================================== */}
+            {/* page LOgin */}
             <Route path='/home' >
                 <Header />
                 <HomeLogin />
@@ -116,6 +137,7 @@ const AppRoutes = (props) => {
             <Route path='/order'>
                 <Order />
             </Route>
+            {/* com */}
             <Route path='/log/com'>
                 <HeaderCom />
                 <HomeComLogin />
@@ -127,7 +149,7 @@ const AppRoutes = (props) => {
             <Route path='/Comorder'>
                 <OrderCom />
             </Route>
-
+            {/*kfc  */}
             <Route path='/log/kfc'>
                 <Headerkfc />
                 <HomekfcLogin />
@@ -139,7 +161,7 @@ const AppRoutes = (props) => {
             <Route path='/Kfcorder'>
                 <Orderkfc />
             </Route>
-
+            {/* sushi */}
             <Route path='/log/sushi'>
                 <HeaderSushi />
                 <HomeSushiLogin />
@@ -151,7 +173,7 @@ const AppRoutes = (props) => {
             <Route path='/Sushiorder'>
                 <OrderSushi />
             </Route>
-
+            {/* bun */}
             <Route path='/log/bun'>
                 <HeaderBun />
                 <HomeBunLogin />
@@ -163,7 +185,7 @@ const AppRoutes = (props) => {
             <Route path='/Bunorder'>
                 <OrderBun />
             </Route>
-
+            {/* sang */}
             <Route path='/log/sang'>
                 <HeaderSang />
                 <HomeSangLogin />
@@ -175,7 +197,7 @@ const AppRoutes = (props) => {
             <Route path='/Sangorder'>
                 <OrderSang />
             </Route>
-
+            {/* trua */}
             <Route path='/log/trua'>
                 <HeaderTrua />
                 <HomeTruaLogin />
@@ -187,7 +209,7 @@ const AppRoutes = (props) => {
             <Route path='/Truaorder'>
                 <OrderTrua />
             </Route>
-
+            {/* toi */}
             <Route path='/log/toi'>
                 <HeaderToi />
                 <HomeToiLogin />
@@ -200,7 +222,7 @@ const AppRoutes = (props) => {
                 <OrderToi />
             </Route>
 
-
+            {/* end */}
             <Route path="/" exact>
                 <HomePage />
             </Route>

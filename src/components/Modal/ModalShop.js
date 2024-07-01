@@ -15,6 +15,7 @@ const ModalShop = (props) => {
         address: '',
         type: '',
         rating: '',
+        price: '',
         timeWork: ''
     };
 
@@ -22,7 +23,7 @@ const ModalShop = (props) => {
         nameShop: true,
         address: true,
         timeWork: true,
-        rating: true
+        price: true,
     };
 
     const [shopData, setShopData] = useState(defaultShopData);
@@ -77,7 +78,7 @@ const ModalShop = (props) => {
 
     const checkValidateInputs = () => {
         setValidInputs(validInputsDefault);
-        const fieldsToValidate = ['nameShop', 'address', 'timeWork', 'rating'];
+        const fieldsToValidate = ['nameShop', 'address', 'timeWork', 'rating', 'price'];
         for (const field of fieldsToValidate) {
             if (!shopData[field]) {
                 setValidInputs((prevInputs) => ({ ...prevInputs, [field]: false }));
@@ -96,7 +97,12 @@ const ModalShop = (props) => {
             formdata.append('nameShop', shopData.nameShop);
             formdata.append('address', shopData.address);
             formdata.append('rating', shopData.rating);
+            formdata.append('price', shopData.price);
             formdata.append('timeWork', shopData.timeWork);
+
+            if (action === 'UPDATE') {
+                formdata.append('id_shop', shopData.id_shop);  // Ensure id_product is included
+            }
 
             let res = action === 'CREATE' ?
                 await createNewShop(formdata) :
@@ -125,14 +131,14 @@ const ModalShop = (props) => {
         <Modal size="lg" show={props.show} className='modal-shop' onHide={handleCloseModalShop}>
             <Modal.Header closeButton>
                 <Modal.Title>
-                    <span>{props.action === 'CREATE' ? 'Create new shop' : 'Edit a shop'}</span>
+                    <span>{props.action === 'CREATE' ? 'Thêm nhà hàng' : 'Thay đổi nhà hàng'}</span>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className='content-body row'>
                     <form method='POST' action="/upload-profile-picRe" encType="multipart/form-data">
                         <div className='col-12 col-sm-6 form-group'>
-                            <label>Add your image</label>
+                            <label>Thêm ảnh đại diện</label>
                             <div className='preview-img-container'>
                                 <input id='previewImg' type="file" hidden
                                     onChange={(event) => handleFile(event)} />
@@ -142,7 +148,7 @@ const ModalShop = (props) => {
                             </div>
                         </div>
                         <div className='col-12 col-sm-6 form-group'>
-                            <label>Name shop (<span className='red'>*</span>) :</label>
+                            <label>Tên cửa hàng (<span className='red'>*</span>) :</label>
                             <input className={validInputs.nameShop ? 'form-control' : 'form-control is-invalid'}
                                 type='text'
                                 value={shopData.nameShop}
@@ -166,11 +172,11 @@ const ModalShop = (props) => {
                             />
                         </div>
                         <div className='col-12 col-sm-6 form-group'>
-                            <label>Đánh giá (<span className='red'>*</span>) :</label>
-                            <input className={validInputs.rating ? 'form-control' : 'form-control is-invalid'}
+                            <label>Hạn tiền có thể chi tiêu ở nhà hàng (<span className='red'>*</span>) :</label>
+                            <input className={validInputs.price ? 'form-control' : 'form-control is-invalid'}
                                 type='text'
-                                value={shopData.rating}
-                                onChange={(e) => handleOnChangeInput(e.target.value, "rating")}
+                                value={shopData.price}
+                                onChange={(e) => handleOnChangeInput(e.target.value, "price")}
                             />
                         </div>
                     </form>

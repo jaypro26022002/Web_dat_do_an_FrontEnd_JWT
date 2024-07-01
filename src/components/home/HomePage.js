@@ -64,32 +64,32 @@ const HomePage = ({ prod }) => {
                     <div className='title-shop pt-4'>
                         <h1>Cửa hàng phổ biến: </h1>
                     </div>
-                    <div className='container'>
-                        <div className='shop pb-4 pt-4'>
-                            <div className="section_shop">
-                                <div className="shop1 col-3">
-                                    <Link to="/com">
-                                        <span>Cô Ba</span>
-                                    </Link>
-                                </div>
-                                <div className="shop2 col-3">
-                                    <Link to="/kfc">
-                                        <span>KFC</span>
-                                    </Link>
-                                </div>
-                                <div className="shop3 col-3">
-                                    <Link to="/sushi">
-                                        <span>Góc Phố</span>
-                                    </Link>
-                                </div>
-                                <div className="shop4 col-3">
-                                    <Link to="/bun">
-                                        <span>Nhớ</span>
-                                    </Link>
-                                </div>
+                    {/* <div className='container'> */}
+                    <div className='shop pb-4 pt-4'>
+                        <div className="section_shop">
+                            <div className="shop1 col-3">
+                                <Link to="/com">
+                                    <span>Cô Ba</span>
+                                </Link>
+                            </div>
+                            <div className="shop2 col-3">
+                                <Link to="/kfc">
+                                    <span>KFC</span>
+                                </Link>
+                            </div>
+                            <div className="shop3 col-3">
+                                <Link to="/sushi">
+                                    <span>Góc Phố</span>
+                                </Link>
+                            </div>
+                            <div className="shop4 col-3">
+                                <Link to="/bun">
+                                    <span>Nhớ</span>
+                                </Link>
                             </div>
                         </div>
                     </div>
+                    {/* </div> */}
                 </div>
                 <div className='title-product'>
                     <h1>Menu:</h1>
