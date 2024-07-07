@@ -35,20 +35,23 @@ const fetchShop4 = () => {
     return axios.get(`/api/v1/shop/readShop4`);//template string
 }
 
+
+const checkorder_status = (orderData) => {
+    return axios.post('/api/v1/check-status-transaction', orderData) // Adjust the endpoint as needed
+}
+
 const createOrder = (orderData) => {
     return axios.post('/api/v1/orders', orderData); // Adjust the endpoint as needed
 }
 const createMoMoPayment = (orderData) => {
     return axios.post('/api/v1/momo/payment', orderData) // Adjust the endpoint as needed
 }
-
-const checkorder_status = (orderData) => {
-    return axios.post('/api/v1/check-status-transaction', orderData) // Adjust the endpoint as needed
-}
-
-const checkbill = (orderData) => {
-    return axios.get('/api/v1/callback', orderData) // Adjust the endpoint as needed
-}
+// const checkbill = (orderData) => {
+//     return axios.get('/api/v1/callback', orderData) // Adjust the endpoint as needed
+// }
+const checkbill = (orderId) => {
+    return axios.get(`/api/v1/callback?orderId=${orderId}`);
+};
 
 export {
     fetchAllProductCom, fetchAllProductKFC, fetchAllProductSushi, fetchAllProductBun,

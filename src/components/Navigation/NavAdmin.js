@@ -30,7 +30,7 @@ const NavAdmin = (props) => {
     // Check if the user is authenticated and has the correct groupId
     if ((user && user.isAuthenticated === true && (user.account.groupId === 1 || user.account.groupId === 4)) ||
         location.pathname === '/user' || location.pathname === '/product' || location.pathname === '/shop' ||
-        location.pathname === '/feedback') {
+        location.pathname === '/feedback' || location.pathname === '/checkorder') {
         return (
             <>
                 <div className='nav-header'>
@@ -60,14 +60,14 @@ const NavAdmin = (props) => {
                                         ?
                                         <>
                                             <Nav.Item className='nav-link'>
-                                                Welcome {user.account.username} !
+                                                Xin chào {user.account.username} !
                                             </Nav.Item>
 
-                                            <NavDropdown title="Setting" id="basic-nav-dropdown">
-                                                <NavDropdown.Item href="#action/3.1">Change Password</NavDropdown.Item>
+                                            <NavDropdown title="Chức năng" id="basic-nav-dropdown">
+                                                <NavDropdown.Item href="#action/3.1">Thay đổi mật khẩu</NavDropdown.Item>
                                                 <NavDropdown.Divider />
                                                 <NavDropdown.Item>
-                                                    <span onClick={() => handleLogout()}>Log out</span>
+                                                    <span onClick={() => handleLogout()}>Đăng xuất</span>
                                                 </NavDropdown.Item>
                                             </NavDropdown>
                                         </>

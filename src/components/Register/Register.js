@@ -114,27 +114,27 @@ const Register = (props) => {
                 <div className='row px-3'>
                     <div className='content-left col-7 d-none d-sm-block '>
                         <h1 className='title'>
-                            Form register
+                            Trang đăng ký
                         </h1>
-                        <span className='detail'>Facebook helps you connect and share with the people in your life.</span>
+                        <span className='detail'>Tạo tài khoản mới để là thành viên.</span>
                     </div>
                     <div className='content-right col-12 col-sm-5 d-flex flex-column gap-3 py-3'>
                         <div className=''>
                             <h1 className='title d-block d-sm-none'>
-                                Form register
+                                Trang đăng ký
                             </h1>
                         </div>
                         <div className='form-group'>
                             <label>Email:</label>
                             <input type='text'
                                 // className: tính năng bootstrap Validate input 
-                                className={objCheckInput.isValiEmail ? 'form-control' : 'form-control is-invalid'} placeholder='User name or phone number'
+                                className={objCheckInput.isValiEmail ? 'form-control' : 'form-control is-invalid'} placeholder='Email '
                                 // kiểm soát dữ liệu bằng biến React 'email' onChange:thay đổi ô input theo biến email
                                 value={email} onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
                         <div className='form-group'>
-                            <label>Phone number:</label>
+                            <label>Số điện thoại:</label>
                             <input type='text' className={objCheckInput.isValiPhone ? 'form-control' : 'form-control is-invalid'} placeholder='Phone number'
                                 value={phone} onChange={(event) => setPhone(event.target.value)}
 
@@ -147,22 +147,22 @@ const Register = (props) => {
                             />
                         </div>
                         <div className='form-group'>
-                            <label>  Password:</label>
+                            <label>  Mật khẩu:</label>
                             <input type='password' className={objCheckInput.isValiPassword ? 'form-control' : 'form-control is-invalid'} placeholder='password'
                                 value={password} onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
                         <div className='form-group'>
-                            <label> Re-enter-password:</label>
-                            <input type='password' className={objCheckInput.isValiConfirmPassword ? 'form-control' : 'form-control is-invalid'} placeholder='password'
+                            <label> Nhập lại mật khẩu:</label>
+                            <input type='password' className={objCheckInput.isValiConfirmPassword ? 'form-control' : 'form-control is-invalid'} placeholder='re-password'
                                 value={confirpassword} onChange={(event) => setConfirmPassword(event.target.value)}
                             />
                         </div>
-                        <button className='btn btn-primary' onClick={() => handleRegister()}>Register</button>
+                        <button className='btn btn-primary' onClick={() => handleRegister()}>Đăng ký</button>
                         <hr />
                         <div className='text-center '>
                             <button className='btn btn-info' onClick={handlerLogin}>
-                                Already have any account. Here
+                                Bạn đã có tài khoản. Ở đây
                             </button>
                         </div>
                     </div>

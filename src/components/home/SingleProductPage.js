@@ -8,7 +8,7 @@ const SingleProductPage = ({ prod }) => {
     dispatch,
   } = CartState();
 
-  console.log(cart)
+  // console.log(cart)
   return (<div className="products">
     <Card>
       <Card.Img variant="top" src={`http://localhost:8081/image/` + prod.thumbnail} style={{ width: '265px', height: '250px' }}

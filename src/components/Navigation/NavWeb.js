@@ -3,19 +3,18 @@ import './NavWeb.scss';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import logo from '../home/img/icon.gif';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
+
 
 const NavWeb = (props) => {
     const location = useLocation();
     const history = useHistory();
 
     // Check if the user is authenticated and has the correct groupId
-    if (location.pathname === '/' || location.pathname === 'new' || location.pathname === '/cart' ||
+    if (location.pathname === '/' || location.pathname === 'new' ||
         location.pathname === '/contact' || location.pathname === '/com' || location.pathname === '/kfc' ||
         location.pathname === '/sang' || location.pathname === '/bun' || location.pathname === '/sushi' ||
         location.pathname === '/trua' || location.pathname === '/toi' || location.pathname === '/login' ||
-        location.pathname === '/register') {
+        location.pathname === '/register' || location.pathname === '/new') {
         return (
             <>
                 <div className="topnav">
@@ -32,7 +31,7 @@ const NavWeb = (props) => {
                     </div>
                     <div className='navlink'>
                         <NavLink exact to="/">Trang chủ</NavLink>
-                        <NavLink exact to="/about">Giới thiệu</NavLink>
+                        <NavLink exact to="/new">Tin tức</NavLink>
                         {/* <NavLink exact to="/cart">Đặt hàng</NavLink> */}
                         <NavLink exact to="/contact">Tương tác</NavLink>
                         <NavLink exact to="/login">Đăng nhập</NavLink>

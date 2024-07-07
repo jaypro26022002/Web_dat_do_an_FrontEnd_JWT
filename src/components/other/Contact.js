@@ -64,6 +64,13 @@ const Contact = (props) => {
         <div className='login-container'>
             <div className='container'>
                 <div className='row px-3'>
+                    {/* <div className="container">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+
+                    </div> */}
                     <div className='content-left col-7 d-none d-sm-block '>
                         <h1 className='title'>
                             Liên hệ

@@ -110,6 +110,14 @@ const getUserAccount = () => {
 const logoutUser = () => {
     return axios.post("/api/v1/logout");
 }
+
+const fetchAllOrder = (page, limit) => {
+    return axios.get(`/api/v1/adminorder/read?page=${page}&limit=${limit}`);//template string 
+}
+const fetchOrderDetailsByOrderId = (orderId) => {
+    return axios.get(`/api/v1/adminorderdetail/read?orderId=${orderId}`);
+};
+
 export {
     fetchAllUser, deleteUser, createNewUser, updateCurrentUser,
     registerNewUser, loginUser,
@@ -122,5 +130,6 @@ export {
     fetchAllProduct1,
     getUserAccount,
     logoutUser,
-    fetchFeedback
+    fetchFeedback,
+    fetchAllOrder, fetchOrderDetailsByOrderId
 };

@@ -1,10 +1,11 @@
 import { CartState } from "../context_cart/Context";
 import { Button, ListGroup, Col, Row, Form, Image } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Rating from './Rating';
 import { AiFillDelete } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import { createOrder, createMoMoPayment } from "../services/cartService";
+import { UserContext } from "../context/UserContext";
 
 const Order = () => {
     const {
@@ -16,6 +17,8 @@ const Order = () => {
     const [paymentMethod, setPaymentMethod] = useState("Credit Card");
     const [district, setDistrict] = useState("Quận 1");
     const history = useHistory();
+    const userContext = useContext(UserContext);
+    const { user } = userContext;
 
     useEffect(() => {
         setTotal(
@@ -29,11 +32,15 @@ const Order = () => {
         const orderData = {
             items: cart.map(item => ({
                 ...item,
-                quantity: item.qty // Ensure quantity is passed to backend
+                quantity: item.qty, // Ensure quantity is passed to backend
+                nameProduct: item.nameProduct // Include nameProduct
             })),
             total,
             paymentMethod,
             district, // Include the selected district in the order data
+            username: user.account.username, // Include the username
+            email: user.account.email, // Include the email
+            phone: user.account.phone // Include the phone
         };
 
         try {
@@ -46,7 +53,7 @@ const Order = () => {
                     alert("Failed to get MoMo payment URL.");
                 }
             } else {
-                if (response.data.EC === 0) {
+                if (response.EC === 0) {
                     alert("Order placed successfully!");
                     cart.forEach((prod) => {
                         dispatch({
@@ -56,7 +63,7 @@ const Order = () => {
                     });
                     history.push('/'); // Redirect to home page or order summary page
                 } else {
-                    alert(`Failed to place order. Error: ${response.data.EM}`);
+                    alert(`Failed to place order. Error: ${response.EM}`);
                 }
             }
         } catch (error) {
@@ -64,6 +71,7 @@ const Order = () => {
             alert(`Failed to place order. Error: ${error.message}`);
         }
     };
+
 
     const districts = ["Quận 1", "Quận 2", "Quận 3", "Quận 4", "Quận 5", "Quận 6", "Quận 7", "Quận 8", "Quận 9", "Quận 10"];
 

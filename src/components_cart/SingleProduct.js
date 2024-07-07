@@ -63,7 +63,7 @@ const SingleProduct = ({ prod }) => {
 
   return (<div className="products">
     <Card>
-      <Card.Img variant="top" src={`http://localhost:8081/image/` + prod.thumbnail} style={{ width: '300px', height: '250px' }}
+      <Card.Img variant="top" src={`http://localhost:8081/image/` + prod.thumbnail} style={{ width: '260px', height: '250px' }}
         alt={prod.nameProduct}
         className="product-image"
       />

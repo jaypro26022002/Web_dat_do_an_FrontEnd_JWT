@@ -31,6 +31,7 @@ const Order = () => {
         const orderData = {
             items: cart.map(item => ({
                 ...item,
+                nameProduct: item.nameProduct,
                 quantity: item.qty // Ensure quantity is passed to backend
             })),
             total,

@@ -27,10 +27,10 @@ const NavWebLogin = (props) => {
 
     // Check if the user is authenticated and has the correct groupId
     if ((user && user.isAuthenticated === true && (user.account.groupId === 2)) ||
-        location.pathname === '/home' || location.pathname === '/cart' || location.pathname === '/carts' ||
+        location.pathname === '/home' || location.pathname === '/cart' || location.pathname === '/carts' || location.pathname === '/order' ||
         location.pathname === '/log/com' || location.pathname === '/log/kfc' || location.pathname === '/log/sushi' || location.pathname === '/log/bun' ||
         location.pathname === '/log/sang' || location.pathname === '/log/trua' || location.pathname === '/log/toi' ||
-        location.pathname === '/Sangcarts' || location.pathname === '/Sangorder'
+        location.pathname === '/Sangcarts' || location.pathname === '/Sangorder' || location.pathname === '/log/new'
     ) {
         return (
             <div className="top-nav">
@@ -51,7 +51,7 @@ const NavWebLogin = (props) => {
                             <div className="mx-auto d-flex justify-content-center">
                                 <Nav className="nav-center">
                                     <NavLink exact to="/home" className="nav-link">Trang chủ</NavLink>
-                                    <NavLink exact to="/about" className="nav-link">Giới thiệu</NavLink>
+                                    <NavLink exact to="/log/new" className="nav-link">Tin tức</NavLink>
                                     <NavLink exact to="/cart" className="nav-link">Đặt hàng</NavLink>
                                     <NavLink exact to="/contact" className="nav-link">Tương tác</NavLink>
                                     <NavLink exact to="/checkbill" className="nav-link">checkbill</NavLink>

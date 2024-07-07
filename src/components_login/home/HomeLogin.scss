@@ -15,7 +15,7 @@
     }
 
     .header_banner {
-        background-image: url("../../components/home/img/bannner.webp");
+        background-image: url("../../components/home/img/background.png");
         background-size: cover;
         width: 100%;
         height: 600px;
@@ -161,6 +161,7 @@
     box-sizing: border-box;
 
 }
+
 
 // .section1,
 // .section2,
@@ -419,4 +420,18 @@
     /* Set margins on left and right sides */
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.footer {
+    ul {
+        list-style-type: none;
+
+        li {
+            a {
+                cursor: pointer;
+                color: #f9f9f9;
+                text-decoration: none;
+            }
+        }
+    }
 }

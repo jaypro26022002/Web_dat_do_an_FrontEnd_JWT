@@ -23,7 +23,7 @@ const Header = () => {
     <Navbar bg="dark" variant="dark" style={{ height: 80 }}>
       <Container>
         <Navbar.Brand>
-          <span to="/">Shopping Cart</span>
+          <span to="/">Mua sắm</span>
         </Navbar.Brand>
         <Navbar.Text className="search">
           <FormControl

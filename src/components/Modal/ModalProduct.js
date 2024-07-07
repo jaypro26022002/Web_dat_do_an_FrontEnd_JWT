@@ -153,7 +153,7 @@ const ModalProduct = (props) => {
         <Modal size="lg" show={props.show} className='modal-product' onHide={handleCloseModalProduct}>
             <Modal.Header closeButton>
                 <Modal.Title>
-                    <span>{props.action === 'CREATE' ? 'Create new product' : 'Edit a product'}</span>
+                    <span>{props.action === 'CREATE' ? 'Thêm sản phẩm mới' : 'Sửa thông tin sản phẩm'}</span>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

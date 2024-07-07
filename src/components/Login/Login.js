@@ -86,37 +86,37 @@ const Login = (props) => {
                 <div className='row px-3'>
                     <div className='content-left col-7 d-none d-sm-block '>
                         <h1 className='title'>
-                            Form login
+                            Trang đăng nhập
                         </h1>
-                        <span className='detail'>Facebook helps you connect and share with the people in your life.</span>
+                        <span className='detail'>Hãy tham gia cùng chúng tôi và đặt nhiều món ngon mỗi ngày.</span>
                     </div>
                     <div className='content-right col-12 col-sm-5 d-flex flex-column gap-3 py-3'>
                         <div className=''>
                             <h1 className='title d-block d-sm-none'>
-                                Form login
+                                Đăng nhập
                             </h1>
                         </div>
                         <input type='text'
                             className={objCheckInput.isValidValueLogin ? 'form-control' : 'form-control is-invalid'}
-                            placeholder='User name or phone number'
+                            placeholder='Email'
                             value={valueLogin} onChange={(event) => setValueLogin(event.target.value)}
                         />
                         <input type='password'
                             className={objCheckInput.isValidPass ? 'form-control' : 'form-control is-invalid'}
-                            placeholder='password'
+                            placeholder='mật khẩu'
                             value={password} onChange={(event) => setPassword(event.target.value)}
                             // onKeyPress cho phép bắt sự kiện kiểu ký tự từ bàn phím('Enter: charCode:13)
                             onKeyPress={(event) => handlePressEnter(event)}
                         />
                         <button className='btn btn-primary' onClick={handlerLogin}
-                        >Login</button>
+                        >Đăng nhập</button>
                         <span className='text-center'>
-                            <a href='#' className='forgot-password'>Forgot password?</a>
+                            <a href='#' className='forgot-password'>Bạn quên mật khẩu?</a>
                         </span>
                         <hr />
                         <div className='text-center '>
                             <button className='btn btn-info' onClick={handerCreateNewUser}>
-                                Create new account
+                                Bạn chưa có tài khoản
                             </button>
                         </div>
                     </div>

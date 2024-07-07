@@ -131,7 +131,7 @@ const ModalShop = (props) => {
         <Modal size="lg" show={props.show} className='modal-shop' onHide={handleCloseModalShop}>
             <Modal.Header closeButton>
                 <Modal.Title>
-                    <span>{props.action === 'CREATE' ? 'Thêm nhà hàng' : 'Thay đổi nhà hàng'}</span>
+                    <span>{props.action === 'CREATE' ? 'Thêm nhà hàng' : 'Thay đổi thông tin nhà hàng'}</span>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

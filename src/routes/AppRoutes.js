@@ -8,6 +8,8 @@ import Home from '../components_cart/Home';
 import Header from '../components_cart/Header';
 import Shop from '../components/pagesAdmin/shop';
 import Contact from '../components/other/Contact';
+import Chekorder from '../components/pagesAdmin/checkorder';
+import New from '../components/other/New';
 
 import Homekfc from '../components_guest/Homekfc';
 import HomeCom from '../components_guest/HomeCom';
@@ -62,6 +64,7 @@ import Order from '../components_cart/Order';
 import Checkorder from '../components/pagesAdmin/checkorder';
 import MyBill from '../components/other/MyBill';
 import Feedback from '../components/pagesAdmin/feedback';
+import Doanhthu from '../components/pagesAdmin/doanhthu';
 
 const AppRoutes = (props) => {
     return (
@@ -89,12 +92,18 @@ const AppRoutes = (props) => {
             <Route path='/feedback'>
                 <Feedback />
             </Route>
+            <Route path='/new'>
+                <New />
+            </Route>
 
             <Route path='/checkorder'>
                 <Checkorder />
             </Route>
             <Route path='/checkbill'>
                 <MyBill />
+            </Route>
+            <Route path='/doanhthu'>
+                <Doanhthu />
             </Route>
             {/* ================================================ */}
             {/* page main */}
@@ -122,6 +131,9 @@ const AppRoutes = (props) => {
 
             {/* ============================================== */}
             {/* page LOgin */}
+            <Route path='/log/new'>
+                <New />
+            </Route>
             <Route path='/home' >
                 <Header />
                 <HomeLogin />
