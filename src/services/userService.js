@@ -118,6 +118,25 @@ const fetchOrderDetailsByOrderId = (orderId) => {
     return axios.get(`/api/v1/adminorderdetail/read?orderId=${orderId}`);
 };
 
+const fetchAllCheckDoanhThu = () => {
+    return axios.get(`/api/v1/adminorder/checkdoanhthu`);//template string 
+}
+
+const fetchAllCheckDoanhThuDetail = () => {
+    return axios.get(`/api/v1/adminorder/checkdoanhthuDetail`);//template string 
+}
+
+const fetchAllUserOrder = async (username) => {
+    try {
+        const response = await axios.get(`/api/v1/userorder/checkdoanhthu`, { params: { username } });
+        console.log('API Call:', response);
+        return response;
+    } catch (error) {
+        console.error('API Call Error:', error);
+        throw error;
+    }
+};
+
 export {
     fetchAllUser, deleteUser, createNewUser, updateCurrentUser,
     registerNewUser, loginUser,
@@ -131,5 +150,7 @@ export {
     getUserAccount,
     logoutUser,
     fetchFeedback,
-    fetchAllOrder, fetchOrderDetailsByOrderId
+    fetchAllOrder, fetchOrderDetailsByOrderId,
+    fetchAllCheckDoanhThu, fetchAllCheckDoanhThuDetail,
+    fetchAllUserOrder
 };

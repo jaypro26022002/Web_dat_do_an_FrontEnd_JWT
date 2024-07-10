@@ -10,6 +10,8 @@ import Shop from '../components/pagesAdmin/shop';
 import Contact from '../components/other/Contact';
 import Chekorder from '../components/pagesAdmin/checkorder';
 import New from '../components/other/New';
+import UserOrder from '../components/other/Userorder';
+import ContactLogin from '../components/other/ContactLogin';
 
 import Homekfc from '../components_guest/Homekfc';
 import HomeCom from '../components_guest/HomeCom';
@@ -134,6 +136,9 @@ const AppRoutes = (props) => {
             <Route path='/log/new'>
                 <New />
             </Route>
+            <Route path='/log/Contact'>
+                <ContactLogin />
+            </Route>
             <Route path='/home' >
                 <Header />
                 <HomeLogin />
@@ -148,6 +153,9 @@ const AppRoutes = (props) => {
             </Route>
             <Route path='/order'>
                 <Order />
+            </Route>
+            <Route path='/userorder'>
+                <UserOrder />
             </Route>
             {/* com */}
             <Route path='/log/com'>

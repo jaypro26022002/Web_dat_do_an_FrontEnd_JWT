@@ -166,12 +166,6 @@ const User = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* if dạng js */}
-                            {/* { 'if'
-                            <>Đúng thì ra kq ở đây</>
-                            :
-                            <>Sai thì ra kq ở đây</>
-                        } */}
                             {listUsers && listUsers.length > 0 ?
                                 <>
                                     {listUsers.map((item, index) => {

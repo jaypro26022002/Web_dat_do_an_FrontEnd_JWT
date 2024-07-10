@@ -1,20 +1,22 @@
+// Inside Product.js
+
 import React, { useEffect, useState } from 'react';
 import '../pagesAdmin/Product.scss';
 import { fetchAllProduct, deleteProduct } from '../../services/userService';
 import ReactPaginate from 'react-paginate';
 import { toast } from 'react-toastify';
 import ModalProduct from '../Modal/ModalProduct';
+import ModalDeleteProduct from "../Modal/ModalDeleteProduct";
 
 const Product = () => {
     const [listProduct, setListProduct] = useState([]);
-
-    const [currentPage, setCurrentPage] = useState(2);
+    const [currentPage, setCurrentPage] = useState(1);
     const [currentLimit, setCurrentLimit] = useState(3);
     const [totalPages, setTotalPages] = useState(0);
-    //modal delete
-    const [isShowModalDelete, setIsShowModalDelete] = useState(false);
+
+    const [isShowModalDeleteProduct, setIsShowModalDelete] = useState(false);
     const [dataModal, setDataModal] = useState({});
-    //modal create/edit product
+
     const [isShowModalProduct, setIsShowModalProduct] = useState(false);
     const [actionModalProduct, setActionModalProduct] = useState("CREATE");
     const [dataModalProduct, setDataModalProduct] = useState({});
@@ -122,8 +124,7 @@ const Product = () => {
                                                     <td>{(currentPage - 1) * currentLimit + index + 1}</td>
                                                     <td>{item.id_product}</td>
                                                     <td>
-                                                        <img src={`http://localhost:8081/image/` + item.thumbnail} alt="" style={{ width: '100px', hegiht: '100px' }} />
-
+                                                        <img src={`http://localhost:8081/image/` + item.thumbnail} alt="" style={{ width: '100px', height: '100px' }} />
                                                     </td>
                                                     <td>{item.nameProduct}</td>
                                                     <td>{item.price}</td>
@@ -149,7 +150,7 @@ const Product = () => {
                                     </>
                                     :
                                     <>
-                                        <tr><td colSpan="8">Not Found</td></tr></>
+                                        <tr><td colSpan="12">Not Found</td></tr></>
                                 }
                             </tbody>
                         </table>
@@ -182,6 +183,12 @@ const Product = () => {
                 </div>
             </div >
 
+            <ModalDeleteProduct
+                show={isShowModalDeleteProduct}
+                handleClose={handleClose}
+                ConfirmDeleteProduct={ConfirmDeleteProduct}
+                dataModal={dataModal}
+            />
             <ModalProduct
                 onHide={onHideModalProduct}
                 show={isShowModalProduct}

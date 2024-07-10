@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Honk:MORF@36&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playwrite+RO:wght@100..400&display=swap');
+
+.fonts-1 {
+    font-family: "Bungee Spice", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.fonts-2 {
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
 .home {
     display: flex;
 }
@@ -54,4 +70,87 @@
     flex: 1;
     padding: 0 20px;
     flex-direction: column;
+}
+
+.footer {
+    ul {
+        list-style-type: none;
+
+        li {
+            a {
+                cursor: pointer;
+                color: #f9f9f9;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .footer-infor {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .nav-links {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
+
+    .nav-links i {
+        margin-right: 8px;
+    }
+
+    /* CSS */
+    .a1:hover .fa-facebook {
+        color: #3b5998;
+        /* Màu xanh của Facebook */
+    }
+
+    .a2:hover .fa-twitter {
+        color: #1da1f2;
+        /* Màu xanh của Twitter */
+    }
+
+    .a3:hover .fa-google {
+        color: #db4437;
+        /* Màu đỏ của Google */
+    }
+
+    .a4:hover .fa-instagram {
+        color: #e4405f;
+        /* Màu hồng của Instagram */
+    }
+
+    .a5:hover .fa-github {
+        color: #171515;
+        /* Màu đen của Github */
+    }
+
+    .fa {
+        font-size: 20px;
+    }
+}
+
+.infor {
+    li {
+        padding-bottom: 15px;
+    }
+}
+
+.gachngang {
+    padding: 20px;
+    background-color: #b8555d;
+    border-radius: 20px;
 }

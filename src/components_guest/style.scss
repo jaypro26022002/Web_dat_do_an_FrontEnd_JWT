@@ -1,109 +1,19 @@
-// .home {
-//     display: flex;
-// }
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Honk:MORF@36&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playwrite+RO:wght@100..400&display=swap');
 
-// .productContainer {
-//     display: flex;
-//     width: 78%;
-//     padding: 20px;
-//     flex-wrap: wrap;
-//     justify-content: space-around;
-// }
+.fonts-1 {
+    font-family: "Bungee Spice", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 
-// .filters {
-//     background-color: #343a40;
-//     color: white;
-//     padding: 20px;
-//     display: flex;
-//     flex-direction: column;
-//     width: 100%;
-//     margin: 10px;
-//     height: 86vh;
-// }
+}
 
-// .filters>span {
-//     padding-bottom: 20px;
-// }
+.fonts-2 {
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: normal;
+}
 
-// .title {
-//     font-size: 30px;
-// }
-
-// .products {
-//     width: 21%;
-//     margin: 10px;
-// }
-
-// .cartitem {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     margin: 0 20px;
-//     margin-bottom: 20px;
-// }
-
-// .cartItemImg {
-//     border-radius: 50%;
-//     width: 50px;
-//     height: 50px;
-//     object-fit: cover;
-// }
-
-// .cartItemDetail {
-//     display: flex;
-//     flex: 1;
-//     padding: 0 20px;
-//     flex-direction: column;
-// }
-
-// .home-main {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     width: 100%;
-// }
-
-// .home {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     width: 100%;
-// }
-
-// .shop-container {
-//     display: flex;
-//     align-items: flex-start;
-//     width: 100%;
-//     justify-content: flex-start; // Aligns the items to the start of the container
-//     margin-bottom: 20px;
-// }
-
-// .filters-container {
-//     margin-right: 20px; // Ensures space between Filters and shop details
-//     flex-shrink: 0; // Prevents the filters from shrinking
-// }
-
-// .shop-details {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     flex-grow: 1; // Allows shop details to take up the remaining space
-// }
-
-// .productContainer {
-//     width: 100%;
-//     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: center;
-// }
-
-// .shop-image {
-//     margin-bottom: 10px; // Ensures space between image and details
-// }
-
-// .form-control {
-//     margin-bottom: 10px;
-// }
 .color {
     background-color: #f2f2f2;
 }

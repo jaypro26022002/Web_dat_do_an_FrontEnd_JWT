@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Honk:MORF@36&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playwrite+RO:wght@100..400&display=swap');
 
-.font-1 {
-    font-family: "Luckiest Guy", cursive;
+.font-new-1 {
+    font-family: "Bungee Spice", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-.font-2 {
+.font-new-2 {
     font-family: "IBM Plex Serif", serif;
     font-weight: 500;
     font-style: normal;
@@ -96,8 +96,106 @@ main {
 
         .ad-a {
             text-decoration: none;
+            display: inline-block;
+            background-color: #d441d18a;
+            /* Màu nền của nút */
+            color: #5c4a4a;
+            /* Màu chữ của nút */
+            text-decoration: none;
+            /* Xóa gạch chân mặc định cho các liên kết */
+            padding: 1px 20px;
+            /* Độ dày lề bên trong của nút */
+            border-radius: 30%;
+            /* Tạo hình dạng nút tròn */
+            text-align: center;
+            /* Căn giữa nội dung của nút */
+            width: 100px;
+            /* Độ rộng của nút */
+            height: 80px;
+            /* Độ cao của nút */
+            line-height: 100px;
+            /* Dòng chữ giữa cao và rộng */
+            font-size: 20px;
+            /* Kích cỡ chữ của nút */
+            transition: background-color 0.3s ease;
+            /* Hiệu ứng chuyển đổi khi hover */
+        }
+
+        .ad-a:hover {
+            background-color: #bed71e;
+            /* Thay đổi màu nền khi di chuột qua */
+        }
+    }
+}
+
+
+.footer {
+    ul {
+        list-style-type: none;
+
+        li {
+            a {
+                cursor: pointer;
+                color: #f9f9f9;
+                text-decoration: none;
+            }
         }
     }
 
+    .footer-infor {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
 
+    .nav-links {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
+
+    .nav-links i {
+        margin-right: 8px;
+    }
+
+    /* CSS */
+    .a1:hover .fa-facebook {
+        color: #3b5998;
+        /* Màu xanh của Facebook */
+    }
+
+    .a2:hover .fa-twitter {
+        color: #1da1f2;
+        /* Màu xanh của Twitter */
+    }
+
+    .a3:hover .fa-google {
+        color: #db4437;
+        /* Màu đỏ của Google */
+    }
+
+    .a4:hover .fa-instagram {
+        color: #e4405f;
+        /* Màu hồng của Instagram */
+    }
+
+    .a5:hover .fa-github {
+        color: #171515;
+        /* Màu đen của Github */
+    }
+
+    .fa {
+        font-size: 20px;
+    }
 }

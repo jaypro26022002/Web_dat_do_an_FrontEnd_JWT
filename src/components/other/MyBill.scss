@@ -1,25 +1,35 @@
 .my-bill-container {
-    max-width: 600px;
-    margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    font-weight: bold;
-}
-
-.form-group input {
+.order-table {
     width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.order-table th,
+.order-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 30px;
+}
+
+.order-table th {
+    background-color: #b96464;
+}
+
+.order-details {
+    margin-top: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
+    background-color: #4f95b3;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box;
+    font-size: 30px;
 }

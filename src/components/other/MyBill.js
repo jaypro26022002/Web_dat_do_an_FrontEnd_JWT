@@ -6,6 +6,7 @@ const MyBill = () => {
     const [orderData, setOrderData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [items, setItems] = useState([]);
 
     const location = useLocation();
 
@@ -18,6 +19,11 @@ const MyBill = () => {
         const minutes = ("0" + date.getMinutes()).slice(-2);
         const seconds = ("0" + date.getSeconds()).slice(-2);
         return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+    };
+
+    const formatAmount = (amount) => {
+        // Định dạng số với không có phần phân tách nghìn và không có chữ số thập phân
+        return parseFloat(amount).toLocaleString('en', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     };
 
     useEffect(() => {
@@ -33,6 +39,8 @@ const MyBill = () => {
                 const message = queryParams.get('message');
                 const payType = queryParams.get('payType') || 'N/A';
                 const responseTime = queryParams.get('responseTime');
+                const extraData = decodeURIComponent(queryParams.get('extraData'));
+                const items = JSON.parse(extraData);
 
                 const order = {
                     partnerCode,
@@ -47,6 +55,7 @@ const MyBill = () => {
                 };
 
                 setOrderData(order);
+                setItems(items);
             } catch (error) {
                 console.error('Error fetching order data:', error);
                 setError('Error fetching order data');
@@ -75,48 +84,46 @@ const MyBill = () => {
             <h1>{orderData.message}</h1>
             <h1>THÔNG TIN ĐƠN HÀNG</h1>
             <p><a href='/home'>Bạn có muốn đặt thêm</a></p>
-            <form>
-                <div className="form-group">
-                    <label>Partner Code</label>
-                    <input type="text" value={orderData.partnerCode} readOnly />
-                </div>
-                <div className="form-group">
-                    <label>Mã đơn hàng</label>
-                    <input type="text" value={orderData.orderId} readOnly />
-                </div>
-                <div className="form-group">
-                    <label>Số tiền</label>
-                    <input type="text" value={orderData.amount} readOnly />
-                </div>
-                <div className="form-group">
-                    <label>Thông tin đơn hàng</label>
-                    <input type="text" value={orderData.orderInfo} readOnly />
-                </div>
-                <div className="form-group">
-                    <label>Mã giao dịch</label>
-                    <input type="text" value={orderData.transId} readOnly />
-                </div>
-                <div className="form-group">
-                    <label>Mã kết quả</label>
-                    <input type="text" value={orderData.resultCode} readOnly />
-                </div>
-                <div className="form-group">
-                    <label>Hình thức thanh toán</label>
-                    <input type="text" value={orderData.payType} readOnly />
-                </div>
-                <div className="form-group">
-                    <label>Thời gian phản hồi</label>
-                    <input type="text" value={formatResponseTime(orderData.responseTime)} readOnly />
-                </div>
-            </form>
+
+            <table className="order-table">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.nameProduct}</td>
+                            <td>{item.quantity}</td>
+                            <td>{parseFloat(item.price).toLocaleString('en', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                            <td>{(parseFloat(item.price) * item.quantity).toLocaleString('en', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
+            <div className="order-details">
+                <p>Mã đơn hàng: {orderData.orderId}</p>
+                <p>Số tiền: {formatAmount(orderData.amount)} VND</p>
+                <p>Thông tin đơn hàng: {orderData.orderInfo}</p>
+                <p>Mã giao dịch: {orderData.transId}</p>
+                <p>Loại thanh toán: {orderData.payType}</p>
+                <p>Thời gian phản hồi: {formatResponseTime(orderData.responseTime)}</p>
+            </div>
         </div>
     );
 };
 
 export default MyBill;
 
+
 // import React, { useEffect, useState } from 'react';
 // import { useLocation } from 'react-router-dom';
+// import './MyBill.scss'; // Import CSS file for styling
 
 // const MyBill = () => {
 //     const [orderData, setOrderData] = useState(null);
@@ -125,7 +132,6 @@ export default MyBill;
 
 //     const location = useLocation();
 
-//     // Hàm chuyển đổi thời gian từ timestamp sang chuỗi "ngày/tháng/năm giờ:phút:giây"
 //     const formatResponseTime = (timestamp) => {
 //         const date = new Date(parseInt(timestamp));
 //         const year = date.getFullYear();
@@ -138,26 +144,19 @@ export default MyBill;
 //     };
 
 //     useEffect(() => {
-
-//         // Hàm chuyển đổi thời gian từ timestamp sang chuỗi "giờ phút giây"
-
-
 //         const fetchOrderData = async () => {
 //             try {
 //                 const queryParams = new URLSearchParams(location.search);
-
-//                 // Extract relevant parameters
 //                 const partnerCode = queryParams.get('partnerCode');
 //                 const orderId = queryParams.get('orderId');
-//                 const amount = queryParams.get('amount') || 'N/A'; // Default to 'N/A' if amount is empty
+//                 const amount = queryParams.get('amount') || 'N/A';
 //                 const orderInfo = queryParams.get('orderInfo');
 //                 const transId = queryParams.get('transId');
 //                 const resultCode = queryParams.get('resultCode');
 //                 const message = queryParams.get('message');
-//                 const payType = queryParams.get('payType') || 'N/A'; // Default to 'N/A' if payType is empty
+//                 const payType = queryParams.get('payType') || 'N/A';
 //                 const responseTime = queryParams.get('responseTime');
 
-//                 // Build order data object
 //                 const order = {
 //                     partnerCode,
 //                     orderId,
@@ -195,50 +194,74 @@ export default MyBill;
 //     }
 
 //     return (
-//         <div>
-//             <h1>{orderData.message}</h1> {/* Display MoMo response message */}
+//         <div className="my-bill-container">
+//             <h1>{orderData.message}</h1>
 //             <h1>THÔNG TIN ĐƠN HÀNG</h1>
+//             <p><a href='/home'>Bạn có muốn đặt thêm</a></p>
+
+//             <form>
+//                 <table className="table table-bordered table-hover">
+//                     <thead>
+//                         <tr>
+//                             <th scope="col">Tên sản phẩm</th>
+//                             <th scope="col">Giá</th>
+//                             <th scope="col">Số lượng</th>
+//                         </tr>
+//                     </thead>
+//                     <tbody>
+//                         {listUsers && listUsers.length > 0 ?
+//                             <>
+//                                 {listUsers.map((item, index) => {
+//                                     return (
+//                                         <tr key={`row-${index}`}>
+//                                             <td>{item.nameProduct}</td>
+//                                             <td>{item.price}</td>
+//                                             <td>{item.quantity}</td>
+//                                         </tr>
+//                                     )
+//                                 })}
+//                             </>
+//                             :
+//                             <>
+//                                 <tr><td>Not Found</td></tr></>
+//                         }
+//                     </tbody>
+//                 </table>
+//             </form>
+
 //             <form>
 //                 <div className="form-group">
-//                     <label htmlFor="partnerCode">Partner Code</label>
-//                     <input type="text" className="form-control" id="partnerCode" value={orderData.partnerCode} readOnly />
+//                     <label>Partner Code</label>
+//                     <input type="text" value={orderData.partnerCode} readOnly />
 //                 </div>
 //                 <div className="form-group">
-//                     <label htmlFor="orderId">Mã đơn hàng</label>
-//                     <input type="text" className="form-control" id="orderId" value={orderData.orderId} readOnly />
+//                     <label>Mã đơn hàng</label>
+//                     <input type="text" value={orderData.orderId} readOnly />
 //                 </div>
 //                 <div className="form-group">
-//                     <label htmlFor="amount">Số tiền</label>
-//                     <input type="text" className="form-control" id="amount" value={orderData.amount} readOnly />
+//                     <label>Số tiền</label>
+//                     <input type="text" value={orderData.amount} readOnly />
 //                 </div>
 //                 <div className="form-group">
-//                     <label htmlFor="orderInfo">Thông tin đơn hàng</label>
-//                     <input type="text" className="form-control" id="orderInfo" value={orderData.orderInfo} readOnly />
+//                     <label>Thông tin đơn hàng</label>
+//                     <input type="text" value={orderData.orderInfo} readOnly />
 //                 </div>
 //                 <div className="form-group">
-//                     <label htmlFor="transId">Mã giao dịch</label>
-//                     <input type="text" className="form-control" id="transId" value={orderData.transId} readOnly />
+//                     <label>Mã giao dịch</label>
+//                     <input type="text" value={orderData.transId} readOnly />
 //                 </div>
 //                 <div className="form-group">
-//                     <label htmlFor="resultCode">Mã kết quả</label>
-//                     <input type="text" className="form-control" id="resultCode" value={orderData.resultCode} readOnly />
+//                     <label>Mã kết quả</label>
+//                     <input type="text" value={orderData.resultCode} readOnly />
 //                 </div>
 //                 <div className="form-group">
-//                     <label htmlFor="payType">Hình thức thanh toán</label>
-//                     <input type="text" className="form-control" id="payType" value={orderData.payType} readOnly />
+//                     <label>Hình thức thanh toán</label>
+//                     <input type="text" value={orderData.payType} readOnly />
 //                 </div>
-//                 {/* // Đoạn JSX để hiển thị thời gian phản hồi */}
 //                 <div className="form-group">
-//                     <label htmlFor="responseTime">Thời gian phản hồi</label>
-//                     <input
-//                         type="text"
-//                         className="form-control"
-//                         id="responseTime"
-//                         value={formatResponseTime(orderData.responseTime)}
-//                         readOnly
-//                     />
+//                     <label>Thời gian phản hồi</label>
+//                     <input type="text" value={formatResponseTime(orderData.responseTime)} readOnly />
 //                 </div>
-
 //             </form>
 //         </div>
 //     );

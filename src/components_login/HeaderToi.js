@@ -7,13 +7,14 @@ import { AiFillDelete } from "react-icons/ai";
 const HeaderToi = () => {
   const {
     state: { cart },
-    dispatch
+    dispatch,
+    productDispatch
   } = CartState();
 
   const history = useHistory();
 
   const handleGoToCart = () => {
-    console.log('Navigating to /carts'); // Debugging log
+    // console.log('Navigating to /carts'); // Debugging log
     history.push('/Toicarts');
   };
 
@@ -21,17 +22,23 @@ const HeaderToi = () => {
     <Navbar bg="dark" variant="dark" style={{ height: 80 }}>
       <Container>
         <Navbar.Brand>
-          <span>Mua sắm</span>
+          <span to="/">Mua sắm</span>
         </Navbar.Brand>
         <Navbar.Text className="search">
           <FormControl
             style={{ width: 500 }}
             placeholder="Search a product"
             className="m-auto"
+            onChange={(e) => {
+              productDispatch({
+                type: "FILTER_BY_SEARCH",
+                payload: e.target.value,
+              });
+            }}
           />
         </Navbar.Text>
         <Nav>
-          <Dropdown>
+          <Dropdown >
             <Dropdown.Toggle variant="success">
               <FaShoppingCart color="white" fontSize="25px" />
               <Badge>{cart.length}</Badge>
@@ -40,7 +47,7 @@ const HeaderToi = () => {
             <Dropdown.Menu style={{ minWidth: 5 }}>
               {cart.length > 0 ? (
                 <>
-                  {cart.map(prod => (
+                  {cart.map((prod) => (
                     <span className="cartitem" key={prod.id_product}>
                       <img
                         src={`http://localhost:8081/image/` + prod.thumbnail}
@@ -49,7 +56,7 @@ const HeaderToi = () => {
                       />
                       <div className="cartItemDetail">
                         <span>{prod.nameProduct}</span>
-                        <span>{prod.price}₫</span>
+                        <span>₫ {prod.price}</span>
                       </div>
                       <AiFillDelete
                         fontSize="20px"
