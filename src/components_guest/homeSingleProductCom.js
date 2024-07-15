@@ -16,7 +16,7 @@ const SingleProduct = ({ prod }) => {
         className="product-image"
       />
       <Card.Body>
-        <Card.Title className="fonts-1">{prod.nameProduct}</Card.Title>
+        <Card.Title className="fonts-3">{prod.nameProduct}</Card.Title>
         <Card.Subtitle style={{ paddingBottom: 10 }}>
           <span className="fonts-2">{prod.price}₫</span>
           {prod.fastDelivery ? (

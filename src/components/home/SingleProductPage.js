@@ -16,13 +16,13 @@ const SingleProductPage = ({ prod }) => {
         className="product-image"
       />
       <Card.Body>
-        <Card.Title className="fonts-1">{prod.nameProduct}</Card.Title>
+        <Card.Title className="font-3">{prod.nameProduct}</Card.Title>
         <Card.Subtitle style={{ paddingBottom: 10 }}>
           <span className="fonts-2">{prod.price}₫</span>
           {prod.fastDelivery ? (
             <div className="fonts-2">Giao hàng nhanh</div>
           ) : (
-            <div className="fonts-2">giao trong 30 phút</div>
+            <div className="fonts-2">Giao trong 30 phút</div>
           )}
           <Rating rating={prod.ratings} />
         </Card.Subtitle>

@@ -1,4 +1,4 @@
-import { CartState } from "../context_cart/Context";
+import { CartState } from "../context_home/Context Event";
 
 import { Button, ListGroup, Col, Row, Image } from "react-bootstrap";
 import { useEffect, useState } from "react";

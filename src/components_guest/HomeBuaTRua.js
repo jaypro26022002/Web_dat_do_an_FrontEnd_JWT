@@ -4,6 +4,8 @@ import Filters from "../components_login/filter/FiltersTrua";
 import './style.scss';
 import { Navbar } from 'react-bootstrap';
 import logo from '../components/home/img/icon.gif';
+import React, { useEffect, useState } from 'react';
+
 
 const HomeTruaLogin = () => {
   const {
@@ -11,9 +13,10 @@ const HomeTruaLogin = () => {
     productState: { sort, byStock, byFastDelivery, byRating, searchQuery },
   } = CartState();
 
-  // useEffect(() => {
-  //   console.log("Initial products in Home component:", products);
-  // }, [products]);
+  useEffect(() => {
+    // Scroll to top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   const transformProducts = () => {
     let sortedProducts = products;
@@ -94,16 +97,16 @@ const HomeTruaLogin = () => {
                   <span href='/' className='brand-name'></span>
                 </Navbar.Brand>
               </div>
-              <ul class="nav-links">
+              <ul className="nav-links">
                 <li><a href="/">Trang chủ</a></li>
                 <li><a href="/">Giới thiệu về chúng tôi</a></li>
                 <li><a href="login">Trở thành khách hàng của chúng tôi</a></li>
                 <li><a href="/new">Tin tức</a></li>
               </ul>
-              <ul class="nav-links">
-                <li><i class="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
-                <li><i class="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
-                <li><i class="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
+              <ul className="nav-links">
+                <li><i className="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
+                <li><i className="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
+                <li><i className="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
               </ul>
             </div>
           </div>

@@ -31,12 +31,14 @@ const Login = (props) => {
         //b1: check valueLogin la email or phone
         if (!valueLogin) {
             setObjCheckInput({ ...defaultValidInput, isValidValueLogin: false });
-            toast.error("Please enter email address or phone");
+            // toast.error("Please enter email address or phone");
+            toast.error("Làm ơn điền email vào");
             return;
         }
         if (!password) {
             setObjCheckInput({ ...defaultValidInput, isValidPass: false });
             toast.error("please enter your password");
+            toast.error("Làm ơn điền mật khẩu vào");
             return;
         }
         let response = await loginUser(valueLogin, password);

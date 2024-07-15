@@ -9,6 +9,8 @@ import React, { useState, useEffect } from 'react';
 const HomeLogin = ({ prod }) => {
     const { state: { products } } = CartState();
     const [showScroll, setShowScroll] = useState(false);
+    const [currentPage, setCurrentPage] = useState(0);
+    const productsPerPage = 4;
 
     const checkScrollTop = () => {
         if (!showScroll && window.pageYOffset > 400) {
@@ -20,6 +22,20 @@ const HomeLogin = ({ prod }) => {
 
     const scrollTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const nextProducts = () => {
+        const nextPage = currentPage + 1;
+        if (nextPage < Math.ceil(products.length / productsPerPage)) {
+            setCurrentPage(nextPage);
+        }
+    };
+
+    const prevProducts = () => {
+        const prevPage = currentPage - 1;
+        if (prevPage >= 0) {
+            setCurrentPage(prevPage);
+        }
     };
 
     useEffect(() => {
@@ -73,7 +89,7 @@ const HomeLogin = ({ prod }) => {
                     </div>
 
                     <div className='title-shop pt-4 clear fonts-1'>
-                        <h1>Cửa hàng phổ biến: </h1>
+                        <h1>Cửa hàng phổ biến </h1>
                     </div>
                     <div className='shop pb-4 pt-4'>
                         <div className="section_shop">
@@ -100,14 +116,25 @@ const HomeLogin = ({ prod }) => {
                         </div>
                     </div>
                     <div className='title-product fonts-1'>
-                        <h1>Menu:</h1>
+                        <h1>Menu</h1>
                     </div>
-                    <div className="home-product mt-4">
-                        <div className="productContainer">
-                            {products.map((prod) => {
-                                return <SingleProductLogin prod={prod} key={prod.id_product} />
-                            })}
-                        </div>
+
+                    <div className="home-product-login mt-4">
+                        {/* Display products based on currentPage */}
+                        {products.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
+                            .map((prod) => (
+                                <SingleProductLogin prod={prod} key={prod.id_product} />
+                            ))}
+                    </div>
+
+                    {/* Navigation buttons */}
+                    <div className="pagination-buttons">
+                        <button onClick={prevProducts} disabled={currentPage === 0}>
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i> Previous
+                        </button>
+                        <button onClick={nextProducts} disabled={(currentPage + 1) * productsPerPage >= products.length}>
+                            Next <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
                     </div>
 
                     <div className='infor'>
@@ -161,16 +188,16 @@ const HomeLogin = ({ prod }) => {
                                     <span href='/' className='brand-name'></span>
                                 </Navbar.Brand>
                             </div>
-                            <ul class="nav-links">
+                            <ul className="nav-links">
                                 <li><a href="/">Trang chủ</a></li>
                                 <li><a href="/">Giới thiệu về chúng tôi</a></li>
                                 <li><a href="login">Trở thành khách hàng của chúng tôi</a></li>
                                 <li><a href="/new">Tin tức</a></li>
                             </ul>
-                            <ul class="nav-links">
-                                <li><i class="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
-                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
+                            <ul className="nav-links">
+                                <li><i className="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
+                                <li><i className="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
+                                <li><i className="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
                             </ul>
                         </div>
                     </div>

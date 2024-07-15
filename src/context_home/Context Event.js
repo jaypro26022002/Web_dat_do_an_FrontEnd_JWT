@@ -1,17 +1,18 @@
 import React, { useContext, useReducer, useEffect, useState } from "react";
-import { fetchAllProductToi } from "../services/cartService";
+import { fetchAllProductEvent } from "../services/userService";
 import { cartReduce } from "../context_cart/Reducers";
 import { productReducer } from "../context_cart/Reducers";
 
+
 const CartContext = React.createContext(null);
 
-const Context7 = ({ children }) => {
+const Context8 = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetchAllProductToi();
+      const response = await fetchAllProductEvent();
       if (response.EC === 0) {
         setProducts(response.DT);
         setLoading(false);
@@ -51,8 +52,7 @@ const Context7 = ({ children }) => {
   );
 };
 
-
-export default Context7;
+export default Context8;
 
 export const CartState = () => {
   return useContext(CartContext);

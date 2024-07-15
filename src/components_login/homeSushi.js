@@ -1,4 +1,4 @@
-import { fetchShop3 } from "../services/cartService";
+import { fetchShop3, fetchComments3 } from "../services/cartService";
 import React, { useEffect, useState } from 'react';
 import { CartState } from "../context_home/Context Sushi";
 import SingleProduct from './homeSingleProductSushi';
@@ -6,20 +6,33 @@ import Filters from "../components_login/filter/FiltersSushi";
 import './style.scss';
 import { Navbar } from 'react-bootstrap';
 import logo from '../components/home/img/icon.gif';
-
+import HeaderSushi from "./Headersushi";
 const HomeSushiLogin = () => {
   const {
     state: { products },
     productState: { sort, byStock, byFastDelivery, byRating, searchQuery },
   } = CartState();
 
+  useEffect(() => {
+    // Scroll to top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
   const [shop, setShop] = useState({});
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchShopDetails = async () => {
       const data = await fetchShop3();
       setShop(data.DT[0]);  // Assuming data.DT is an array of shop details
     };
+
+    const fetchShopComments3 = async () => {
+      const data = await fetchComments3(3); // Assuming shop ID is 1
+      setComments(data.DT);
+    };
+
+    fetchShopComments3();
     fetchShopDetails();
   }, []);
 
@@ -57,6 +70,7 @@ const HomeSushiLogin = () => {
 
   return (
     <div className="home-main">
+      <HeaderSushi />
       <div className='container'>
         <div className="container_shop ">
           <div className="image">
@@ -82,6 +96,20 @@ const HomeSushiLogin = () => {
           ))}
         </div>
       </div>
+
+      <hr />
+      <div className='container'>
+        <h2>Đánh giá sản phẩm</h2>
+        {comments.map(comment => (
+          <div key={comment.id_contact} className="form-group pb-4">
+            <label className='comment-fa'><i className="fa fa-user-circle-o" aria-hidden="true"></i> {comment.nameUser}</label>
+            <br />
+            <p className="form-control comment-description">{comment.description}</p>
+            <p className=''>{new Date(comment.createdAt).toLocaleString()}</p>
+          </div>
+        ))}
+      </div>
+
       <div className="footer">
         <footer className='footer bg-dark text-white'>
           <div className='container p-4 pb-0'>
@@ -119,16 +147,16 @@ const HomeSushiLogin = () => {
                   <span href='/' className='brand-name'></span>
                 </Navbar.Brand>
               </div>
-              <ul class="nav-links">
+              <ul className="nav-links">
                 <li><a href="/">Trang chủ</a></li>
                 <li><a href="/">Giới thiệu về chúng tôi</a></li>
                 <li><a href="login">Trở thành khách hàng của chúng tôi</a></li>
                 <li><a href="/new">Tin tức</a></li>
               </ul>
-              <ul class="nav-links">
-                <li><i class="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
-                <li><i class="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
-                <li><i class="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
+              <ul className="nav-links">
+                <li><i className="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
+                <li><i className="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
+                <li><i className="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
               </ul>
             </div>
           </div>

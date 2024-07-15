@@ -111,6 +111,7 @@ const Shop = (props) => {
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col">Thời gian hoạt động</th>
                                 <th scope="col">Hạn tiền nhà hàng chi tiêu</th>
+                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>

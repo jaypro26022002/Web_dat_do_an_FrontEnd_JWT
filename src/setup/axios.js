@@ -32,12 +32,14 @@ instance.interceptors.response.use(function (response) {
     switch (status) {
         // authentication (token related issues)
         case 401: {
-            toast.error('Unauthourized the user. Please login....');
+            // toast.error('Unauthourized the user. Please login....');
+            toast.error('Bạn không có tài khoản. Làm ơn đăng nhập....');
             return error.response.data;
         }
         // forbidden (permission related issues)
         case 403: {
-            toast.error(`You don't have the permissions to access this resource...`);
+            // toast.error(`You don't have the permissions to access this resource...`);
+            toast.error(`Bạn không có quyền truy cập vào...`);
             return Promise.reject(error);
         }
         // bad request

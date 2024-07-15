@@ -102,10 +102,7 @@ const Chekorder = () => {
                       <td>{item.createdAt}</td>
                       <td>
                         <span className="mx-3" onClick={() => handleEditCheckorder(item)}>
-                          <i className="fa fa-pencil edit" aria-hidden="true"></i>
-                        </span>
-                        <span className="mx-3">
-                          <i className="fa fa-trash delete" aria-hidden="true"></i>
+                          <i className="fa fa-eye edit" aria-hidden="true"></i>
                         </span>
                       </td>
                     </tr>

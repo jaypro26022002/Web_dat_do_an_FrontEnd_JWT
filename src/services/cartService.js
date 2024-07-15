@@ -35,6 +35,22 @@ const fetchShop4 = () => {
     return axios.get(`/api/v1/shop/readShop4`);//template string
 }
 
+const fetchAllComments = () => {
+    return axios.get(`/api/v1/shop1/readContactshop`);
+}
+const fetchComments = (shopId) => {
+    return axios.get(`/api/v1/shop1/${shopId}/comments`);
+}
+const fetchComments2 = (shopId) => {
+    return axios.get(`/api/v1/shop2/${shopId}/comments`);
+}
+const fetchComments3 = (shopId) => {
+    return axios.get(`/api/v1/shop3/${shopId}/comments`);
+}
+const fetchComments4 = (shopId) => {
+    return axios.get(`/api/v1/shop4/${shopId}/comments`);
+}
+
 
 const checkorder_status = (orderData) => {
     return axios.post('/api/v1/check-status-transaction', orderData) // Adjust the endpoint as needed
@@ -57,5 +73,6 @@ export {
     fetchAllProductCom, fetchAllProductKFC, fetchAllProductSushi, fetchAllProductBun,
     fetchAllProductSang, fetchAllProductTrua, fetchAllProductToi,
     createOrder, createMoMoPayment, checkorder_status, checkbill,
-    fetchShop1, fetchShop2, fetchShop3, fetchShop4
+    fetchShop1, fetchShop2, fetchShop3, fetchShop4,
+    fetchComments, fetchComments2, fetchComments3, fetchComments4, fetchAllComments
 }

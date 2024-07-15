@@ -21,7 +21,7 @@ const fetchFeedback = () => {
     return axios.get('/api/v1/feedback/readContact');//template string
 }
 const contactNew = (contactData) => {
-    return axios.post('/api/v1/contact', { ...contactData })
+    return axios.post('/api/v1/create/contact', { ...contactData })
 }
 const loginUser = (valueLogin, password) => {
     return axios.post('/api/v1/login', {
@@ -102,6 +102,9 @@ const updateCurrentShop = (shopData) => {
 const fetchAllProduct1 = () => {
     return axios.get(`/api/v1/product/read1`);//template string
 }
+const fetchAllProductEvent = () => {
+    return axios.get(`/api/v1/product/readevent`);//template string
+}
 
 const getUserAccount = () => {
     return axios.get(`/api/v1/account`);
@@ -152,5 +155,6 @@ export {
     fetchFeedback,
     fetchAllOrder, fetchOrderDetailsByOrderId,
     fetchAllCheckDoanhThu, fetchAllCheckDoanhThuDetail,
-    fetchAllUserOrder
+    fetchAllUserOrder,
+    fetchAllProductEvent
 };

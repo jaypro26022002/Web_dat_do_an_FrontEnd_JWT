@@ -1,7 +1,7 @@
 import { Badge, Container, Dropdown, FormControl, Nav, Navbar, Button } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
-import { CartState } from "../context_cart/Context";
+import { CartState } from "../context_home/Context Event";
 import { AiFillDelete } from "react-icons/ai";
 import "./style.scss";
 
@@ -57,7 +57,7 @@ const Header = () => {
                       />
                       <div className="cartItemDetail">
                         <span>{prod.nameProduct}</span>
-                        <span>₫ {prod.price}</span>
+                        <span>{prod.price}₫</span>
                       </div>
                       <AiFillDelete
                         fontSize="20px"

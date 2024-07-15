@@ -40,7 +40,7 @@ const New = () => {
                                 <img className="img-ads" src={require('../home/img/cach-lam-trung-cuon-han-quoc.png').default} alt="Trứng cuộn Hàn Quốc" />
                                 <h3><b className="title-ad px-4 font-1">Khởi đầu mới cho các thánh ăn </b></h3>
                                 <p className="font-2">Bước qua tháng 8, Uncle V tiếp tục đồng hành và chiêu đãi các tín đồ ẩm thực không chỉ là những món ăn thơm ngon hợp với không khí mùa hè mà còn là những chương trình ưu đãi vô cùng hấp dẫn.</p>
-                                <a className="ad-a" href="#">Xem thêm</a>
+                                <a className="ad-a" href="/cart">Xem thêm</a>
                             </div>
                             <hr />
                             <div class="ad pt-4">
@@ -50,7 +50,7 @@ const New = () => {
                                     <li><p className="">COMBO 95K: Bánh mì nướng mật ong + Trà đào cam sả</p></li>
                                     <li><p>COMBO 139K: Bánh mì nướng mật ong + Trà sữa trân châu đường đen</p></li>
                                 </ul>
-                                <a className="ad-a" href="/order">Đặt ngay</a>
+                                <a className="ad-a" href="/cart">Đặt ngay</a>
                             </div>
                         </section>
                     </div>

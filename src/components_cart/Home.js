@@ -1,10 +1,11 @@
-import { CartState } from "../context_cart/Context";
+import { CartState } from "../context_home/Context Event";
 import SingleProduct from '../components_cart/SingleProduct';
 import Filters from "./Filters";
 import './style.scss';
 import { useEffect } from "react";
 import { Navbar } from 'react-bootstrap';
 import logo from '../components/home/img/icon.gif';
+import Header from './Header';
 
 const Home = () => {
   const {
@@ -12,9 +13,10 @@ const Home = () => {
     productState: { sort, byStock, byFastDelivery, byRating, searchQuery },
   } = CartState();
 
-  // useEffect(() => {
-  //   console.log("Initial products in Home component:", products);
-  // }, [products]);
+  useEffect(() => {
+    // Scroll to top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   const transformProducts = () => {
     let sortedProducts = products;
@@ -50,6 +52,7 @@ const Home = () => {
 
   return (
     <div className="home-main">
+      <Header />
       <div className="home">
         <Filters />
         <div className="productContainer">

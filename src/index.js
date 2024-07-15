@@ -13,6 +13,7 @@ import Context4 from './context_home/Context Bun';
 import Context5 from './context_home/Context Sang';
 import Context6 from './context_home/Context Trua';
 import Context7 from './context_home/Context Toi';
+import Context8 from './context_home/Context Event';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 ReactDOM.render(
@@ -26,7 +27,9 @@ ReactDOM.render(
                 <Context5>
                   <Context6>
                     <Context7>
-                      <App />
+                      <Context8>
+                        <App />
+                      </Context8>
                     </Context7>
                   </Context6>
                 </Context5>

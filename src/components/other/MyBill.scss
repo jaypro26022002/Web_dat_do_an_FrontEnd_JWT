@@ -3,7 +3,10 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
 }
+
 
 .order-table {
     width: 100%;
@@ -18,7 +21,7 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .order-table th {
@@ -28,8 +31,9 @@
 .order-details {
     margin-top: 20px;
     padding: 10px;
-    background-color: #4f95b3;
+    background-color: #85bbd0;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 30px;
+    font-size: 14px;
+    text-align: center;
 }

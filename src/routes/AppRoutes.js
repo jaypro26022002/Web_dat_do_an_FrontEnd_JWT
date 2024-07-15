@@ -56,6 +56,8 @@ import CartBun from '../components_login/Cartbun';
 import OrderBun from '../components_login/OrderBun';
 import HeaderBun from '../components_login/Headerbun';
 import HomeBunLogin from '../components_login/HomeBun';
+
+import NavWebLogin from '../components/Navigation/NavWebLogin';
 import {
     Switch,
     Route,
@@ -71,8 +73,15 @@ import Doanhthu from '../components/pagesAdmin/doanhthu';
 const AppRoutes = (props) => {
     return (
         <Switch>
+            {/* PrivateRoutes sẽ check quyền nếu không có tài khoản sẽ đẩy về trang /login */}
             {/* page Admin */}
             <PrivateRoutes path='/user' component={User} />
+            <PrivateRoutes path='/product' component={Product} />
+            <PrivateRoutes path='/shop' component={Shop} />
+            <PrivateRoutes path='/checkorder' component={Checkorder} />
+            <PrivateRoutes path='/doanhthu' component={Doanhthu} />
+            <PrivateRoutes path='/feedback' component={Feedback} />
+
             <Route path="/login">
                 <Login />
             </Route>
@@ -88,27 +97,23 @@ const AppRoutes = (props) => {
             <Route path='/shop'>
                 <Shop />
             </Route>
-            <Route path='/contact'>
-                <Contact />
-            </Route>
             <Route path='/feedback'>
                 <Feedback />
             </Route>
-            <Route path='/new'>
-                <New />
-            </Route>
-
             <Route path='/checkorder'>
                 <Checkorder />
-            </Route>
-            <Route path='/checkbill'>
-                <MyBill />
             </Route>
             <Route path='/doanhthu'>
                 <Doanhthu />
             </Route>
             {/* ================================================ */}
             {/* page main */}
+            <Route path='/contact'>
+                <Contact />
+            </Route>
+            <Route path='/new'>
+                <New />
+            </Route>
             <Route path='/com'>
                 <HomeCom />
             </Route>
@@ -131,39 +136,86 @@ const AppRoutes = (props) => {
                 <HomeToi />
             </Route>
 
+
+
             {/* ============================================== */}
             {/* page LOgin */}
-            <Route path='/log/new'>
-                <New />
-            </Route>
-            <Route path='/log/Contact'>
-                <ContactLogin />
-            </Route>
-            <Route path='/home' >
-                <Header />
-                <HomeLogin />
-            </Route>
-            <Route path='/cart' >
-                <Header />
-                <Home />
-            </Route>
-            <Route path='/carts'>
-                <Header />
-                <Cart />
-            </Route>
-            <Route path='/order'>
-                <Order />
-            </Route>
+            <PrivateRoutes path='/userorder' component={UserOrder} />
+            <PrivateRoutes path='/checkbill' component={MyBill} />
+            <PrivateRoutes path='/log/new' component={New} />
+            <PrivateRoutes path='/log/Contact' component={ContactLogin} />
+            <PrivateRoutes path='/home' component={HomeLogin} />
+
+            <PrivateRoutes path='/cart' component={Home} />
+            <PrivateRoutes path='/carts' component={Cart} />
+            <PrivateRoutes path='/order' component={Order} />
+
+            <PrivateRoutes path='/log/com' component={HomeComLogin} />
+            <PrivateRoutes path='/Comcarts' component={CartCom} />
+            <PrivateRoutes path='/Comorder' component={OrderCom} />
+
+            <PrivateRoutes path='/log/kfc' component={HomekfcLogin} />
+            <PrivateRoutes path='Kfccarts' component={Cartkfc} />
+            <PrivateRoutes path='Kfcorder' component={Orderkfc} />
+
+            <PrivateRoutes path='/log/sushi' component={HomeSushiLogin} />
+            <PrivateRoutes path='Sushicarts' component={CartSushi} />
+            <PrivateRoutes path='/Sushiorder' component={OrderSushi} />
+
+            <PrivateRoutes path='/log/bun' component={HomeBunLogin} />
+            <PrivateRoutes path='/Buncarts' component={CartBun} />
+            <PrivateRoutes path='/Bunorder' component={OrderBun} />
+
+            <PrivateRoutes path='/log/sang' component={HomeSangLogin} />
+            <PrivateRoutes path='/Sangcarts' component={CartSang} />
+            <PrivateRoutes path='/Sangorder' component={OrderSang} />
+
+            <PrivateRoutes path='/log/trua' component={HomeTruaLogin} />
+            <PrivateRoutes path='/Truacarts' component={CartTrua} />
+            <PrivateRoutes path='/Truaorder' component={OrderTrua} />
+
+            <PrivateRoutes path='/log/toi' component={HomeToiLogin} />
+            <PrivateRoutes path='/Toicarts' component={CartToi} />
+            <PrivateRoutes path='/Toiorder' component={OrderToi} />
+
+            {/* lich sử order */}
             <Route path='/userorder'>
                 <UserOrder />
             </Route>
+            {/* Bill thanh toán */}
+            <Route path='/checkbill'>
+                <NavWebLogin />
+                <MyBill />
+            </Route>
+            {/* tin tức */}
+            <Route path='/log/new'>
+                <New />
+            </Route>
+            {/* Phản hồi */}
+            <Route path='/log/Contact'>
+                <ContactLogin />
+            </Route>
+            {/* trang chủ */}
+            <Route path='/home' >
+                <HomeLogin />
+            </Route>
+            {/* Trang sự kiện */}
+            <Route path='/cart' >
+                <Home />
+            </Route>
+            {/* Giỏ hàng */}
+            <Route path='/carts'>
+                <Cart />
+            </Route>
+            {/* thanh toán đơn hàng */}
+            <Route path='/order'>
+                <Order />
+            </Route>
             {/* com */}
             <Route path='/log/com'>
-                <HeaderCom />
                 <HomeComLogin />
             </Route>
             <Route path='/Comcarts'>
-                <HeaderCom />
                 <CartCom />
             </Route>
             <Route path='/Comorder'>
@@ -171,11 +223,9 @@ const AppRoutes = (props) => {
             </Route>
             {/*kfc  */}
             <Route path='/log/kfc'>
-                <Headerkfc />
                 <HomekfcLogin />
             </Route>
             <Route path='/Kfccarts'>
-                <Headerkfc />
                 <Cartkfc />
             </Route>
             <Route path='/Kfcorder'>
@@ -183,11 +233,9 @@ const AppRoutes = (props) => {
             </Route>
             {/* sushi */}
             <Route path='/log/sushi'>
-                <HeaderSushi />
                 <HomeSushiLogin />
             </Route>
             <Route path='/Sushicarts'>
-                <HeaderSushi />
                 <CartSushi />
             </Route>
             <Route path='/Sushiorder'>
@@ -195,11 +243,9 @@ const AppRoutes = (props) => {
             </Route>
             {/* bun */}
             <Route path='/log/bun'>
-                <HeaderBun />
                 <HomeBunLogin />
             </Route>
             <Route path='/Buncarts'>
-                <HeaderBun />
                 <CartBun />
             </Route>
             <Route path='/Bunorder'>
@@ -207,11 +253,9 @@ const AppRoutes = (props) => {
             </Route>
             {/* sang */}
             <Route path='/log/sang'>
-                <HeaderSang />
                 <HomeSangLogin />
             </Route>
             <Route path='/Sangcarts'>
-                <HeaderSang />
                 <CartSang />
             </Route>
             <Route path='/Sangorder'>
@@ -219,11 +263,9 @@ const AppRoutes = (props) => {
             </Route>
             {/* trua */}
             <Route path='/log/trua'>
-                <HeaderTrua />
                 <HomeTruaLogin />
             </Route>
             <Route path='/Truacarts'>
-                <HeaderTrua />
                 <CartTrua />
             </Route>
             <Route path='/Truaorder'>
@@ -231,11 +273,9 @@ const AppRoutes = (props) => {
             </Route>
             {/* toi */}
             <Route path='/log/toi'>
-                <HeaderToi />
                 <HomeToiLogin />
             </Route>
             <Route path='/Toicarts'>
-                <HeaderToi />
                 <CartToi />
             </Route>
             <Route path='/Toiorder'>

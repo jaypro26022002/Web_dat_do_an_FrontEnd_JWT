@@ -43,7 +43,7 @@ const CartBun = () => {
                                 <Col md={2}>
                                     <span> {prod.nameProduct}</span>
                                 </Col>
-                                <Col md={2}>$ {prod.price}</Col>
+                                <Col md={2}>{prod.price}₫</Col>
                                 <Col md={2}>
                                     <Rating rating={prod.ratings} />
                                 </Col>

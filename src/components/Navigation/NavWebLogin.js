@@ -36,12 +36,13 @@ const NavWebLogin = (props) => {
         location.pathname === '/Toiorder' || location.pathname === '/Comcarts' || location.pathname === '/Comorder' ||
         location.pathname === '/Kfccarts' || location.pathname === '/Kfcorder' || location.pathname === '/Sushicarts' ||
         location.pathname === '/Sushiorder' || location.pathname === '/Buncarts' || location.pathname === '/Bunorder' ||
-        location.pathname === '/log/new' || location.pathname === '/userorder'
+        location.pathname === '/log/new' || location.pathname === '/userorder' || location.pathname === '/checkbill?partnerCode=MOMO' ||
+        location.pathname === '/checkbill?partnerCode=MOMO'
     ) {
         return (
             <div className="top-nav">
                 <Navbar expand="lg">
-                    <Container fluid>
+                    <Container >
                         <Navbar.Brand href="/">
                             <img
                                 src={logo}
@@ -58,7 +59,7 @@ const NavWebLogin = (props) => {
                                 <Nav className="nav-center">
                                     <NavLink exact to="/home" className="nav-link">Trang chủ</NavLink>
                                     <NavLink exact to="/log/new" className="nav-link">Tin tức</NavLink>
-                                    <NavLink exact to="/cart" className="nav-link">Đặt hàng</NavLink>
+                                    <NavLink exact to="/cart" className="nav-link">Sự kiện</NavLink>
                                     <NavLink exact to="/log/Contact" className="nav-link">Tương tác</NavLink>
                                     <NavLink exact to="/userorder" className="nav-link">Lịch sử đơn hàng</NavLink>
                                 </Nav>

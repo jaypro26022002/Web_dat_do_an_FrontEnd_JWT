@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Honk:MORF@36&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playwrite+RO:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=DM+Serif+Display:ital@0;1&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .font-1 {
     font-family: "Bungee Spice", sans-serif;
@@ -11,6 +12,13 @@
     font-family: "IBM Plex Serif", serif;
     font-weight: 500;
     font-style: normal;
+}
+
+.font-3 {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
 }
 
 .color {
@@ -346,15 +354,13 @@
 .home-product {
     margin-top: 4px;
     display: flex;
+    align-items: center;
     /* Sử dụng flexbox để dễ dàng điều chỉnh layout */
-    margin-left: -40px;
-    margin-right: -100px;
+    // margin-left: -40px;
+    // margin-right: -100px;
 
     /* Sử dụng flexbox để dễ dàng điều chỉnh layout */
-    .productContainer {
-        flex: 1;
-        /* Chiếm hết không gian còn lại của phần tử cha */
-    }
+
 }
 
 
@@ -456,4 +462,34 @@
 .scroll-to-top.show {
     right: 20px;
     /* vị trí hiển thị khi scroll xuống */
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    /* Adjust margin as needed */
+}
+
+.pagination-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.pagination-buttons button i {
+    margin-left: 5px;
 }

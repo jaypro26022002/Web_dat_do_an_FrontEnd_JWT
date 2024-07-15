@@ -16,6 +16,11 @@ const Homekfc = () => {
   const [shop, setShop] = useState({});
 
   useEffect(() => {
+    // Scroll to top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const fetchShopDetails = async () => {
       const data = await fetchShop2();
       setShop(data.DT[0]);  // Assuming data.DT is an array of shop details
@@ -121,16 +126,16 @@ const Homekfc = () => {
                   <span href='/' className='brand-name'></span>
                 </Navbar.Brand>
               </div>
-              <ul class="nav-links">
+              <ul className="nav-links">
                 <li><a href="/">Trang chủ</a></li>
                 <li><a href="/">Giới thiệu về chúng tôi</a></li>
                 <li><a href="login">Trở thành khách hàng của chúng tôi</a></li>
                 <li><a href="/new">Tin tức</a></li>
               </ul>
-              <ul class="nav-links">
-                <li><i class="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
-                <li><i class="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
-                <li><i class="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
+              <ul className="nav-links">
+                <li><i className="fa fa-phone-square" aria-hidden="true"></i><span> Số điện thoại: 0901234567</span></li>
+                <li><i className="fa fa-map-marker" aria-hidden="true"></i><span> Địa chỉ : 67/8 Nguyễn Thái hà phường 5 quận 9, Hồ Chí Minh</span></li>
+                <li><i className="fa fa-envelope-o" aria-hidden="true"></i><span> Email: uncleV@gmal.com</span></li>
               </ul>
             </div>
           </div>

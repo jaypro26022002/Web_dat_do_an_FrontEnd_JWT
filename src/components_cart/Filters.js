@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { CartState } from "../context_cart/Context";
+import { CartState } from "../context_home/Context Event";
 import Rating from "./Rating";
 
 const Filters = () => {

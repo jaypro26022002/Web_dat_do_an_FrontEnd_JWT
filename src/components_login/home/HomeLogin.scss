@@ -400,9 +400,10 @@
 .home-product-login {
     margin-top: 4px;
     display: flex;
+    align-items: center;
     /* Sử dụng flexbox để dễ dàng điều chỉnh layout */
-    margin-left: -60px;
-    margin-right: -130px;
+    // margin-left: -60px;
+    // margin-right: -130px;
 
     /* Sử dụng flexbox để dễ dàng điều chỉnh layout */
     .productContainer-login {

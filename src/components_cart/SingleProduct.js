@@ -1,59 +1,8 @@
-// import { Button, Card } from "react-bootstrap";
-// import { CartState } from '../context_cart/Context';
-// import Rating from "./Rating";
-
-// const SingleProduct = ({ prod }) => {
-//   const {
-//     state: { cart },
-//     dispatch,
-//   } = CartState();
-
-//   return (
-//     <div className="products">
-//       <Card>
-//         <Card.Img
-//           variant="top"
-//           src={`http://localhost:8081/image/` + prod.thumbnail}
-//           style={{ width: '300px', height: '250px' }}
-//           alt={prod.nameProduct}
-//           className="product-image"
-//         />
-//         <Card.Body>
-//           <Card.Title>{prod.nameProduct}</Card.Title>
-//           <Card.Subtitle style={{ paddingBottom: 10 }}>
-//             <span>₹ {prod.price.split(".")[0]}</span>
-//             {prod.fastDelivery ? (
-//               <div>Fast Delivery</div>
-//             ) : (
-//               <div>4 days delivery</div>
-//             )}
-//             <Rating rating={prod.ratings} />
-//           </Card.Subtitle>
-//           <Button
-//             onClick={() =>
-//               dispatch({
-//                 type: "ADD_TO_CART",
-//                 payload: prod,
-//               })
-//             }
-//             disabled={!prod.quantity}
-//           >
-//             {!prod.quantity ? "Out of Stock" : "Add to Cart"}
-//           </Button>
-//         </Card.Body>
-//       </Card>
-//     </div>
-//   );
-// };
-
-// export default SingleProduct;
-
-
 import { Button, Card } from "react-bootstrap";
-import { CartState } from '../context_cart/Context';
+import { CartState } from '../context_home/Context Event';
 import Rating from "./Rating";
 
-const SingleProduct = ({ prod }) => {
+const SingleProductEvent = ({ prod }) => {
   const {
     state: { cart },
     dispatch,
@@ -70,7 +19,8 @@ const SingleProduct = ({ prod }) => {
       <Card.Body>
         <Card.Title className="fonts-1">{prod.nameProduct}</Card.Title>
         <Card.Subtitle style={{ paddingBottom: 10 }}>
-          <span className="fonts-2">{prod.price}₫</span>
+          <del className="fonts-2">Giá Gốc: {prod.pricedown}₫</del> <br />
+          <span className="fonts-2 red">Ưu đãi: {prod.price}₫</span>
           {prod.fastDelivery ? (
             <div className="fonts-2">Giao hàng nhanh</div>
           ) : (
@@ -112,4 +62,4 @@ const SingleProduct = ({ prod }) => {
   )
 }
 
-export default SingleProduct;
+export default SingleProductEvent;

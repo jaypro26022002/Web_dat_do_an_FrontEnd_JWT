@@ -22,10 +22,6 @@ hr {
     /* Căn giữa đường ngang */
 }
 
-body {
-    // background-color: red;
-}
-
 .red {
     color: red;
 }
@@ -38,13 +34,11 @@ body {
 
         font-size: 100px;
         margin-top: 140px;
-        margin-right: 150px;
     }
 
     .tuc {
         font-size: 100px;
         margin-top: 140px;
-        margin-left: 150px;
     }
 
 }
@@ -72,12 +66,13 @@ main {
 }
 
 .recipe h2 {
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
 .recipe p {
     line-height: 1.5;
+    font-size: 18px;
 }
 
 .ads {
@@ -103,7 +98,7 @@ main {
             /* Màu chữ của nút */
             text-decoration: none;
             /* Xóa gạch chân mặc định cho các liên kết */
-            padding: 1px 20px;
+            padding: 1px 20px 1px;
             /* Độ dày lề bên trong của nút */
             border-radius: 30%;
             /* Tạo hình dạng nút tròn */
@@ -111,7 +106,7 @@ main {
             /* Căn giữa nội dung của nút */
             width: 100px;
             /* Độ rộng của nút */
-            height: 80px;
+            height: 98px;
             /* Độ cao của nút */
             line-height: 100px;
             /* Dòng chữ giữa cao và rộng */
@@ -124,6 +119,10 @@ main {
         .ad-a:hover {
             background-color: #bed71e;
             /* Thay đổi màu nền khi di chuột qua */
+        }
+
+        p {
+            font-size: 20px;
         }
     }
 }

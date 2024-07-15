@@ -57,7 +57,7 @@ const HeaderSang = () => {
                       />
                       <div className="cartItemDetail">
                         <span>{prod.nameProduct}</span>
-                        <span>₫ {prod.price}</span>
+                        <span>{prod.price}₫</span>
                       </div>
                       <AiFillDelete
                         fontSize="20px"
