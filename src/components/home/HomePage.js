@@ -108,7 +108,7 @@ const HomePage = ({ prod }) => {
                             </div>
                             <div className="shop3 col-3">
                                 <Link to="/sushi">
-                                    <span>Góc Phố</span>
+                                    <span>Haru haru</span>
                                 </Link>
                             </div>
                             <div className="shop4 col-3">
@@ -132,10 +132,10 @@ const HomePage = ({ prod }) => {
                     {/* Navigation buttons */}
                     <div className="pagination-buttons">
                         <button onClick={prevProducts} disabled={currentPage === 0}>
-                            <i class="fa fa-arrow-left" aria-hidden="true"></i> Previous
+                            <i className="fa fa-arrow-left" aria-hidden="true"></i> Previous
                         </button>
                         <button onClick={nextProducts} disabled={(currentPage + 1) * productsPerPage >= products.length}>
-                            Next <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            Next <i className="fa fa-arrow-right" aria-hidden="true"></i>
                         </button>
                     </div>
 

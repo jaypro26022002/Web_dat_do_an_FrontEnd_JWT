@@ -34,7 +34,7 @@ const fetchAllUser = (page, limit) => {
 }
 
 const deleteUser = (user) => {
-    return axios.delete('/api/v1/user/delete', { data: { id: user.id } });
+    return axios.delete('/api/v1/user/delete', { data: { id_user: user.id_user } });
 }
 
 const fetchGroup = (user) => {
@@ -59,7 +59,7 @@ const updateCurrentProduct = (productData) => {
     return axios.put("/api/v1/product/update", productData)
 }
 const deleteProduct = (product) => {
-    return axios.delete('/api/v1/product/delete', { data: { id: product.id_product } });
+    return axios.delete('/api/v1/product/delete', { data: { id_product: product.id_product } });
 }
 
 

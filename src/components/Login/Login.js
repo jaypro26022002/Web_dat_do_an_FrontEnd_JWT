@@ -37,7 +37,7 @@ const Login = (props) => {
         }
         if (!password) {
             setObjCheckInput({ ...defaultValidInput, isValidPass: false });
-            toast.error("please enter your password");
+            // toast.error("please enter your password");
             toast.error("Làm ơn điền mật khẩu vào");
             return;
         }
@@ -60,7 +60,7 @@ const Login = (props) => {
                 account: { groupWithRoles, email, username }
             }
             loginContext(data);
-            if (groupId === 4) {
+            if (groupId === 4 || groupId === 1) {
                 history.push('/user');
             } else if (groupId === 2) {
                 history.push('/home');

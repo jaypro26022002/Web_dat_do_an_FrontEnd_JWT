@@ -318,33 +318,38 @@
 .shop3 span,
 .shop4 span {
     display: none;
-    /* Ẩn văn bản ban đầu */
+    /* Hide the span initially */
     position: absolute;
-    /* Để căn giữa */
+    /* Position span absolutely */
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjust for exact center */
     background-color: rgba(255, 255, 255, 0.8);
-    /* Màu nền */
+    /* Semi-transparent background */
     padding: 5px 10px;
-    /* Đệm */
+    /* Padding around text */
     border: 1px solid #ccc;
-    /* Viền */
+    /* Border for the span */
     border-radius: 5px;
-    /* Bo góc */
+    /* Rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Đổ bóng */
+    /* Shadow around the span */
     z-index: 1;
-    /* Chỉ số lớp */
+    /* Ensure span is above other content */
     text-align: center;
-    /* Căn giữa văn bản */
-    // pointer-events: all;
-    /* Không ảnh hưởng đến sự kiện click */
+    /* Center text inside span */
 }
 
-/* Hiển thị văn bản khi hover vào */
+/* Show the span with the background on hover */
 .shop1:hover span,
 .shop2:hover span,
 .shop3:hover span,
 .shop4:hover span {
     display: block;
+    /* Show span on hover */
 }
 
 .title-product {

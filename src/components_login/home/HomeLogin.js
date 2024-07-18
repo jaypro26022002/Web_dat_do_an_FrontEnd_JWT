@@ -105,7 +105,7 @@ const HomeLogin = ({ prod }) => {
                             </div>
                             <div className="shop3 col-3">
                                 <Link to="/log/sushi">
-                                    <span>Góc Phố</span>
+                                    <span>Haru haru</span>
                                 </Link>
                             </div>
                             <div className="shop4 col-3">
