@@ -1,6 +1,7 @@
 import './HomePage.scss'
 import { CartState } from '../../context_cart/Context';
 import SingleProductPage from '../home/SingleProductPage';
+import SingleProductPage2 from '../home/SingleProductPage2';
 import { Link } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import logo from '../home/img/icon.gif';
@@ -12,6 +13,7 @@ const HomePage = ({ prod }) => {
     const [showScroll, setShowScroll] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
     const productsPerPage = 4;
+    const productsPerPage2 = 1;
 
     const checkScrollTop = () => {
         if (!showScroll && window.pageYOffset > 400) {
@@ -32,6 +34,7 @@ const HomePage = ({ prod }) => {
         }
     };
 
+
     const prevProducts = () => {
         const prevPage = currentPage - 1;
         if (prevPage >= 0) {
@@ -51,27 +54,29 @@ const HomePage = ({ prod }) => {
         <>
             <div className="home-container">
                 <div className="header-container">
-                    <div className="header_banner col-12">
+                    <div className="header_banner col-7 d-none d-sm-block">
                     </div>
                 </div>
                 <div className='container'>
                     <div className="main">
-                        <div className="band-home pt-4">
-                            <div className="band1 font-2">
-                                <img src={require('./img/icon-1.jpg').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
-                                <p>2015</p>
-                            </div>
-                            <div className='band2 font-2'>
-                                <img src={require('./img/icon-2.webp').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
-                                <p>2016</p>
-                            </div>
-                            <div className="band3 font-2">
-                                <img src={require('./img/icon-3.webp').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
-                                <p>2017</p>
-                            </div>
-                            <div className='band4 font-2'>
-                                <img src={require('./img/icon-4.webp').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
-                                <p>2018</p>
+                        <div className="band-home pt-4 d-none d-sm-block">
+                            <div className='row'>
+                                <div className="band1 col font-2 ">
+                                    <img src={require('./img/icon-1.jpg').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
+                                    <p>2015</p>
+                                </div>
+                                <div className='band2 col font-2'>
+                                    <img src={require('./img/icon-2.webp').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
+                                    <p>2016</p>
+                                </div>
+                                <div className="band3 col font-2">
+                                    <img src={require('./img/icon-3.webp').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
+                                    <p>2017</p>
+                                </div>
+                                <div className='band4 col font-2'>
+                                    <img src={require('./img/icon-4.webp').default} alt="icon-1" style={{ width: '150px', height: '150px' }} />
+                                    <p>2018</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +84,7 @@ const HomePage = ({ prod }) => {
                     <div className='title-dishe pt-4 font-1'>
                         <h1>Hãy chọn thời điểm bạn muốn ăn !</h1>
                     </div>
-                    <div className="bua-an pt-4">
+                    <div className="bua-an pt-4 d-none d-sm-block">
                         <Link to="/sang">
                             <div className="section1 col-lg-4 fl bx" />
                         </Link>
@@ -90,12 +95,29 @@ const HomePage = ({ prod }) => {
                             <div className="section3 col-lg-4 fl bx" />
                         </Link>
                     </div>
+                    <div className="bua-an2 pt-4 d-sm-none d-block">
+                        <div class="buaan">
+                            <Link to="/sang"><img src={require('./img/buasang.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} class="rounded-circle" />
+                            </Link>
+                        </div>
+                        <div class="buaan">
+                            <Link to="/trua">
+                                <img src={require('./img/buatrua.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} class="rounded-circle" />
+                            </Link>
+                        </div>
+                        <div class="buaan">
+                            <Link to="/toi">
+                                <img src={require('./img/buatoi.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} class="rounded-circle" />
+                            </Link>
+                        </div>
+                    </div>
+
 
                     <div className='title-shop pt-4 clear font-1'>
                         <h1>Cửa hàng phổ biến </h1>
                     </div>
-                    <div className='shop pb-4 pt-4'>
-                        <div className="section_shop">
+                    <div className='shop pb-4 pt-4 d-none d-sm-block'>
+                        <div className="section_shopp">
                             <div className="shop1 col-3">
                                 <Link to="/com">
                                     <span>Cô Ba</span>
@@ -118,26 +140,73 @@ const HomePage = ({ prod }) => {
                             </div>
                         </div>
                     </div>
+                    <div className='shop pb-4 pt-4 d-sm-none d-block'>
+                        <div className="section_shop2">
+                            <div className="shop1 col">
+                                <Link to="/com">
+                                    <span>Cô Ba</span>
+                                </Link>
+                            </div>
+                            <div className="shop2 col">
+                                <Link to="/kfc">
+                                    <span>KFC</span>
+                                </Link>
+                            </div>
+                            <div className="shop3 col">
+                                <Link to="/sushi">
+                                    <span>Haru haru</span>
+                                </Link>
+                            </div>
+                            <div className="shop4 col">
+                                <Link to="/bun">
+                                    <span>Nhớ</span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className='title-product pt-4 font-1'>
                         <h1>Menu</h1>
                     </div>
-                    <div className="home-product mt-4">
-                        {/* Display products based on currentPage */}
-                        {products.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
-                            .map((prod) => (
-                                <SingleProductPage prod={prod} key={prod.id_product} />
-                            ))}
+
+                    <div className="home-product mt-4 d-none d-sm-block">
+                        <div className="home-product mt-4 ">
+                            {/* Display products based on currentPage */}
+                            {products.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
+                                .map((prod) => (
+                                    <SingleProductPage prod={prod} key={prod.id_product} />
+                                ))}
+                        </div>
+                        {/* Navigation buttons */}
+                        <div className="pagination-buttons">
+                            <button onClick={prevProducts} disabled={currentPage === 0}>
+                                <i className="fa fa-arrow-left" aria-hidden="true"></i> Previous
+                            </button>
+                            <button onClick={nextProducts} disabled={(currentPage + 1) * productsPerPage >= products.length}>
+                                Next <i className="fa fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    {/* Navigation buttons */}
-                    <div className="pagination-buttons">
-                        <button onClick={prevProducts} disabled={currentPage === 0}>
-                            <i className="fa fa-arrow-left" aria-hidden="true"></i> Previous
-                        </button>
-                        <button onClick={nextProducts} disabled={(currentPage + 1) * productsPerPage >= products.length}>
-                            Next <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                        </button>
+                    <div className="home-product2 mt-4 d-sm-none d-block">
+                        <div className="home-product2 mt-4 ">
+                            {/* Display products based on currentPage */}
+                            {products.slice(currentPage * productsPerPage2, (currentPage + 1) * productsPerPage2)
+                                .map((prod) => (
+                                    <SingleProductPage2 prod={prod} key={prod.id_product} />
+                                ))}
+                        </div>
+                        {/* Navigation buttons */}
+                        <div className="pagination-buttons">
+                            <button onClick={prevProducts} disabled={currentPage === 0}>
+                                <i className="fa fa-arrow-left" aria-hidden="true"></i> Previous
+                            </button>
+                            <button onClick={nextProducts} disabled={(currentPage + 1) * productsPerPage2 >= products.length}>
+                                Next <i className="fa fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
+
 
                     <div className='infor'>
                         <h1 className='title-1 pt-4 pb-4 font-1'>Một số thông tin về quán Uncle V !</h1>
@@ -222,6 +291,20 @@ const HomePage = ({ prod }) => {
     );
 }
 export default HomePage;
+
+
+
+
+
+
+
+{/* <div className="home-product2 mt-4 d-sm-none d-block">
+{products.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
+    .map((prod) => (
+        <SingleProductPage prod={prod} key={prod.id_product} />
+    ))}
+</div> */}
+
 // import './HomePage.scss'
 // import { CartState } from '../../context_cart/Context';
 // import SingleProductPage from '../home/SingleProductPage';
@@ -230,9 +313,12 @@ export default HomePage;
 // import logo from '../home/img/icon.gif';
 // import React, { useState, useEffect } from 'react';
 
+
 // const HomePage = ({ prod }) => {
 //     const { state: { products } } = CartState();
 //     const [showScroll, setShowScroll] = useState(false);
+//     const [currentPage, setCurrentPage] = useState(0);
+//     const productsPerPage = 4;
 
 //     const checkScrollTop = () => {
 //         if (!showScroll && window.pageYOffset > 400) {
@@ -245,6 +331,21 @@ export default HomePage;
 //     const scrollTop = () => {
 //         window.scrollTo({ top: 0, behavior: 'smooth' });
 //     };
+
+//     const nextProducts = () => {
+//         const nextPage = currentPage + 1;
+//         if (nextPage < Math.ceil(products.length / productsPerPage)) {
+//             setCurrentPage(nextPage);
+//         }
+//     };
+
+//     const prevProducts = () => {
+//         const prevPage = currentPage - 1;
+//         if (prevPage >= 0) {
+//             setCurrentPage(prevPage);
+//         }
+//     };
+
 
 //     useEffect(() => {
 //         window.addEventListener('scroll', checkScrollTop);
@@ -314,7 +415,7 @@ export default HomePage;
 //                             </div>
 //                             <div className="shop3 col-3">
 //                                 <Link to="/sushi">
-//                                     <span>Góc Phố</span>
+//                                     <span>Haru haru</span>
 //                                 </Link>
 //                             </div>
 //                             <div className="shop4 col-3">
@@ -327,12 +428,22 @@ export default HomePage;
 //                     <div className='title-product pt-4 font-1'>
 //                         <h1>Menu</h1>
 //                     </div>
-//                     <div className="home-product mt-4 ">
-//                         {/* <div className="productContainer"> */}
-//                         {products.map((prod) => {
-//                             return <SingleProductPage prod={prod} key={prod.id_product} />
-//                         })}
-//                         {/* </div> */}
+//                     <div className="home-product mt-4">
+//                         {/* Display products based on currentPage */}
+//                         {products.slice(currentPage * productsPerPage, (currentPage + 1) * productsPerPage)
+//                             .map((prod) => (
+//                                 <SingleProductPage prod={prod} key={prod.id_product} />
+//                             ))}
+//                     </div>
+
+//                     {/* Navigation buttons */}
+//                     <div className="pagination-buttons">
+//                         <button onClick={prevProducts} disabled={currentPage === 0}>
+//                             <i className="fa fa-arrow-left" aria-hidden="true"></i> Previous
+//                         </button>
+//                         <button onClick={nextProducts} disabled={(currentPage + 1) * productsPerPage >= products.length}>
+//                             Next <i className="fa fa-arrow-right" aria-hidden="true"></i>
+//                         </button>
 //                     </div>
 
 //                     <div className='infor'>

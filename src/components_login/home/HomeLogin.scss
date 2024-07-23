@@ -114,26 +114,21 @@
     }
 }
 
-.band-login {
-    display: flex;
-    justify-content: space-between;
 
-    .band1,
-    .band2,
-    .band3,
-    .band4 {
-        flex: 1;
-        /* This will make the bands take equal space in the row */
-        padding: 10px;
-        /* Optional: padding around each band */
-        margin-left: 70px;
-        // /* Add 20px margin on the left side */
-        margin-right: 70px;
+.band1,
+.band2,
+.band3,
+.band4 {
+    padding: 10px;
+    /* Optional: padding around each band */
+    margin-left: 70px;
+    // /* Add 20px margin on the left side */
+    margin-right: 70px;
 
-        text-align: center;
-        font-size: 40px;
-    }
+    text-align: center;
+    font-size: 40px;
 }
+
 
 .title-dishes {
     text-align: center;
@@ -143,11 +138,6 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    /* Center the sections horizontally */
-    // margin-left: 20px;
-    /* Add 20px margin on the left side */
-    // margin-right: 20px;
-    /* Add 20px margin on the right side */
 }
 
 .fl {

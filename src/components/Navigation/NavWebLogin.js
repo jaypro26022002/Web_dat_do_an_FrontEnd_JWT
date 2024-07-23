@@ -43,7 +43,7 @@ const NavWebLogin = (props) => {
             <div className="top-nav">
                 <Navbar expand="lg">
                     <Container >
-                        <Navbar.Brand href="/">
+                        <Navbar.Brand href="/home">
                             <img
                                 src={logo}
                                 width='100'

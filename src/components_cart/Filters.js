@@ -11,7 +11,7 @@ const Filters = () => {
 
   console.log(byStock, byFastDelivery, sort, byRating)
   return (
-    <div className="filters">
+    <div className="filterssukien">
       <span className="title">Filter Products</span>
       <span>
         <Form.Check

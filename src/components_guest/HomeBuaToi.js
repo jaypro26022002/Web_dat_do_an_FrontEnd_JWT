@@ -1,6 +1,8 @@
 import { CartState } from "../context_home/Context Toi";
 import SingleProduct from '../components_guest/homeSingleProductToi';
+import SingleProduct2 from '../components_guest/homeSingleProductToi2';
 import Filters from "../components_login/filter/FiltersToi";
+import Filters2 from "../components_login/filter/FiltersToi2";
 import './style.scss';
 import { Navbar } from 'react-bootstrap';
 import logo from '../components/home/img/icon.gif';
@@ -52,14 +54,29 @@ const HomeToiLogin = () => {
 
   return (
     <div className="home-main">
-      <div className="home">
-        <Filters />
-        <div className="productContainer">
+      <div className='home2 d-sm-none d-block'>
+        <div className='fill '>
+          <Filters2 />
+        </div>
+        <div className="productContainer col-10">
           {transformProducts().map((prod) => (
-            <SingleProduct prod={prod} key={prod.id_product} />
+            <SingleProduct2 prod={prod} key={prod.id_product} />
           ))}
         </div>
       </div>
+      <div className='home d-none d-sm-block'>
+        <div className='row'>
+          <div className='col-2'>
+            <Filters />
+          </div>
+          <div className="productContainer col-10">
+            {transformProducts().map((prod) => (
+              <SingleProduct prod={prod} key={prod.id_product} />
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="footer">
         <footer className='footer bg-dark text-white'>
           <div className='container p-4 pb-0'>

@@ -106,7 +106,7 @@ const MyBill = () => {
             <div className="top-nav">
                 <Navbar expand="lg">
                     <Container fluid>
-                        <Navbar.Brand href="/">
+                        <Navbar.Brand href="/home">
                             <img
                                 src={logo}
                                 width='100'

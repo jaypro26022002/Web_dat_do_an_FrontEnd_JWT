@@ -2,7 +2,9 @@ import { fetchShop3, fetchComments3 } from "../services/cartService";
 import React, { useEffect, useState } from 'react';
 import { CartState } from "../context_home/Context Sushi";
 import SingleProduct from './homeSingleProductSushi';
+import SingleProduct2 from './homeSingleProductSushi2';
 import Filters from "../components_login/filter/FiltersSushi";
+import Filters2 from "../components_login/filter/FiltersSushi2";
 import './style.scss';
 import { Navbar } from 'react-bootstrap';
 import logo from '../components/home/img/icon.gif';
@@ -72,14 +74,32 @@ const HomeSushiLogin = () => {
     <div className="home-main">
       <HeaderSushi />
       <div className='container'>
-        <div className="container_shop ">
-          <div className="image">
-            <img src={`http://localhost:8081/image/${shop.thumbnail}`} style={{ width: '260px', height: '250px' }} alt="Shop Thumbnail" />
+        <div className="container_shop d-none d-sm-block ">
+          <div className='row'>
+            <div className="image col-4">
+              <img src={`http://localhost:8081/image/${shop.thumbnail}`} style={{ width: '350px', height: '250px' }} alt="Shop Thumbnail" />
+            </div>
+            <div className="details col-8">
+              <h1 className='fonts-1'>{shop.nameShop}</h1>
+              <div className='fonts-2'>{shop.address}</div>
+              <div className="rating">⭐⭐⭐⭐⭐ 100+ đánh giá trên Uncle V</div>
+              <div className="status fonts-2">Mở cửa {shop.timeWork}</div>
+              <div className="price fonts-2">Có giá: {shop.price}</div>
+              <div className="service-fee fonts-2">PHÍ DỊCH VỤ 0.0%</div>
+              <div>DỊCH VỤ BỞI Uncle V</div>
+            </div>
           </div>
-          <div className="details">
-            <h1 className="fonts-1">{shop.nameShop}</h1>
-            <div className="fonts-2">{shop.address}</div>
-            <div className="rating ">⭐⭐⭐⭐ 100+ đánh giá trên Uncle V</div>
+        </div>
+
+
+        <div className="container_shop2 d-sm-none d-block">
+          <div className="image px-4">
+            <img src={`http://localhost:8081/image/${shop.thumbnail}`} style={{ width: '350px', height: '250px' }} alt="Shop Thumbnail" />
+          </div>
+          <div className="details px-4">
+            <h1 className='fonts-1'>{shop.nameShop}</h1>
+            <div className='fonts-2'>{shop.address}</div>
+            <div className="rating">⭐⭐⭐⭐⭐ 100+ đánh giá trên Uncle V</div>
             <div className="status fonts-2">Mở cửa {shop.timeWork}</div>
             <div className="price fonts-2">Có giá: {shop.price}</div>
             <div className="service-fee fonts-2">PHÍ DỊCH VỤ 0.0%</div>
@@ -87,13 +107,29 @@ const HomeSushiLogin = () => {
           </div>
         </div>
       </div>
-      <div className="gachngang"></div>
-      <div className='home '>
-        <Filters />
-        <div className="productContainer">
+
+      <div className='gachngang'></div>
+
+      <div className='home2 d-sm-none d-block'>
+        <div className='fill '>
+          <Filters2 />
+        </div>
+        <div className="productContainer col-10">
           {transformProducts().map((prod) => (
-            <SingleProduct prod={prod} key={prod.id_product} />
+            <SingleProduct2 prod={prod} key={prod.id_product} />
           ))}
+        </div>
+      </div>
+      <div className='home d-none d-sm-block'>
+        <div className='row'>
+          <div className='col-2'>
+            <Filters />
+          </div>
+          <div className="productContainer col-10">
+            {transformProducts().map((prod) => (
+              <SingleProduct prod={prod} key={prod.id_product} />
+            ))}
+          </div>
         </div>
       </div>
 

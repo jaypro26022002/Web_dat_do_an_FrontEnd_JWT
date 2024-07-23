@@ -121,25 +121,18 @@
     }
 }
 
-.band-home {
-    display: flex;
-    justify-content: space-between;
+.band1,
+.band2,
+.band3,
+.band4 {
+    padding: 10px;
+    /* Optional: padding around each band */
+    margin-left: 70px;
+    // /* Add 20px margin on the left side */
+    margin-right: 70px;
 
-    .band1,
-    .band2,
-    .band3,
-    .band4 {
-        flex: 1;
-        /* This will make the bands take equal space in the row */
-        padding: 10px;
-        /* Optional: padding around each band */
-        margin-left: 70px;
-        // /* Add 20px margin on the left side */
-        margin-right: 70px;
-
-        text-align: center;
-        font-size: 40px;
-    }
+    text-align: center;
+    font-size: 40px;
 }
 
 
@@ -151,11 +144,6 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    /* Center the sections horizontally */
-    // margin-left: 20px;
-    // /* Add 20px margin on the left side */
-    // margin-right: 20px;
-    /* Add 20px margin on the right side */
 }
 
 .fl {
@@ -261,19 +249,47 @@
     transition: 0.6s;
 }
 
+.bua-an2 {
+    /* Định dạng chung cho container */
+    display: flex;
+    justify-content: space-around;
+    /* Căn các cột theo chiều ngang */
+    align-items: center;
+    /* Căn các cột theo chiều dọc */
+    margin-top: 20px;
+    /* Khoảng cách từ đỉnh trang */
+
+    .buaan {
+        flex: 1;
+        /* Chia đều không gian chiều ngang cho các cột */
+        padding: 0 10px;
+        /* Khoảng cách giữa các cột */
+    }
+
+    .rounded-circle {
+        border-radius: 50%;
+        /* Làm tròn ảnh thành hình tròn */
+        display: block;
+        /* Xóa khoảng trống dưới dòng */
+        margin: 0 auto;
+        /* Căn giữa theo chiều ngang */
+    }
+
+}
+
 
 .title-shop {
     text-align: center;
 }
 
-.section_shop {
+.section_shopp {
     margin-top: 10px;
     display: flex;
     justify-content: center;
     /* Center the sections horizontally */
-    margin-left: 20px;
+    margin-left: 30px;
     /* Add 20px margin on the left side */
-    margin-right: 20px;
+    margin-right: 30px;
     /* Add 20px margin on the right side */
 }
 
@@ -359,15 +375,7 @@
 .home-product {
     margin-top: 4px;
     display: flex;
-    align-items: center;
-    /* Sử dụng flexbox để dễ dàng điều chỉnh layout */
-    // margin-left: -40px;
-    // margin-right: -100px;
-
-    /* Sử dụng flexbox để dễ dàng điều chỉnh layout */
-
 }
-
 
 .footer {
     ul {
