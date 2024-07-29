@@ -62,12 +62,6 @@ const Chekorder = () => {
             <button className="btn btn-success refresh" onClick={handleRefresh}>
               <i className="fa fa-refresh"></i> Refresh
             </button>
-            <button className="btn btn-primary" onClick={() => {
-              setIsShowModalCheckorder(true);
-              setActionModalCheckorder("CREATE");
-            }}>
-              <i className="fa fa-plus-circle"></i> Thêm sản phẩm
-            </button>
           </div>
         </div>
         <div className="food-body">

@@ -92,18 +92,18 @@ const HomeLogin = ({ prod }) => {
                         </Link>
                     </div>
                     <div className="bua-an2 pt-4 d-sm-none d-block">
-                        <div class="buaan">
-                            <Link to="/log/sang"><img src={require('./img/buasang.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} class="rounded-circle" />
+                        <div className="buaan">
+                            <Link to="/log/sang"><img src={require('./img/buasang.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} className="rounded-circle" />
                             </Link>
                         </div>
-                        <div class="buaan">
+                        <div className="buaan">
                             <Link to="/log/trua">
-                                <img src={require('./img/buatrua.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} class="rounded-circle" />
+                                <img src={require('./img/buatrua.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} className="rounded-circle" />
                             </Link>
                         </div>
-                        <div class="buaan">
+                        <div className="buaan">
                             <Link to="/log/toi">
-                                <img src={require('./img/buatoi.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} class="rounded-circle" />
+                                <img src={require('./img/buatoi.jpg').default} alt="..." style={{ width: '280px', height: '250px' }} className="rounded-circle" />
                             </Link>
                         </div>
                     </div>

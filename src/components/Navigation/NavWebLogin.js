@@ -67,11 +67,11 @@ const NavWebLogin = (props) => {
                             <Nav className="ms-auto px-4" style={{ marginRight: '50px' }}>
                                 {user && user.isAuthenticated === true ? (
                                     <>
-                                        <Nav.Item className='nav-link'>
+                                        <Nav.Item className='navLogin nav-link' style={{ paddingTop: "15px" }}>
                                             Xin chào {user.account.username} !
                                         </Nav.Item>
                                         <NavDropdown title="Chức năng" id="basic-nav-dropdown" className="nav-dropdown">
-                                            <NavDropdown.Item href="#action/3.1">Thay đổi mật khẩu</NavDropdown.Item>
+                                            <NavDropdown.Item href="/login">Thay đổi tài khoản</NavDropdown.Item>
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item>
                                                 <span onClick={() => handleLogout()}>Đăng xuất</span>

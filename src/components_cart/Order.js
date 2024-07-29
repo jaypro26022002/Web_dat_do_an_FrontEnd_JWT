@@ -122,7 +122,7 @@ const Order = () => {
                     ))}
                 </ListGroup>
             </div>
-            <div className="filters summary">
+            <div className="filterssukien summary">
                 <span className="title">Tổng ({cart.length}) sản phẩm</span>
                 <span style={{ fontWeight: 700, fontSize: 20 }}>Tổng tiền: {Number(total).toFixed(3)}₫</span> {/* Đảm bảo hiển thị đúng phần thập phân */}
                 <Form.Group controlId="paymentMethod">

@@ -84,7 +84,7 @@ const Cart = () => {
                     ))}
                 </ListGroup>
             </div>
-            <div className="filters summary">
+            <div className="filterssukien summary">
                 <span className="title">Tổng ({cart.length}) sản phẩm</span>
                 <span style={{ fontWeight: 700, fontSize: 20 }}>Tổng: {total}₫</span>
                 <Button type="button" disabled={cart.length === 0} onClick={() => history.push('/order')}>

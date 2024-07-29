@@ -66,7 +66,7 @@ const NavAdmin = (props) => {
                                             </Nav.Item>
 
                                             <NavDropdown title="Chức năng" id="basic-nav-dropdown">
-                                                <NavDropdown.Item href="#action/3.1">Thay đổi mật khẩu</NavDropdown.Item>
+                                                <NavDropdown.Item href="/login">Thay đổi tài khoản</NavDropdown.Item>
                                                 <NavDropdown.Divider />
                                                 <NavDropdown.Item>
                                                     <span onClick={() => handleLogout()}>Đăng xuất</span>

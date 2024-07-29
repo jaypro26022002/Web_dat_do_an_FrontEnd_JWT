@@ -41,17 +41,11 @@ const Order = () => {
 
         try {
             let response = await createOrder(orderData);
-            if (response.data.EC === 0) {
-                alert("Order placed successfully!");
-                cart.forEach((prod) => {
-                    dispatch({
-                        type: "REMOVE_FROM_CART",
-                        payload: prod,
-                    });
-                });
-                history.push('/');
+            response = await createMoMoPayment(orderData);
+            if (response.paymentUrl) {
+                window.location.href = response.paymentUrl;
             } else {
-                alert(`Failed to place order. Error: ${response.data.EM}`);
+                alert("Failed to get MoMo payment URL.");
             }
         } catch (error) {
             console.error("Error placing order", error);
